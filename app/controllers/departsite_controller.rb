@@ -1,6 +1,6 @@
 class DepartsiteController < ApplicationController
   def index
   end
-  def about
+  def news
   end
 end
