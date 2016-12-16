@@ -1,7 +1,7 @@
 			var image=['/slideImgs/car.png', '/slideImgs/note1.jpg', '/slideImgs/project1.jpeg', '/slideImgs/note2.jpeg', '/slideImgs/project2.jpg','/slideImgs/index.gif'];
 			var arrayIndex = 0;
 			var timmer;
-			$(document).ready(function(){
+			$(document).on('turbolinks:load', function(){
 				controlSliding();
 			});
 

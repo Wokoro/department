@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function(){
     //Resource menu controller
     $("#resource").hover(function () {
         $("#resource-sub-list").slideDown(200);
