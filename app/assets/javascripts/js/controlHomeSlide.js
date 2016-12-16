@@ -1,4 +1,4 @@
-			var image=['js/slideImgs/car.png', 'js/slideImgs/note1.jpg', 'js/slideImgs/project1.jpeg', 'js/slideImgs/note2.jpeg', 'js/slideImgs/project2.jpg','js/slideImgs/index.gif'];
+			var image=['/slideImgs/car.png', '/slideImgs/note1.jpg', '/slideImgs/project1.jpeg', '/slideImgs/note2.jpeg', '/slideImgs/project2.jpg','/slideImgs/index.gif'];
 			var arrayIndex = 0;
 			var timmer;
 			$(document).ready(function(){

@@ -3,4 +3,6 @@ class DepartsiteController < ApplicationController
   end
   def news
   end
+  def about
+  end
 end

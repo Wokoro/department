@@ -17,13 +17,13 @@ body{
 	font-size: 20px;
 	margin-top: 0px;
 }
-
-
-
 h6{
 	margin-top: 20px;
 	margin-bottom: 0px;
 	text-align: center;
+}
+a{
+	text-undecoration: none;
 }
 h5{
 	margin-top: 0px;
@@ -302,9 +302,9 @@ footer{
 .white-shadow{
 	text-shadow: 1px 1px 2px white;
 }
-a{
+.nav{
 	text-decoration: none;
-	margin-left: 70%;
+	
 }
 
 /***********HORIZONTAL RULE***********/
