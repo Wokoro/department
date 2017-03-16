@@ -1,0 +1,22 @@
+        <!-- The main content starts here-->
+        <div class = "row">
+          <div class = "col-2"></div>
+                <div class = "col-4 no-padding ">
+                    <!-- The login form -->
+                    <div id="ccl">
+                        <div id="hf">
+                            <p id="ft">Staff Login</p>
+                                <div id="hsf">
+                                        <%= form_for :lecturersession, url: lecturer_login_path do |f| %>
+                                            <%= f.label :staffid, id: 'staffid' %>
+                                            <%= f.text_field :staff_id %><br/>
+                                            <%= f.label :password %>
+                                            <%= f.password_field :password %><br/>
+                                            <%= submit_tag :SignIn %>
+                                        <% end %>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+          <div class = "col-2"></div> 
+        </div>

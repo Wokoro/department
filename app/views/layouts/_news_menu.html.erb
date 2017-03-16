@@ -1,0 +1,12 @@
+<% years = get_distinct_years %>
+<% if years != nil %>
+<div class = "trans-background centered ">
+    <ul id = "year" class = "nav-list">
+    <% years.each do|y| %>
+        <li><%= link_to y.to_s, news_path(y.to_s) %><br></li>
+        <hr class ="hr"/>
+<% end %>
+    </ul>
+</div>
+
+<% end %>

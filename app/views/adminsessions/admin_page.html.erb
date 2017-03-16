@@ -1,0 +1,30 @@
+<div = "row">
+        	<div class = "col-8 transblue-background">
+				<div class = "col-1 white-font border-right">
+					<div style = "height:300px">
+					<ul>
+						<p class = "no-deco"><%= %></p>
+						<li class = "no-deco">NEWS</li>
+						<li class = "no-deco">STUDENTS</li>
+					</ul>
+					</div>
+				</div>
+				<div class = "col-1"></div>
+				<div class = "col-4 white-font centered">
+					<div>
+						<%= form_for :news, url: news_index_path do |f| %>
+							<%= f.text_field :title %><br/>
+							<%= f.text_area :content, rows: 10, cols: 80 %><br/>
+							<%= f.button :upload %>
+						<% end %>
+					</div>
+				</div>
+				<div class = "col-1"></div>
+				<div class = "col-1 white-font leftborder">
+					<div style = "height:300px">
+					
+					</div>
+				</div>
+        	</div>
+
+        </div>

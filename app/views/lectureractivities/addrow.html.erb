@@ -1,0 +1,50 @@
+        <div = "row">
+            <div class = "col-8">
+              <div class = "col-1"></div>
+            <div class = "col-1 no-padding">
+                <%= render 'layouts/lecturer_menu' %>
+            </div>
+
+            <div class = "col-5 no-padding  margin-left">
+              
+                <div class = "trans-background  no-padding">
+                  <h5 class = "pad-left centered black-font">ENTER RESULT</h5>
+                  <form action "#">
+                  <table id = "result_table" border = "1px" style = "width :100%;"><tbody id = "body"><tr><th>S/N</th><th>MATNO</th><th>NAME</th><th>COURSE TITLE</th><th>COURSE CODE</th><th>GRADE</th><th>POINT</th></tr><tr id="thed"><td>1</td><td><%= text_field_tag 'matno1', nil, class: "matno" %></td><td><%= text_field_tag 'name1', nil, class: "matno" %></td><td><%= text_field_tag 'ctype1', nil, class: "matno" %></td><td><%= text_field_tag 'ccode', nil, class: "matno" %></td><td><%= text_field_tag 'grade1', nil, class: "matno" %></td><td><%= text_field_tag 'point1', nil, class: "matno" %></td></tr></tbody></table>
+                   <div class = "row">
+                    <div class = "col-8 centered">
+                      
+                      <div class = "col-3"></div>
+                    <div class = "col-2"><%= submit_tag "submit" %></div>
+                    <div class = "col-3"></div>
+                    </div>
+                  </div>
+</form>
+          <div class = "row">
+          <div class = "col-3"></div>
+          <div class = "col-2">
+                  <div class = "row">
+                    <div class = "col-8 centered">
+                   
+                    </div>
+                  </div>
+                  <div class = "row">
+                    <div class = "col-8 centered">
+                      <div class = "col-2">
+                        <%= submit_tag "rows", onclick: "addrow();" %>
+                      </div>
+                      <div class = "col-4"></div>
+                      <div class = "col-2">
+                        <%= submit_tag "rows-", onclick: "removerow();" %>
+                      </div>
+                    </div>
+                  </div>
+                    
+          </div>
+          <div class = "col-3"></div>
+          </div>
+                </div>
+            </div>
+            <div class = "col-1"></div>
+            </div>
+        </div>

@@ -1,0 +1,19 @@
+<div = "row">
+	<div class = "col-8">
+		<div class = "col-1"></div>
+			<div class = "col-6 no-padding margin-left">
+				<div class = "trans-background no-padding no-padding">
+					<h1> The show page </h1>
+					<h4><%= @news.title %><span class="news-date"><%= "#{@news_date.day}/#{@news_date.month}/#{@news_date.year}" %></span></h4>
+					<% @cont.each do |c| %>
+					<p><%= c %></p>
+					<% end %>
+					<p id="buttons-p">
+<span class="itr-btn"> <%= link_to "<<Previous", news_path(previous_news(@news.id)), id:'previous-button', class:'iterate-button' %> </span> 
+					<span class="itr-btn"> <%= link_to "Next>>", news_path(next_news(@news.id)), id:'next-button', class:'iterate-button' %> </span>
+					</p>
+				</div>
+        	</div>
+    	<div class = "col-1"></div>
+    </div>
+</div>

@@ -5,4 +5,6 @@ class DepartsiteController < ApplicationController
   end
   def about
   end
+  def alumni
+  end
 end

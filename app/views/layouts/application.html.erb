@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Department</title>
+    <title>Home - EEE NDU</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home - EEE NDU</title>
         
-        <link rel="stylesheet" type="text/css" href="real.css"/>
-        <link rel="stylesheet" href="clementCss.css" />
+        
+        
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
+     <%= debug(params) %>
   </body>
 </html>

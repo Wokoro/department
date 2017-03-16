@@ -1,0 +1,7 @@
+<h1> Home for news</h1>
+<% @all_news.each do|news| %>
+<h4><%= news.title %><%= news.created_at %></h4>
+<p><% cont = news.content.split("\n") %></p>
+<%= cont[0] %>
+<%= link_to "read more...", news_path(news.enc_id) %>
+<% end %>
