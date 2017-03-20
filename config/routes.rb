@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :lecturers
   resources :students
   resources :news
-    match '/index', to:'news#index', via: :post
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -33,5 +32,12 @@ Rails.application.routes.draw do
   post 'lectureractivities/addrow'
 
   root 'departsite#index'
+  get '/home', to: 'departsite#index'
+  get '/about', to: 'departsite#about'
+
+  get '/student_login', to: 'studentsessions#new'
+  get '/lecturer_login', to: 'lecturersession#new'
+  get '/admin_login', to: 'adminsession#new'
+
   
 end

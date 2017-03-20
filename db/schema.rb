@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228115459) do
+ActiveRecord::Schema.define(version: 20170318232104) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -18,6 +18,25 @@ ActiveRecord::Schema.define(version: 20170228115459) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+  end
+
+  create_table "courses", primary_key: "ccode", id: :string, force: :cascade do |t|
+    t.string  "ctitle"
+    t.integer "units"
+    t.integer "level"
+    t.integer "lecturers_id", null: false
+    t.string  "semester"
+    t.index ["ccode"], name: "index_courses_on_ccode"
+    t.index ["ccode"], name: "sqlite_autoindex_courses_1", unique: true
+    t.index ["lecturers_id"], name: "index_courses_on_lecturers_id"
+  end
+
+  create_table "lecturers", primary_key: "lecturer_id", id: :string, force: :cascade do |t|
+    t.string "sname"
+    t.string "fname"
+    t.string "password_digest"
+    t.index ["lecturer_id"], name: "index_lecturers_on_lecturer_id"
+    t.index ["lecturer_id"], name: "sqlite_autoindex_lecturers_1", unique: true
   end
 
   create_table "news", force: :cascade do |t|
@@ -29,6 +48,27 @@ ActiveRecord::Schema.define(version: 20170228115459) do
     t.string   "enc_id"
     t.index ["enc_id"], name: "index_news_on_enc_id", unique: true
     t.index ["id"], name: "index_news_on_id"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string   "session"
+    t.integer  "score"
+    t.integer  "students_id"
+    t.integer  "courses_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["courses_id"], name: "index_registrations_on_courses_id"
+    t.index ["students_id"], name: "index_registrations_on_students_id"
+  end
+
+  create_table "students", primary_key: "matno", id: :string, force: :cascade do |t|
+    t.string  "sname"
+    t.string  "fname"
+    t.string  "lga"
+    t.integer "level"
+    t.string  "password_digest"
+    t.index ["matno"], name: "index_students_on_matno"
+    t.index ["matno"], name: "sqlite_autoindex_students_1", unique: true
   end
 
 end

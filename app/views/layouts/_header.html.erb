@@ -1,3 +1,14 @@
+<style type="text/css">
+    .nmenu{
+        color:white;
+    }
+
+    .smenu{
+        display:inline-block;
+        width:100%;
+    }
+</style>
+
 <div class = "col-8">
         <div class = "col-1"></div>
         <div class = "col-6 trans-background no-padding header-font" id="heade">
@@ -26,7 +37,7 @@
                 <div id = "header" class = "medium-margin blue-background white-border2 col-6 no-top pad-left">
                     <ul class="nav-list" id="top-nav-list">
                         <!-- Home nav -->
-                        <li class="main-nav-item" id="home">Home</li>
+                        <li class="main-nav-item" id="home"><%= link_to 'Home', root_url, class:'nmenu' %> </li>
                 
                         <!-- Resource Menu -->
                         <li class="main-nav-item" id="resource">Resource
@@ -37,7 +48,7 @@
                     </li>
                 
                     <!-- News nav -->
-                    <li class="main-nav-item" id="news">News</li>
+                    <li class="main-nav-item" id="news"><%= link_to 'News', news_index_path, class:'nmenu' %></li>
                 
                     <!-- Programmes Menu -->
                     <li class="main-nav-item" id="programmes">Programmes
@@ -77,9 +88,9 @@
 
                         <!-- Login sub menu -->
                         <ul class="sub-nav-list nav-list " id="login-sub-list">
-                            <li class="" id="admin">Admin</li>
-                            <li class="" id="staff">Staff</li>
-                            <li class="" id="student">Student</li>
+                            <li class="" id="admin"><%= link_to 'Admin', admin_login_url, class:'smenu' %></li>
+                            <li class="" id="staff"><%= link_to 'Staff', lecturer_login_url, class:'smenu' %></li>
+                            <li class="" id="student"><%= link_to 'Student', student_login_url, class:'smenu' %></li>
                         </ul>
                     </li>
                 </ul>
