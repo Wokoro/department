@@ -1,0 +1,23 @@
+<div class="row">
+	<%= render "layouts/student_layout/card" %>
+	
+
+	<div class="col-d-9 col-t-8">
+	    <div class="dashboard">
+	    	<% if @ass_code.empty? %>
+	    	<h2 class="header">No Pending Assignments</h2>
+	    	<% else %>
+	        <h2 class="header">Pending Assignments</h2>
+	        <div  class="notification">
+	            <% @ass_code.each do |e| %>
+					<%= form_for :assign, url: assignment_submit_path do |f| %>
+						<%= f.hidden_field :assignment_id, value: e.id %>
+						<%= e.course.ccode.upcase %>   <%= e.course.ctitle.titlecase %>   <%= f.submit "submit" %>
+					<% end %>
+				<% end %>
+			<% end %>
+	        </div>
+	    </div>
+	</div>
+
+</div>

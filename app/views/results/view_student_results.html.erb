@@ -1,0 +1,47 @@
+<style>
+	th, td{
+		padding-right: 20px;
+		padding-left: 10px;
+	}
+
+	.ctitle{
+		text-align:left;
+	}
+</style>
+<div class="row">
+	<div class="col-12">
+	<%= render 'layouts/student_layout/card' %>
+		<div class="col-d-9">
+	        <div class="dashboard">
+	            <h2 class="dashboard-header">Student Results</h2>
+	            <table>
+	            	<tr>
+	            		<th>S/N</th><th>COURSE CODE</th><th>COURSE TITLE</th><th>UNIT</th><th>SCORE</th><th>GRADE</th><th>GRADE POINT</th><th>REMARK</th>
+	            	</tr>
+	            	<% @semester_reg.each do|reg| %>
+	            		<tr>
+	            			<td><%= @counter %></td>
+	            			<td><%= reg.course.ccode %></td>
+	            			<td class="ctitle"><%= reg.course.ctitle.titlecase %></td>
+	            			<td><%= reg.units %></td>
+	            			<td><%= reg.C_A_score.to_i + reg.exam_score.to_i %></td>
+	            			<td><%= grade_letter(reg) %></td>
+	            			<td><%= get_grade_point reg %></td>
+	            			<td><%= remark(reg) %></td>
+	            		</tr>
+	            		<% @counter += 1 %>
+	            	<% end %>
+	            </table>
+	            <div>
+	            	<label class="name-tag">TOTAL GRADE POINTS:</label><label id="total-units"><%= @semester_gp %></label><br/>
+	            	<label class="name-tag">TOTAL UNITS REGISTERED:</label><label id="total-units"><%= @semester_units %></label><br/>
+	            	<label class="name-tag">GPA:</label><label id="total-units"><%= @gpa %></label><br/>
+	            	<label class="name-tag">CUMULATIVE GRADE POINTS:</label><label id="total-units"><%= @cumulative_gp %></label><br/>
+	            	<label class="name-tag">CUMULATIVE UNITS:</label><label id="total-units"><%= @cumulative_units %></label><br/>
+	            	<label class="name-tag">CGPA:</label><label id="total-units"><%= @cgpa %></label><br/>
+	            </div>
+
+	        </div>
+		</div>
+	</div>
+</div>

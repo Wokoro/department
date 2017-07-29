@@ -1,0 +1,11 @@
+<%= render 'layouts/student_layout/card' %>
+<div class = "col-d-9 col-t-8">
+	<div class = "dashboard centered">
+		<h1>SUBMIT ASSINGMENT FOR <%= @course.ctitle.upcase %></h1>
+	<%= form_for :assignment_submission, url: assignment_submissions_path  do |f| %>
+		<%= f.file_field :upload %>
+		<%= f.hidden_field :assignment_id, value: @assignment.id %>
+		<%= f.submit %>
+	<% end %>
+	</div>
+</div>

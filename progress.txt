@@ -1,0 +1,3 @@
+At the level of creating the Assignment through the assignment controller.
+the challenge i am facing is getting the current assignment_id for the assignmnet in the Assignment controller 
+work_duration : 9:00pm - 12:20am

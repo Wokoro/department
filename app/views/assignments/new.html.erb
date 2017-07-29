@@ -1,0 +1,14 @@
+<div class = "row" >
+	
+	<%= render 'layouts/lecturer_layout/card' %>
+	<div class = "col-d-9 col-t-8">
+		<div class = "dashboard">
+			<h1 class = "header centered">UPLOAD ASSIGNMENT FOR <%= @course.ctitle.upcase %></h1>
+			<%= form_for :assign, url: assignments_path do |d| %>
+				<%= d.file_field :file, multiple: false %><br/><br/>
+				<%=hidden_field_tag :course_id, @course.id %>
+				<%= submit_tag :upload %>
+			<% end %>
+		</div>
+	</div>
+</div>

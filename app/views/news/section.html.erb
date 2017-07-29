@@ -8,7 +8,7 @@
                 <div class = "trans-background no-padding no-padding">
                 <h5>News for year <%= params[:id] %></h5>
 					<% @news.each do|news| %>
-                    <h5 class = "pad-left text-left black-font"><%= news.title %><span class="news-date"><%= "#{news.created_at.day}/#{news.created_at.month}/#{news.created_at.year}" %></span></h5>
+                    <h5 class = "pad-left text-left black-font"><%= news.title.titlecase %><span class="news-date"><%= "#{news.created_at.day}/#{news.created_at.month}/#{news.created_at.year}" %></span></h5>
                     <% cont = news.content.split("\n") %>
                     <p>         <%= cont[0].slice(0, 200) %>....      </p>
                     <span class = "news-span"><%= link_to "read more...", news_path(news.enc_id), class: 'read-more' %></span>

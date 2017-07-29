@@ -1,18 +1,18 @@
 module LecturersessionsHelper
 	
-	def log_in(lecturer)
+	def login_lect(lecturer)
 		session[:staff_id] = lecturer.id
 	end
 
-	def current_studetn
-		@current_lecturer ||= Lecturer.find_by(staff_id: session[:staff_id])
+	def current_lecturer
+		@current_lecturer ||= Lecturer.find_by(id: session[:staff_id])
 	end
 
 	def logged_in?
 		!current_lecturer.nil?
 	end
 
-	def log_out
+	def logout_lect
 		session.delete(:staff_id)
 		@current_lecturer = nil
 	end

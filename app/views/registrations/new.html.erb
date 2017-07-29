@@ -1,0 +1,136 @@
+<div class="row">
+<div class="col-d-12 col-t-12">
+<%= render 'layouts/student_layout/card' %>
+<div class="col-d-9 col-t-8">
+            <div class="dashboard">
+                <h2 class="dashboad-header">Course Registration</h2>
+                <div  class="">
+                    
+                    <form name="course-registration-form" method="get" action="/create">
+                        <label class="name-tag bold">Session:&nbsp</label><label>2016/2017</label><br/>
+                        <label class="name-tag bold">Year Of Study:&nbsp</label><label><%= @level %></label>
+
+                        <table class="courses">
+                            <tr>
+                                <td colspan="6" class="semester" id="first-semester">FIRST SEMESTER</td>
+                            </tr>
+                            <tr>
+                                <th class="sn table-cell">S/N</th><th class="course-code table-cell">Course Code</th><th class="course-title table-cell">Course Title</th><th class="course-status table-cell">Course Status</th><th class="unit table-cell">Unit</th><th class="table-cell"></th>
+                            </tr>
+                            <% if !@fscc.nil? %>
+                                <% @fscc.each do|course| %>
+                            <tr>
+                               <td class="sn table-cell">1</td><td class="table-cell course-code"><%= course.ccode %></td><td class="table-cell course-title"><%= course.ctitle %></td><td class="table-cell course-status">C</td><td class="table-cell unit"><%= course.units %></td><td class="table-cell"><input type="hidden" onclick="validateEnrollment($('.first_semester'), 1);" name="<%= "course[#{course.ccode}]" %>" data-unit="3" value="<%= "#{course.id}" %>" class="first_semester" checked><input type="checkbox" checked disabled /></td>
+                            </tr>
+                                <% end %>
+                            <% end %>
+                            <% if !@first_semester_courses.nil? %>
+                                <% @first_semester_courses.each do|course| %>
+                            <tr>
+                               <td class="sn table-cell">1</td><td class="table-cell course-code"><%= course.ccode %></td><td class="table-cell course-title"><%= course.ctitle %></td><td class="table-cell course-status">C</td><td class="table-cell unit"><%= course.units %></td><td class="table-cell"><input type="checkbox" onclick="validateEnrollment($('.first_semester'), 1);" name="<%= "course[#{course.ccode}]" %>" data-unit="3" value="<%= "#{course.id}" %>" class="first_semester" /></td>
+                            </tr>
+                                <% end %>
+                            <% end %>
+
+
+                           
+                            <tr>
+                                <td class="sn table-cell"></td><td class="table-cell course-code"></td><td class="table-cell course-title total">Total Units Registered</td><td class="table-cell course-status"></td><td id="fs-total-units" class="table-cell unit">0</td><td class="table-cell name-of-lecturer"></td><td class="table-cell"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="semester" id="semester">SECOND SEMESTER</td><br/><br/>
+                            </tr>
+                        
+                            <tr>
+                                <th class="sn table-cell">S/N</th><th class="table-cell course-code">Course Code</th><th class="table-cell course-title">Course Title</th><th class="table-cell course-status">Course Status</th><th class="table-cell unit">Unit</th><th class="table-cell"></th>
+                            </tr>
+
+                            <% if !@sscc.nil? %>
+                                <% @sscc.each do|course| %>
+                            <tr>
+                               <td class="sn table-cell">1</td><td class="table-cell course-code"><%= course.ccode %></td><td class="table-cell course-title"><%= course.ctitle %></td><td class="table-cell course-status">C</td><td class="table-cell unit"><%= course.units %></td><td class="table-cell"><input type="hidden" onclick="validateEnrollment($('.second_semester'), 1);" name="<%= "course[#{course.ccode}]" %>" data-unit="3" value="<%= "#{course.id}" %>" class="second_semester" checked><input type="checkbox" checked disabled /></td>
+                            </tr>
+                                <% end %>
+                            <% end %>
+                            <% if !@second_semester_courses.nil? %>
+                                <% @second_semester_courses.each do|course| %>
+                            <tr>
+                               <td class="sn table-cell">1</td><td class="table-cell course-code"><%= course.ccode %></td><td class="table-cell course-title"><%= course.ctitle %></td><td class="table-cell course-status">C</td><td class="table-cell unit"><%= course.units %></td><td class="table-cell"><input type="checkbox" onclick="validateEnrollment($('.second_semester'), 1);" name="<%= "course[#{course.ccode}]" %>" data-unit="3" value="<%= "#{course.id}" %>" class="second_semester" /></td>
+                            </tr>
+                                <% end %>
+                            <% end %>
+
+                            <tr>
+                                <td class="sn table-cell"></td><td class="table-cell course-code"></td><td class="table-cell course-title total">Total Units Registered</td><td class="table-cell course-status"></td><td id="ss-total-units" class="table-cell unit">0</td><td class="table-cell"></td>
+                            </tr>
+                        </table>
+                        <div id="summary">
+                            <div class="sum-head">Registration Summary</div>
+                        <div class="hea">Registered number of Courses</div>
+                        <label class="name-tag">First Semester:</label><label id="fs-total-courses" class="value-tag">0</label><br/>
+                        <label class="name-tag">Second Semester:</label><label id="ss-total-courses" class="value-tag">0</label><br/>
+                        <label class="name-tag">Total:</label><label id="total-courses" class="value-tag">0</label>
+                        <div class="hea">Registerd Number of Units</div>
+                        <label class="name-tag">First Semester:</label><label id="first-semester-units">0</label><br/>
+                        <label class="name-tag">Second Semester:</label><label id="second-semester-units">0</label><br/>
+                        <label class="name-tag">Total:</label><label id="total-units">0</label><br/>
+                        </div>
+                        <div class="button-cont"><input type="submit" name="submit" value="Register" id="register-button"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <script type="text/javascript">
+    $(document).ready(function(){
+        //totalNumberOfUnits($(".first_semester"));
+    });
+    
+    function totalNumberOfUnits(courses, extraUnits){
+        totalUnits = 0;
+        for (var i = 0; i < courses.length; i++) {
+            if (courses[i].checked) {
+                totalUnits += parseInt(courses[i].getAttribute("data-unit"));
+            }
+        }
+
+        return totalUnits;   
+    }
+
+     function totalCourseRegistered(courses){
+        num = 0;
+        for (var i = 0; i < courses.length; i++) {
+            if(courses[i].checked){
+                num+=1;
+            }
+        }
+
+        return num;
+    }
+
+    function displayTotalUnits(courses, sem){
+        if(sem == 1){
+            document.getElementById("first-semester-units").innerHTML = totalNumberOfUnits(courses);
+            document.getElementById("fs-total-units").innerHTML = totalNumberOfUnits(courses);
+            document.getElementById("fs-total-courses").innerHTML = totalCourseRegistered(courses);
+        }
+        else{
+            document.getElementById("second-semester-units").innerHTML = totalNumberOfUnits(courses);
+            document.getElementById("ss-total-units").innerHTML = totalNumberOfUnits(courses);
+            document.getElementById("ss-total-courses").innerHTML = totalCourseRegistered(courses);
+        }
+        
+        document.getElementById("total-units").innerHTML = totalNumberOfUnits($(".first_semester"))+totalNumberOfUnits($(".second_semester"));
+        document.getElementById("total-courses").innerHTML = totalCourseRegistered($(".first_semester"))+totalCourseRegistered($(".second_semester"));
+    }
+
+   
+
+    function validateEnrollment(courses, sem, extraUnits=0){
+        totalNumberOfUnits(courses, extraUnits);
+        displayTotalUnits(courses, sem);
+    }
+</script>

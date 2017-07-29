@@ -9,10 +9,10 @@
 <div class = "trans-background centered ">
     <ul id = "year" class = "nav-list">
         <li><%= link_to "Check Result", "", class:'ssmenu' %><br></li><hr class ="hr"/>
-        <li><%= link_to "Submit Assignment", "", class:'ssmenu' %><br></li><hr class ="hr"/>
+        <li><%= link_to "Submit Assignment", {controller: "assignment_submissions", action: "index"}, class:'ssmenu' %><br></li><hr class ="hr"/>
         <li><%= link_to "Visit Library", "", class:'ssmenu' %><br></li><hr class ="hr"/>
         <li><%= link_to "Lecture Timetable", "", class:'ssmenu' %><br></li><hr class ="hr"/>
         <li><%= link_to "Download", "", class:'ssmenu' %><br></li><hr class ="hr"/>
-        <li><%= link_to "Check Result", "", class:'ssmenu' %><br></li><hr class ="hr"/>
+        <li><%= link_to "Register courses",{controller: "registrations", action: "index"}, class:'ssmenu' %><br></li><hr class ="hr"/>
     </ul>
 </div>

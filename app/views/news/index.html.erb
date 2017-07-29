@@ -1,22 +1,19 @@
-        <div = "row">
-            <div class = "col-8">
-            <div class = "col-1"></div>
-            <div class = "col-1 no-padding">
-                <%= render 'layouts/news_menu' %>
+<div class="row">
+    <div class = "col-d-2 col-t-2">
+        <%= render 'layouts/news_menu' %>
+    </div>
+    <div class = "col-d-10 col-t-10">
+        <div class = "trans-background no-padding dashboard">
+            <h6 class = "news-date"><%=  %></h6>
+            <% @all_news.each do|news| %>
+            <div>
+                <h5 class = "pad-left text-left black-font"><%= news.title.titlecase %><span class="news-date"><%= "#{news.created_at.day}/#{news.created_at.month}/#{news.created_at.year}" %></span></h5>
             </div>
-            <div class = "col-5 no-padding margin-left">
-                <div class = "trans-background no-padding">
-                    <h6 class = "news-date"><%=  %></h6>
-                    <% @all_news.each do|news| %>
-
-                    <h5 class = "pad-left text-left black-font"><%= news.title %><span class="news-date"><%= "#{news.created_at.day}/#{news.created_at.month}/#{news.created_at.year}" %></span></h5>
-                    <% cont = news.content.split("\n") %>
-                    <p>         <%= cont[0].slice(0, 300) %>....      </p>
-                    <span class = "news-span"><%= link_to 'read more...',  news_path(news.enc_id), class: 'read-more', style:'color:#FF6600;' %></span>
-                    <hr class = "hr">
-                    <% end %> <!-- End Loop !>
-                </div>
-            </div>
-            <div class = "col-1"></div>
-            </div>
+            <% cont = news.content.split("\n") %>
+            <p><%= cont[0].slice(0, 300) %>....</p>
+            <span class = "news-span"><%= link_to 'read more...',  news_path(news.enc_id), class: 'read-more', style:'color:#FF6600;' %></span>
+            <hr class = "hr">
+            <% end %> <!-- End Loop -->
         </div>
+    </div>
+</div>

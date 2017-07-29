@@ -1,0 +1,203 @@
+.nav-list {
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0px;
+    margin: 0px;   
+}
+
+#main-nav-bar{
+	background-color: #0099cc;
+	height: 40px;
+	padding-top: 13px;
+	padding-left: 20px;
+	padding-right: 30px;
+	width: 100%;
+}
+
+#main-nav-right-ul{
+	display: inline-block;
+	float: right;
+	padding:0px;
+	margin: 0px;
+}
+
+#main-nav-left-ul{
+	display: inline-block;
+	margin: 0px;
+	height: 100%;
+}
+
+.main-nav-item{
+    display: inline-block;
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    padding: 0.8% 0% 0.8% 0%;;
+    color:white;
+}
+
+
+.sub-nav-list {
+    margin-top:0.7%;
+    position:absolute;
+    text-align:left;
+    width: 220px;
+    height: 0;
+    color: white;
+    display: none;
+    margin-left:-17px;
+    background-color: #0099cc;
+    -webkit-transition: height 1.5s;
+    transition: height 1.5s;
+}
+
+.sub-nav-list > li {
+    height: 30px;
+    padding-left: 7%;
+    padding-top:3%;
+    padding-bottom:1.2%;
+    font-weight:normal;
+    z-index:6;
+    -webkit-transition: padding-left 0.5s;
+    transition: padding-left 0.5s;
+}
+
+.sub-nav-list > li:hover {
+    color: #dddddd;
+   	z-index:5;
+   	padding-left: 27px;
+   	background-color: #f2f2f2;
+   	color: #cc9933;
+}
+
+.ul-menu{
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0px;
+}
+
+.ul-menu-right{
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0px;
+}
+
+.li-menu-item{
+	padding-top: 8px;
+	width: 100%;
+	height: 33px;
+	background-color: #33b5e5;
+	color: white;
+	cursor: pointer;
+	padding-left: 10px;
+	padding-top: auto 50%;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.li-menu-item:hover{
+	background-color: #0099cc;
+}
+
+.li-menu-item-hor{
+	display: inline-block;
+	margin-right: 20px;
+	height: inherit;
+	cursor: pointer;
+	height: 100%;
+	color: #ffffff;
+}
+
+.li-menu-item-hor:hover{
+	color: #dddddd;
+}
+
+.card{
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.24);
+    border-radius: 4px;
+    background-color: white;
+    padding: 20px;
+}
+
+
+ul[id="post-graduate-sub-list"] {
+    margin-left:88%;
+    top:-2px;
+    width:100%;
+    z-index: 200;
+}
+
+ul[id="under-graduate-sub-list"] {
+    margin-left:88%;
+    top:47.8%;
+    width:100%;
+    z-index:100;
+}
+
+
+#resource:hover #resource-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#programmes:hover #programmes-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#about:hover #about-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#post-graduate:hover #post-graduate-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#under-graduate:hover #under-graduate-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.arrow {
+    font-weight:bolder;
+    float: right;
+    padding-right: 10px;
+}
+
+#latest-news {
+    background-color:white;
+    opacity:0.7;
+}
+
+#alumni {
+
+    background-color:white;
+    opacity:0.7;
+}
+
+#history-display {
+
+    background-color:white;
+    opacity:0.7;
+}
+
+#research {
+    background-color:white;
+    opacity:0.7;
+}
+
+#why-elect-elect {
+    background-color:white;
+    opacity:0.7;
+}

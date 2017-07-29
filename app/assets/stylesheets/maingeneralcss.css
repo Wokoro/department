@@ -1,0 +1,173 @@
+
+.container{
+	padding: 10px;
+}
+
+.tag{
+	display: inline-block;
+	width: 90px;
+	text-align: right;
+}
+
+.val{
+	font-weight: bold;
+}
+
+#logo{
+	display: inline-block;
+}
+
+#head{
+	display: inline-block;
+	font-weight: bolder;
+	vertical-align: top;
+	font-size: 17pt;
+	font-family: monospace;
+	padding-left: 20px;
+	padding-top: 12px;
+	color: #0099cc;
+}
+
+
+/* Course enrolement form styles */
+.sn{
+	width:50px;
+}
+
+.course-code{
+	width: 100px;
+}
+
+.course-title{
+	width: 200px;
+}
+
+.course-status{
+	width: 100px;
+}
+
+.unit{
+	width: 70px;
+}
+
+.name-of-lecturer{
+	width:200px;
+}
+
+.courses{
+	width: 100%;
+}
+
+th{
+	text-align: left;
+	vertical-align: bottom;
+	border-bottom: 1px solid rgba(0,0,0,0.13);
+	border-collapse: collapse;
+}
+
+.semester{
+	text-align: center;
+	font-weight: bolder;
+	padding: 40px 0px 10px 0px;
+	text-decoration: underline;
+}
+
+#first-semester{
+	padding-top: 10px;
+}
+
+.total{
+	font-weight: bolder;
+}
+
+table[class=courses]{
+	margin-bottom: 40px;
+}
+
+#summary{
+	padding-left: 20px;
+
+}
+
+.hea{
+	font-weight: bold;
+	margin:10px 0px 5px 5px;
+}
+
+.name-tag{
+	display: inline-block;
+	width: 180px;
+}
+
+div .sum-head{
+	font-weight: bolder;
+	margin-left: 15px;
+	text-decoration: underline;
+}
+
+td input{
+	width: 20px;
+	height: 20px;
+	background-color: none;
+	border: 1px solid black;
+}
+
+#register-button{
+	display: inline-block;
+	width: 150px;
+	height: 35px;
+	position: relative;
+	left: 50%;
+	background-color: #0099cc;
+	border:none;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bolder;
+	font-size: 13pt;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24),0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);;
+}
+
+	/* Dark blue background and white font color */
+.d-blue{
+	background-color: #0099cc;
+	color: #ffffff;
+}
+
+	/*Light blue background and white font color */
+.l-blue{
+	background-color: #33b5e5;
+	color: #ffffff;
+}
+
+	/* fainted shadow */
+.l-shadow{
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+.dashboard{
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	padding: 15px;
+}
+
+.notification{
+	background-color:rgba(200,200,200,0.2);
+	padding: 15px;
+}
+
+.notification-view-button{
+	display: block;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Table styles */
+
+.table-cell{
+	height: 35px;
+}
+
+.bold{
+	font-weight: bolder;
+}

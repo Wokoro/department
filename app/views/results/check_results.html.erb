@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-12">
+	<%= render 'layouts/student_layout/card' %>
+		<div class="col-d-9">
+	        <div class="dashboard">
+	            <h2 class="dashboard-header">Check Results</h2>
+
+	            <%= form_for :result, url: results_path do|f| %>
+	            	<%= f.label :level, "Level" %>
+	            	<%= f.text_field :level %>
+	            	<%= f.label :semester, "Semester" %>
+	            	<%= f.text_field :semester %>
+	            	<%= f.submit "Check Result" %>
+	            <% end %>
+
+	        </div>
+		</div>
+	</div>
+</div>

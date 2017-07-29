@@ -1,0 +1,16 @@
+<div class = "row" >
+	
+	<%= render 'layouts/lecturer_layout/card' %>
+	<div class = "col-d-9 col-t-8">
+		<div class = "dashboard">
+			<h1 class = "header centered">UPLOAD ASSIGNMENT</h1>
+			<% @courses.each do |c| %>
+				<%= form_for :assign, url: '/new_assignment' do |f| %>
+					<%= c.ctitle %>
+					<%= hidden_field_tag 'course_id', c.id %>
+					<%= submit_tag :upload %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

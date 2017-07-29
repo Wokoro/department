@@ -4,9 +4,9 @@ class AdminsessionsController < ApplicationController
 	end
 
 	def create
-		admin = Admin.find_by(name: params[:adminsession][:name].downcase)
-		if admin && admin.authenticate(params[:adminsession][:password])
-			log_in(admin)
+		admin = Admin.find_by(name: params[:adminsession][:name])
+		if admin 
+			login_admin(admin)
 			render 'admin_welcome'
 		else
 			render plain: 'log in failed'
@@ -14,7 +14,7 @@ class AdminsessionsController < ApplicationController
 	end
 
 	def destroy
-		log_out
+		logout_admin
 		redirect_to root_url
 	end
 end

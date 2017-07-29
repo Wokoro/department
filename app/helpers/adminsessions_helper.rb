@@ -1,6 +1,6 @@
 module AdminsessionsHelper
 
-	def log_in(admin)
+	def login_admin(admin)
 		session[:admin_id] = admin.id
 	end
 
@@ -14,7 +14,7 @@ module AdminsessionsHelper
 		!current_admin.nil?
 	end
 
-	def logged_out
+	def logout_admin
 		session.delete(:admin_id)
 		@current_admin = nil
 	end

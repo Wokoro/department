@@ -7,9 +7,9 @@ class StudentsessionsController < ApplicationController
 	def create
 
 		student = Student.find_by(matno: params[:studentsession][:matno].downcase)
-		if student && student.authenticate(params[:studentsession][:password])
-			log_in(student)
-			render 'student_page'
+		if student #&& student.authenticate(params[:studentsession][:password])
+			login_stud(student)
+			redirect_to students_path
 		else
 			render plain: 'log in failed'
 		end

@@ -1,6 +1,18 @@
-*{
-box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
 .transition{
 			-webkit-transform: scale(1.3);
 			transform: scale(1.3);
@@ -9,12 +21,12 @@ box-sizing: border-box;
 		}
 /************BODY*************/
 body{
-	margin: 0px;
-	padding: 0px;
-	background-image: image-url("img.jpg");
+	#background-image: image-url("img.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	background-color: #f2f2f2; 
+    font-family: "Open Sans", sans-serif
 }
 body[id = "index"] p{
 	padding-left: 25px;
@@ -27,9 +39,10 @@ body[id = "alumni"] p{
 
 /****************HEADER*****************/
 .news-date{
-	background-color: #FF6600;
-	font-size: 20px;
+	font-size: 14px;
 	margin-top: 0px;
+	margin-right: 10%;
+	float:right;
 }
 h6{
 	margin-top: 20px;
@@ -38,7 +51,6 @@ h6{
 }
 h5{
 	margin-top: 0px;
-	color: #6495ED;
 	margin-bottom: 4px;
 	padding-top: 8px;
 	text-align: center;
@@ -55,7 +67,8 @@ h5{
 
 .news-span{
 	color: #FF6600;
-	margin-left: 15.5%;
+	float:right;
+	margin-right:10%;
 }
 
 /************PARAGRAPH**************/
@@ -256,38 +269,47 @@ ul[id= "year"]>li{
 }
 
 /********************GRID VIEW FOR RESPONSIVENESS**********/
-.row{
-    display: block;
-    content: "";
-    clear: both;
-}
-[class*="col-"] {
-    float: left;
-    padding: 5px;
-    margin-top: 0px;
-}
-[class*="sixcol-"] {
-    float: left;
-    padding: 1px;
-    margin-top: 0px;
-}
-/*********DESKTOP VIEW*************/
-.col-1 {width: 12.5%;}
-.col-2 {width: 25.0%;}
-.col-3 {width: 37.5%;}
-.col-4 {width: 50.0%;}
-.col-5 {width: 62.5%;}
-.col-6 {width: 75.0%;}
-.col-7 {width: 87.5%;}
-.col-8 {width: 100.0%;}
 
-/*********DESKTOP VIEW 6-COLS*************/
-.sixcol-1 {width: 16.6667%;}
-.sixcol-2 {width: 33.3333%;}
-.sixcol-3 {width: 50.0%;}
-.sixcol-4 {width: 66.6668%;}
-.sixcol-5 {width: 83.3335%;}
-.sixcol-6 {width: 100.0002%;}
+/* Divide the pages in to columns */
+
+	/* For Mobile View */
+[class*="col-"] {
+    width: 100%;
+}
+
+    /* For tablets: */
+@media only screen and (min-width: 600px) {
+    .col-t-1 {width: 8.33%;}
+    .col-t-2 {width: 16.66%;}
+    .col-t-3 {width: 25%;}
+    .col-t-4 {width: 33.33%;}
+    .col-t-5 {width: 41.66%;}
+    .col-t-6 {width: 50%;}
+    .col-t-7 {width: 58.33%;}
+    .col-t-8 {width: 66.66%;}
+    .col-t-9 {width: 75%;}
+    .col-t-10 {width: 83.33%;}
+    .col-t-11 {width: 91.66%;}
+    .col-t-12 {width: 100%;}
+}
+
+    /* For desktop: */
+@media only screen and (min-width: 768px) {
+    .col-d-1 {width: 8.33%;}
+    .col-d-2 {width: 16.66%;}
+    .col-d-3 {width: 25%;}
+    .col-d-4 {width: 33.33%;}
+    .col-d-5 {width: 41.66%;}
+    .col-d-6 {width: 50%;}
+    .col-d-7 {width: 58.33%;}
+    .col-d-8 {width: 66.66%;}
+    .col-d-9 {width: 75%;}
+    .col-d-10 {width: 83.33%;}
+    .col-d-11 {width: 91.66%;}
+    .col-d-12 {width: 100%;}
+}
+
+
 
 /************HEIGHT*************/
 .fixed-height{
@@ -327,10 +349,6 @@ margin-top: 0px;
 	padding-left: 0px;
 	padding-top: 0px; 
 }
-.no-top{
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
 
 /****************PROFILE IMAGE****************/
 .round-image{
@@ -339,16 +357,6 @@ margin-top: 0px;
 }
 
 /*************OTHERS*************/ 	
-
-.width1{
-	width: 25.1%;
-}
-.width2{
-	width: 25.1%;
-}
-.width3{
-	width: 25.1%;
-}
 .matno{
 	height: 100%;
 	width: 100%;
@@ -418,7 +426,7 @@ footer{
 /************TABLES**************/
 
 table td{
-	text-align: center;
+	#text-align: center;
 	padding: 0px;
 }
 
@@ -446,90 +454,6 @@ table td{
 	right:-100%;
 }
 
-.nav-list {
-    list-style-type: none;
-    list-style-position: inside;
-    padding: 0px;
-    margin: 0px;   
-}
-
-.main-nav-item{
-    display: inline-block;
-    width: 10%;
-    height: 100%;
-    text-align: center;
-    padding: 0.8% 0% 0.8% 0%;;
-    color:white;
-}
-
-.main-nav-item:hover {
-        font-weight:bolder;
-}
-
-
-.sub-nav-list {
-    margin-top:0.6%;
-    position:absolute;
-    background-color:white;
-    text-align:left;
-    width: inherit;
-    color:#000066;
-    margin-left:0px;
-    display:none;
-    opacity:0.9;
-    font-size:10pt;
-}
-
-.sub-nav-list > li {
-        height: 30px;
-        padding-left: 4%;
-        border-bottom: 1px solid #000066;
-        padding-top:3%;
-        padding-bottom:0.6%;
-        font-weight:normal;
-        z-index:6;
-}
-
-.sub-nav-list > li:hover {
-        background-color:#000066;
-        display:inline-grid;
-        color:white;
-       font-weight:bold;
-       z-index:5;
-}
-
-ul[id="post-graduate-sub-list"] {
-    margin-left:96%;
-    top:-1px;
-    width:100%;
-}
-
-ul[id="under-graduate-sub-list"] {
-    margin-left:95%;
-    top:48%;
-    width:100%;
-    z-index:5;
-}
-
-ul[id="login-sub-list"] {
-    z-index:7;
-}
-
-ul[id="about-sub-list"] {
-    z-index:7;
-}
-
-ul[id="resource-sub-list"] {
-    z-index:7;
-}
-
-ul[id="programmes-sub-list"] {
-    z-index:7;
-}
-
-.arrow {
-    font-weight:bolder;
-}
 
 #latest-news {
     background-color:white;
@@ -617,5 +541,4 @@ ul[id="programmes-sub-list"] {
 margin:0px;
 padding:0px;
 color: white;
-
 }
