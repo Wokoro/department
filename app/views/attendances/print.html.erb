@@ -1,0 +1,49 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>ATTENDANCE</title>
+	</head>
+	<body>
+		<p>COURSE TITLE: <%= @course.ctitle.upcase %></p>
+		<p>DATE:---------------------------</p>
+		<p>COURSE CODE: <%= @course.ccode.upcase %></p>
+		<p>UNITS: <%= @course.units %> UNITS</p>
+	<table border = "1" style = "width: 100%; text-align:center; border-collapse: collapse;">
+		<tr>
+			<thead>
+				<tr>
+					<td>S/N</td>
+					<td>NAME</td>
+					<td>MATRIC. NO</td>
+					<td>CA</td>
+					<td>EXAM</td>
+					<td>TOTAL</td>
+					<td>GRADE</td>
+					<td>REMARK</td>
+					<td>SIGN</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan = "9"><%= @course.level %> Level</td>
+				</tr>
+				<% @reg_students.each do|reg_student| %>
+				<tr>
+					<td><%= @counter %></td>
+					<td><%= reg_student.sname.upcase %>, <%= reg_student.fname.titlecase %> <%= reg_student.student_othername.othernames %></td>
+					<td><%= reg_student.matno.upcase %></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<% @counter+=1 %>
+				<% end %>
+			</tbody>
+		</tr>
+	</table>
+	</body>
+
+</html>

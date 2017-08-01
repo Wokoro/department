@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609143851) do
+ActiveRecord::Schema.define(version: 20170702081725) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -77,7 +77,9 @@ ActiveRecord::Schema.define(version: 20170609143851) do
     t.string  "phone"
     t.string  "email"
     t.binary  "passport"
+    t.string  "password"
     t.index ["fname"], name: "index_lecturers_on_fname"
+    t.index ["password"], name: "index_lecturers_on_password"
     t.index ["sname"], name: "index_lecturers_on_sname"
     t.index ["staff_id"], name: "index_lecturers_on_staff_id"
   end
@@ -128,19 +130,22 @@ ActiveRecord::Schema.define(version: 20170609143851) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string  "matno",           null: false
-    t.string  "sname",           null: false
-    t.string  "fname",           null: false
-    t.integer "sex",             null: false
-    t.string  "state_of_origin", null: false
-    t.string  "lga",             null: false
-    t.string  "nationality",     null: false
+    t.string  "matno",                         null: false
+    t.string  "sname",                         null: false
+    t.string  "fname",                         null: false
+    t.integer "sex",                           null: false
+    t.string  "state_of_origin",               null: false
+    t.string  "lga",                           null: false
+    t.string  "nationality",                   null: false
     t.string  "religion"
     t.string  "phone"
     t.string  "email"
     t.binary  "passport"
+    t.string  "password"
+    t.integer "level",           default: 100, null: false
     t.index ["fname"], name: "index_students_on_fname"
     t.index ["matno"], name: "index_students_on_matno"
+    t.index ["password"], name: "index_students_on_password"
     t.index ["sname"], name: "index_students_on_sname"
   end
 
