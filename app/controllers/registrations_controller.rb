@@ -5,28 +5,26 @@ class RegistrationsController < ApplicationController
 	end
 
 	def new
+
 		student = current_student
 		@course_ids = []
-		@level = session[:level]
+		@level = student_level(student)
 
-
-		#get all the failed and carryover couses from the previous session
-		@course_to_reg = student.registrations.where(session: previous_session).where(status: [0,3])
-		@course_to_reg.each do |d|
-			@course_ids.push(d.course_id)
-		end
-
-
+		#DELETE THIS INSTANCE VARIABLES NOT BEEN USED
 		@fscc = Course.where(id: @course_ids).where(semester: 1)
 		@sscc = Course.where(id: @course_ids).where(semester: 2)
 
 		@first_semester_courses = Course.where(level: @level).where(semester: 1)
 		@second_semester_courses = Course.where(level: @level).where(semester: 2)
+		flash[:notice] = " REGISTRATION SUCCESSFUL"
 	end
 
 	def create
+
 		@reg_courses = params.require(:course)
-		level = session[:level]
+		
+		student = current_student
+		level = student_level(student)
 		#get all the course ids for fialed and carryover courses last session for both semesters
 		@rep_courses = student.registrations.select(:course_id).where(session: previous_session).where(status: [0,3])
 		@current_courses = Course.select(:id).where(level: level)
@@ -52,8 +50,11 @@ class RegistrationsController < ApplicationController
 			else
 				course_r = Course.find_by(id: course)
 				reg = Registration.create(student_id: current_student.id, course_id: course, session: current_session, year_of_study: level, status: :not_reg, units: course_r.units)
+
+				flash[:alert] = "REGISTRATION SUCCESSFUL"
 			end
 		end
+		redirect_to student_notification_path
 	end
 
 	def edit
@@ -67,12 +68,4 @@ class RegistrationsController < ApplicationController
 	def update
 
 	end
-
-		
-
-		def reg_level
-			session[:level] = params[:reg][:level]
-			flash[:success] = "Welcome"
-			redirect_to new_registration_path
-		end
 end

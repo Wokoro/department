@@ -19,4 +19,8 @@ class StudentsessionsController < ApplicationController
 		log_out
 		redirect_to root_url
 	end
+
+	def notification
+		
+	end
 end

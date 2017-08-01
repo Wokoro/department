@@ -8,7 +8,7 @@
                     
                     <form name="course-registration-form" method="get" action="/create">
                         <label class="name-tag bold">Session:&nbsp</label><label>2016/2017</label><br/>
-                        <label class="name-tag bold">Year Of Study:&nbsp</label><label><%= @level %></label>
+                        <label class="name-tag bold">Year Of Study:&nbsp</label><label><%= @level<<" Level" %></label>
 
                         <table class="courses">
                             <tr>
@@ -17,6 +17,9 @@
                             <tr>
                                 <th class="sn table-cell">S/N</th><th class="course-code table-cell">Course Code</th><th class="course-title table-cell">Course Title</th><th class="course-status table-cell">Course Status</th><th class="unit table-cell">Unit</th><th class="table-cell"></th>
                             </tr>
+                            <!-- 
+                                                DELETE THIS SECTION NOT IN USE
+                            
                             <% if !@fscc.nil? %>
                                 <% @fscc.each do|course| %>
                             <tr>
@@ -24,6 +27,10 @@
                             </tr>
                                 <% end %>
                             <% end %>
+                            -->
+
+
+                            
                             <% if !@first_semester_courses.nil? %>
                                 <% @first_semester_courses.each do|course| %>
                             <tr>

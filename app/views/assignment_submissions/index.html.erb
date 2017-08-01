@@ -4,8 +4,12 @@
 
 	<div class="col-d-9 col-t-8">
 	    <div class="dashboard">
+	    	<% if !flash[:notice].nil?%>
+	    		<h4><%=flash[:notice]%></h4>
+	    	<% end %>
 	    	<% if @ass_code.empty? %>
 	    	<h2 class="header">No Pending Assignments</h2>
+	    	
 	    	<% else %>
 	        <h2 class="header">Pending Assignments</h2>
 	        <div  class="notification">

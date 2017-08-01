@@ -5,16 +5,29 @@ module StudentsessionsHelper
 	end
 
 	def current_student
-		@current_student ||= Student.find_by(id: session[:student_id])
+		return @current_student ||= Student.find_by(id: session[:student_id])
 	end
 
 	def logged_in?
-		!current_student.nil?
+		return !current_student.nil?
 	end
 
 	def logout_stud
 		session.delete(:student_id)
 		@current_student = nil
+	end
+# LEVEL IMPLEMENTATION SHOULD BE CHECKED IF THE LEVEL BE INCREMENTED EVERY SESSION OF AFTER EACH REGISTRATION PER/SESSION
+	def student_level(stud)
+		reg_session = stud.registrations.select(:session).where(student_id: stud.id).first
+
+		if (reg_session.nil?)
+			return "100"
+		else
+			$first_reg_session = reg_session.session[-4..-1].to_i
+			current_session = Util.first.value[-4..-1].to_i
+			current_level = current_session - $first_reg_session
+			return (current_level+1).to_s
+		end		
 	end
 
 end

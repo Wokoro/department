@@ -69,6 +69,8 @@ class AssignmentSubmissionsController < ApplicationController
 
 		#empty_file = File.open(tempfile,"w+")
 		#empty_file.write
+		flash[:notice] = "SUBMISSION SUCCESSFUL"
+		redirect_to assignment_submissions_path
 
 	end
 	

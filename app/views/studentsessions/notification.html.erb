@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-12">
+    <%= render 'layouts/student_layout/card' %>
+        <div class="col-d-9">
+            <div class="dashboard">
+                <h2 class="dashboard-header">STUDENT'S NOTIFICATION</h2>
+                <% if flash[:alert]%>
+                	<%= flash[:alert] %>
+                <% end %>              
+
+            </div>
+        </div>
+    </div>
+</div>

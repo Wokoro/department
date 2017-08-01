@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/admin_delete', to: 'adminsessions#destroy'
   
   get '/student_login', to: 'studentsessions#new'
+  get '/student_notification', to: 'studentsessions#notification'
   post '/student_login', to: 'studentsessions#create'
   delete '/student_delete', to: 'studentsessions#destroy'
 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 
   get '/submit_result', to: 'lectureractivities#submit'
   get '/visit_library', to: 'lectureractivities#library'
+  get '/lecturer_notification', to: 'lecturersessions#notification'
   get '/lecture_timetable', to: 'lectureractivities#timetable'
   post '/upload', to: 'lectureractivities#upload'
 
@@ -25,13 +27,12 @@ Rails.application.routes.draw do
   get '/create', to: 'registrations#create'
   get '/registrations', to: 'registrations#index'
 
-  post '/r_level', to: 'registrations#reg_level'
-
   post '/assignment_submit', to: 'assignment_submissions#submit'
   get '/assignment_getassignment', to: 'assignment_submissions#setassign'
   post '/assignment_getassignment', to: 'assignment_submissions#getassign'
 
   post '/new_assignment', to: 'assignments#new'
+  get '/load_assignment', to: 'assignments#new'
 
 
   resources :admins

@@ -4,9 +4,6 @@
 	<div class = "col-d-9 col-t-8">
 		<div class = "dashboard">
 			<h1 class = "header centered">UPLOAD ASSIGNMENT</h1>
-			<% if !flash[:notice].nil?%>
-	    		<h4><%=flash[:notice]%></h4>
-	    	<% end %>
 			<% @courses.each do |c| %>
 				<%= form_for :assign, url: '/new_assignment' do |f| %>
 					<%= c.ctitle %>
