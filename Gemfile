@@ -14,6 +14,9 @@ gem 'coffee-script-source', '1.8.0'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'railroady'
 gem 'bundler', '~> 1.15', '>= 1.15.1'
+gem 'rubyzip', '>= 1.0.0'
+gem 'zip-zip'
+
 group :development, :test do
   gem 'sqlite3', '1.3.12'
   gem 'byebug',  '9.0.0', platform: :mri

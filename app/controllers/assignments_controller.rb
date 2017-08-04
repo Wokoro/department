@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-#	require 'zip'
 
 	def index
 		lecture = current_lecturer
@@ -7,13 +6,12 @@ class AssignmentsController < ApplicationController
 	end
 
 	def index2
-		lecture = current_lecturer
-		@courses = lecture.assignments.select(:course_id)
-		lll
+		@lecturer = current_lecturer
+		@assigns = @lecturer.assignments.select(:id)
 	end
 
 	def new
-		assign_id = params[:course_id]
+		assign_id = params[:assign][:course_id]
 		@course = Course.find_by(id: assign_id)
 		flash[:notice] = "UPLOAD SUCCESSFUL"
 
@@ -75,21 +73,28 @@ class AssignmentsController < ApplicationController
 	end
 
 	def getassign
-		dir = Dir.new("new")
-		Zip::File.open("#{Rails.root}/tmp/my.zip", Zip::File::CREATE) {
+		assign_id = params[:assign][:assign_id]
+		file_path = Assignment.find_by(id: assign_id).assignment_path
+		folder = file_path.to_s[-13, 12]
+		zipfile = "#{Rails.root}/tmp/#{folder}.zip"
+		dir = Dir.new(file_path)
+		if File.exist? zipfile
+			File.delete("#{Rails.root}/tmp/#{folder}.zip")
+		end
+		Zip::File.open(zipfile, Zip::File::CREATE) {
  		|zipfile|
  		dir.each{
  			|f|
  		if ((f.eql?("."))||(f.eql?("..")))
  			
  		else
- 			file = File.open("new/#{f}", "rb")
- 			zipfile.get_output_stream("a_dir/#{f}", "wb"){ |f| f.write(file.read)}
- 			file.close
+ 			#file = File.open("new/#{f}", "rb")
+ 			zipfile.add("#{f}", "#{file_path}/#{f}")
+ 			zipfile.close
     	end
 	}
+	send_file("#{Rails.root}/tmp/#{folder}.zip")
 }
-	send_file("#{Rails.root}/tmp/my.zip", disposition: 'inline', type: "application/pdf")
-	File.delete("#{Rails.root}/tmp/my.zip")
+	#redirect_to all_assign_courses_path
 	end
 end

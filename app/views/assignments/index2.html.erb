@@ -3,12 +3,16 @@
 	<%= render 'layouts/lecturer_layout/card' %>
 	<div class = "col-d-9 col-t-8">
 		<div class = "dashboard">
-			<h1 class = "header centered">UPLOAD ASSIGNMENT</h1>
-			<% @courses.each do |c| %>
-				<%= form_for :assign, url: '/new_assignment' do |f| %>
-					<%= c.ctitle %>
-					<%= hidden_field_tag 'course_id', c.id %>
-					<%= submit_tag :upload %>
+			<% if @assigns.nil? %>
+				<h1 class = "header centered">NO ASSIGNMENTS GIVEN</h1>
+			<% else %>
+				<h1 class = "header centered">GET ASSIGNMENTS SUBMITTED</h1>
+				<% @assigns.each do |c| %>
+					<%= form_for :assign, url: get_assignment_path do |f| %>
+						Assignment<%= c.id %>
+						<%= f.hidden_field :assign_id, value: c.id %>
+						<%= f.submit :get %>
+					<% end %>
 				<% end %>
 			<% end %>
 		</div>

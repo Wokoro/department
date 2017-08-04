@@ -83,7 +83,7 @@ class AssignmentSubmissionsController < ApplicationController
 		id = params[:assign][:assignment_id]
 		assign = Assignment.find_by(id: id).file
 		#pdf_filename = File.join(Rails.root, "public/event.pdf")
-  		send_file(assign, disposition: 'inline', type: "application/pdf")
+  		send_file(assign, disposition: 'inline')
 	end
 
 	def getPath record

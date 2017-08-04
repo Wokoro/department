@@ -1,0 +1,45 @@
+<div class = "row" >
+	
+	<%= render 'layouts/lecturer_layout/card' %>
+	<div class = "col-d-9 col-t-8">
+		<div class = "dashboard">
+			<h1 class = "header centered">Choose Course To submit result</h1>
+            <% if @courses.nil? %>
+                <h4> Sorry You were not assign any course for the session <h4>
+            <% else %>
+            <p> Select course to enter Results for this session <p>
+                <table id="submission">
+                <th>S/N</th><th>Course Code</th><th>Course Title</th><th>Action</>
+
+
+                <% @courses.each do|course| %>
+                    <% if submited_before?(course) %>
+                        <tr>
+                            <td><%= @counter %></td>
+                            <td><%= course.ccode %></td>
+                            <td><%= course.ctitle.titlecase %></td>
+                            <td><%= form_for :course, url:edit_result_path do|f| %>
+                                <%= f.hidden_field :course_id, value:"#{course.id}" %>
+                                <%= f.submit "Edit Result" %>
+                            <% end %></td>
+                        </tr>
+                    <% else %>
+                    <tr>
+                            <td><%= @counter %></td>
+                            <td><%= course.ccode %></td>
+                            <td><%= course.ctitle.titlecase %></td>
+                            <td><%= form_for :course, url:submit_results_path do|f| %>
+                                <%= f.hidden_field :course_id, value:"#{course.id}" %>
+                                <%= f.submit "Submit Result" %>
+                            <% end %></td>
+                        </tr>
+                    <% end %>
+                    <% @counter +=1 %>
+                <% end %>
+
+
+                </table>
+           <% end %>
+		</div>
+	</div>
+</div>

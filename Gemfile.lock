@@ -135,6 +135,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ruby-graphviz (1.2.3)
+    rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -177,6 +178,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   x86-mingw32
@@ -198,6 +201,7 @@ DEPENDENCIES
   railroady
   rails (= 5.0.0.1)
   rails-erd (~> 1.4, >= 1.4.6)
+  rubyzip (>= 1.0.0)
   sass-rails (= 5.0.6)
   spring (= 1.7.2)
   spring-watcher-listen (= 2.0.0)
@@ -206,6 +210,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (= 3.0.0)
   web-console (= 3.1.1)
+  zip-zip
 
 BUNDLED WITH
    1.15.1
