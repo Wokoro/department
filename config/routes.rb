@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/results', to: "results#view_student_results"
 
   #routes for admin login
+  get '/admin_index', to: 'adminsessions#index'
   get '/admin_login', to: 'adminsessions#new'
   post '/admin_login', to: 'adminsessions#create'
   delete '/admin_delete', to: 'adminsessions#destroy'
