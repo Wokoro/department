@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/student_login', to: 'studentsessions#new'
   get '/student_notification', to: 'studentsessions#notification'
   post '/student_login', to: 'studentsessions#create'
-  delete '/student_delete', to: 'studentsessions#destroy'
+  get '/student_logout', to: 'studentsessions#destroy'
 
   #routes for lecturer login
   get '/lecturer_login', to: 'lecturersessions#new'

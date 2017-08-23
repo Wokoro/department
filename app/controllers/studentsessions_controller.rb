@@ -11,13 +11,15 @@ class StudentsessionsController < ApplicationController
 			login_stud(student)
 			redirect_to students_path
 		else
-			render plain: 'log in failed'
+		    flash[:error] = "Mat. No. or Password is not incorrect"
+			redirect_to student_login_path
 		end
 	end
 
 	def destroy
-		log_out
-		redirect_to root_url
+		logout_stud
+		flash[:message] = "You are logged out"
+		redirect_to student_login_path
 	end
 
 	def notification

@@ -1,3 +1,39 @@
 .login-field{
-    width:100%;
+    width: 100%;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px grey;
+    font-size: 12pt;
+    padding: 8px 8px 8px 8px;
+    margin-top: 5px;
+}
+
+.form-header{
+    font-weight: bolder;
+    font-size: 20pt;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.login-form{
+    border-style: solid;
+    border-width: 1px;
+}
+
+.login-label{
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.login-button{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+    float: right;
+    background-color: #0099cc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-style: none;
+    box-shadow: 0px 0px 9px grey;
 }

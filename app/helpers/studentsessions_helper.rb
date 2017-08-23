@@ -9,13 +9,22 @@ module StudentsessionsHelper
 	end
 
 	def logged_in?
-		return !current_student.nil?
+		!current_student.nil?
 	end
 
 	def logout_stud
 		session.delete(:student_id)
-		@current_student = nil
+		current_student = nil
 	end
+
+	def logged_in_user
+    		if logged_in?
+    		else
+    			flash[:error] = "You must login first"
+    			redirect_to signin_path
+    		end
+    	end
+
 # LEVEL IMPLEMENTATION SHOULD BE CHECKED IF THE LEVEL BE INCREMENTED EVERY SESSION OF AFTER EACH REGISTRATION PER/SESSION
 	def student_level(stud)
 		reg_session = stud.registrations.select(:session).where(student_id: stud.id).first

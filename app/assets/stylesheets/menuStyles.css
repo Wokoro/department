@@ -115,9 +115,13 @@
     box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.24);
     border-radius: 4px;
     background-color: white;
-    padding: 20px;
+    padding: 10px;
+    text-align: left;
 }
 
+.card-details{
+    padding: 5px 10px 5px 10px;
+}
 
 ul[id="post-graduate-sub-list"] {
     margin-left:88%;

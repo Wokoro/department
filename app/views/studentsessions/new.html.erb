@@ -1,17 +1,20 @@
   
         <!-- The main content starts here-->
         <div class = "row">
-            <div class="col-t-12 col-d-12>
+        <div class="col-t-3 col-d-4"></div>
+        <div class="col-t-6 col-d-4">
                 <%= form_for  :studentsession, url: student_login_path do |f| %>
-                   <div>
-                        <%= f.label :matno, id: 'id', class:'login-label' %>
+                        <div class="form-header">Login</div>
+                        <% if flash[:error]  || flash[:message] %>
+                        <div class="error"><%= flash[:error] || flash[:mmessage] %></div>
+                        <% end %>
+                        <%= f.label 'Matric. No.', id: 'id', class:'login-label', placeholder: "Matric. No." %>
                         <%= f.text_field :matno, class: 'login-field' %>
-                    </div>
-                    <div >
+
                         <%= f.label :password, class: 'login-label' %>
                         <%= f.password_field :password, class: 'login-field' %>
-                    </div>
-                    <%= f.submit 'LogIn' %>
+                    <%= f.submit 'LogIn', class: 'login-button' %>
                 <% end %>
-            </div>
+        </div>
+        <div class="colt-3- col-d-4"></div>
 		</div>

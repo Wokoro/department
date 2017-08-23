@@ -1,13 +1,21 @@
         <div class="col-d-3 col-t-4">
             <div class="row">
                 <div class="card">
-                    <div><img src="car.jpg"/></div>
+                    <% if current_student.passport.blank? %>
+                        <% if current_student.sex == 'male' %>
+                            <div> <%= image_tag 'profile_images/male.png', {class: 'profile-pic'} %></div>
+                        <% else %>
+                            <div> <%= image_tag 'profile_images/female.png', {class: 'profile-pic'} %></div>
+                        <% end %>
+                    <% else %>
+                        <div> <%= image_tag 'profile_images/'+current_student.passport.to_s, {class: 'profile-pic'} %></div>
+                    <% end %>
                     <hr />
                     <div class="card-details">
-                        <label class="tag">Matric. No.:&nbsp</label><label class="val">UG/12/1422</label><br/>
-                        <label class="tag">First Name:&nbsp</label><label class="val">Clement</label><br/>
-                        <label class="tag">Last Name:&nbsp</label><label class="val">Azibataram</label><br/>
-                        <label class="tag">Level:&nbsp</label><label class="val">500</label>
+                       <div> <label class="tag">Matric. No.:&nbsp</label><label class="val"><%= current_student.matno.upcase %></label> </div>
+                       <div> <label class="tag">Surname:&nbsp</label><label class="val"><%= current_student.sname.titlecase %></label> </div>
+                        <div> <label class="tag">First Name:&nbsp</label><label class="val"><%= current_student.fname.titlecase %></label> </div>
+                        <div> <label class="tag">Level:&nbsp</label><label class="val">500</label> </div>
                     </div>
                 </div>
                 <div class="menu-container l-shadow">
