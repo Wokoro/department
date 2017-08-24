@@ -8,7 +8,7 @@ module LecturersessionsHelper
 		@current_lecturer ||= Lecturer.find_by(id: session[:staff_id])
 	end
 
-	def logged_in?
+	def lect_logged_in?
 		!current_lecturer.nil?
 	end
 

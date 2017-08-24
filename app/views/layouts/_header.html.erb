@@ -69,7 +69,7 @@
                     </li>
                     <li class="li-menu-item-hor">Donation</li>
                 </ul>
-                <% if logged_in? %>
+                <% if stud_logged_in? %>
                 <ul class="ul-menu-right" id="main-nav-right-ul">
                     <li class="li-menu-item-hor">My Profile</li>
                     <li class="li-menu-item-hor"><%= link_to 'Log Out', student_logout_path, class:'smenu' %></li>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   #routes for lecturer login
   get '/lecturer_login', to: 'lecturersessions#new'
   post '/lecturer_login', to: 'lecturersessions#create'
-  delete '/lecturer_delete', to: 'lecturersessions#destroy'
+  delete '/lecturer_logout', to: 'lecturersessions#destroy'
 
 
   get '/visit_library', to: 'lectureractivities#library'
