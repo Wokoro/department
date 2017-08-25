@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-
+# na wa
 	def index
 		lecture = current_lecturer
 		@courses = lecture.courses
