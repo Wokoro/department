@@ -42,7 +42,7 @@
 
    
 
-    function validateEnrollment(courses, sem, extraUnits=0){
+    function validateEnrollment(courses, sem, extraUnits){
         totalNumberOfUnits(courses, extraUnits);
         displayTotalUnits(courses, sem);
     }

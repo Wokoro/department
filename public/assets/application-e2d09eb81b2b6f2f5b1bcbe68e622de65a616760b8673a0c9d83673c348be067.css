@@ -1,0 +1,1212 @@
+/* line 1, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 5, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* line 11, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+/* line 16, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.transition {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  transform-origin: center;
+}
+
+/************BODY*************/
+/* line 23, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+body {
+  #background-image: url(/assets/img-110f7b57f781dd043391ad38fb804fda4d9f4644097494f3c4b2a3a4c6e06c08.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #f2f2f2;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 31, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+body[id="index"] p {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* line 35, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+body[id="alumni"] p {
+  margin-top: 1px;
+  margin-bottom: 0px;
+}
+
+/****************HEADER*****************/
+/* line 41, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.news-date {
+  font-size: 14px;
+  margin-top: 0px;
+  margin-right: 10%;
+  float: right;
+}
+
+/* line 47, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+h6 {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+/* line 52, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+h5 {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  padding-top: 8px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/****************SPAN***************/
+/* line 63, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.span {
+  color: #FF6600;
+  margin-left: 40px;
+}
+
+/* line 68, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.news-span {
+  color: #FF6600;
+  float: right;
+  margin-right: 10%;
+}
+
+/************PARAGRAPH**************/
+/* line 75, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.info-para {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-style: italic;
+}
+
+/* line 82, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+p {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* line 86, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.research-para {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 1px;
+  margin-bottom: 0px;
+}
+
+/* line 92, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.point {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 96, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.alumni {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 100, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.img-dim {
+  width: 80.5px;
+  height: 80.5px;
+  border: 4px solid white;
+  border-radius: 100%;
+}
+
+/* line 106, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.img-width {
+  width: 100%;
+  height: auto;
+}
+
+/***MARGIN****/
+/* line 111, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.margin-top {
+  margin-top: 15px;
+}
+
+/* line 115, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.margin-top1 {
+  margin-top: 5px;
+}
+
+/* line 119, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.margin-bottom {
+  margin-bottom: 15px;
+}
+
+/**********************DISPLAY***********************/
+/* line 124, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.table-display {
+  display: inline-table;
+}
+
+/* line 128, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.inline-display {
+  display: inline;
+}
+
+/* line 131, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.inline-block {
+  display: inline-block;
+}
+
+/********************BACKGROUND********************/
+/* line 136, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.blue-background {
+  background-color: #000066;
+}
+
+/* line 139, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.white-background {
+  background-color: #FFFFFF;
+}
+
+/* line 142, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.trans-background {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* line 145, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.transblue-background {
+  background-color: rgba(0, 0, 66, 0.75);
+}
+
+/* line 149, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.red-background {
+  background-color: #FF0000;
+  opacity: 0.9;
+}
+
+/* line 154, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.transblue-background {
+  background-color: rgba(0, 0, 100, 0.75);
+}
+
+/****************LINK DECORATION********************/
+/* line 159, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 163, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+ul[id="year"] > li:hover {
+  background-color: #000066;
+  color: white;
+  font-weight: bold;
+}
+
+/* line 169, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+ul[id="year"] > li {
+  height: 30px;
+  padding-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+/*****************BORDER****************/
+/* line 177, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.border {
+  border: 2px solid white;
+}
+
+/* line 180, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.leftborder {
+  border-left: 1px solid white;
+}
+
+/* line 183, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.black-border1 {
+  border-top: 1px solid black;
+}
+
+/* line 186, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.black-border2 {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* line 190, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.border-right {
+  border-right: 1px solid white;
+}
+
+/* line 193, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.white-border1 {
+  border-top: 1px solid white;
+}
+
+/* line 196, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.white-border2 {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+/* line 200, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.gray-border1 {
+  border-top: 1px solid gray;
+}
+
+/* line 203, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.gray-border2 {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+/*****************HEADER***************************/
+/*affect the header when scrolling*/
+/* line 210, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.scroll {
+  width: 50px;
+  height: 70px;
+}
+
+/* line 214, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.fixed {
+  position: fixed;
+}
+
+/***************VISIBILITY*******************/
+/* line 218, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.hide {
+  visibility: hidden;
+}
+
+/******************FONT COLOR*********************/
+/* line 225, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.blue-font {
+  color: #6495ED;
+}
+
+/* line 228, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.white-font {
+  color: #FFFFFF;
+}
+
+/* line 231, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.black-font {
+  color: #000000;
+}
+
+/* line 234, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.yellow-font {
+  color: #FF6600;
+}
+
+/* line 237, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.darkblue-font {
+  color: #000066;
+}
+
+/***********FONT WEIGHT************/
+/* line 242, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.bold-font {
+  font-weight: bold;
+}
+
+/* line 245, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.header-font {
+  font-size: 25px;
+}
+
+/* line 248, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pro-font {
+  font-size: 15px;
+}
+
+/* line 251, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.xsmall-font {
+  font-size: 7px;
+}
+
+/* line 254, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.small-font {
+  font-size: 10px;
+}
+
+/********FONT STYLE*********/
+/* line 259, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.italic-font {
+  font-style: italic;
+}
+
+/**************POSITIONING******************/
+/* line 264, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.log-pos {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+/********************GRID VIEW FOR RESPONSIVENESS**********/
+/* Divide the pages in to columns */
+/* For Mobile View */
+/* line 276, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+[class*="col-"] {
+  width: 100%;
+}
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+  /* line 282, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-1 {
+    width: 8.33%;
+  }
+
+  /* line 283, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-2 {
+    width: 16.66%;
+  }
+
+  /* line 284, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-3 {
+    width: 25%;
+  }
+
+  /* line 285, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-4 {
+    width: 33.33%;
+  }
+
+  /* line 286, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-5 {
+    width: 41.66%;
+  }
+
+  /* line 287, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-6 {
+    width: 50%;
+  }
+
+  /* line 288, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-7 {
+    width: 58.33%;
+  }
+
+  /* line 289, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-8 {
+    width: 66.66%;
+  }
+
+  /* line 290, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-9 {
+    width: 75%;
+  }
+
+  /* line 291, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-10 {
+    width: 83.33%;
+  }
+
+  /* line 292, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-11 {
+    width: 91.66%;
+  }
+
+  /* line 293, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-t-12 {
+    width: 100%;
+  }
+}
+/* For desktop: */
+@media only screen and (min-width: 768px) {
+  /* line 298, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-1 {
+    width: 8.33%;
+  }
+
+  /* line 299, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-2 {
+    width: 16.66%;
+  }
+
+  /* line 300, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-3 {
+    width: 25%;
+  }
+
+  /* line 301, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-4 {
+    width: 33.33%;
+  }
+
+  /* line 302, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-5 {
+    width: 41.66%;
+  }
+
+  /* line 303, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-6 {
+    width: 50%;
+  }
+
+  /* line 304, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-7 {
+    width: 58.33%;
+  }
+
+  /* line 305, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-8 {
+    width: 66.66%;
+  }
+
+  /* line 306, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-9 {
+    width: 75%;
+  }
+
+  /* line 307, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-10 {
+    width: 83.33%;
+  }
+
+  /* line 308, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-11 {
+    width: 91.66%;
+  }
+
+  /* line 309, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+  .col-d-12 {
+    width: 100%;
+  }
+}
+/************HEIGHT*************/
+/* line 315, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.fixed-height {
+  height: 400px;
+}
+
+/* line 318, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pro-height {
+  height: 160px;
+}
+
+/* line 321, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.auto-height {
+  height: auto;
+}
+
+/*************PADDING**************/
+/* line 325, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pad {
+  padding: 15px;
+}
+
+/* line 328, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pad-top {
+  padding-top: 20px;
+}
+
+/* line 331, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pad-left1 {
+  padding-left: 1px;
+}
+
+/* line 334, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.pad-left {
+  padding-left: 10px;
+}
+
+/* line 337, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.img-pad-left {
+  margin-right: 10%;
+  margin-bottom: 0px;
+  margin-left: 0.5%;
+  padding-top: 0px;
+}
+
+/* line 343, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.img-pad-right {
+  margin-bottom: 0px;
+  margin-left: 12.5%;
+  margin-top: 0px;
+}
+
+/* line 348, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.remove-pads {
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+/****************PROFILE IMAGE****************/
+/* line 354, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.round-image {
+  border: 4px solid white;
+  border-radius: 100%;
+}
+
+/*************OTHERS*************/
+/* line 360, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.matno {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  text-size: 12px;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 371, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+td {
+  height: 35px;
+}
+
+/* line 374, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.fixed-width {
+  width: 75px;
+}
+
+/* line 377, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.place-right {
+  margin-left: 34.5%;
+}
+
+/* line 380, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.place-left {
+  float: left;
+  margin-left: 30px;
+}
+
+/* line 385, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.medium-margin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 389, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.div-margin {
+  margin-top: 15px;
+}
+
+/* line 392, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.margin-left {
+  margin-left: 5px;
+}
+
+/* line 395, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.clear-both {
+  clear: both;
+}
+
+/************TEXT***************/
+/* line 399, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.centered {
+  text-align: center;
+}
+
+/* line 403, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.text-left {
+  text-align: left;
+}
+
+/* line 407, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.no-padding {
+  padding: 0px;
+}
+
+/* line 410, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.slider {
+  height: 220px;
+}
+
+/* line 413, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+footer {
+  height: 30px;
+  padding-top: 7px;
+  color: white;
+  margin-top: 10px;
+}
+
+/* line 419, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.white-shadow {
+  text-shadow: 1px 1px 2px white;
+}
+
+/* line 422, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.nav {
+  text-decoration: none;
+}
+
+/************TABLES**************/
+/* line 428, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+table td {
+  #text-align: center;
+  padding: 0px;
+}
+
+/***********HORIZONTAL RULE***********/
+/* line 434, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.hr {
+  width: 100%;
+  color: white;
+  margin: 0px;
+}
+
+/* line 439, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.hr_1 {
+  width: 100%;
+  color: blue;
+  margin: 0px;
+}
+
+/*the slide div and image*/
+/* line 446, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.slide-div {
+  overflow: hidden;
+}
+
+/* line 450, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.slide-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  right: -100%;
+}
+
+/* line 458, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#latest-news {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* line 463, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#alumni {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* line 469, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#history-display {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* line 475, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#research {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* line 480, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#why-elect-elect {
+  background-color: white;
+  opacity: 0.7;
+}
+
+/* line 484, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.no-deco {
+  list-style-type: none;
+}
+
+/* line 487, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#ccl {
+  margin: 0px;
+  padding: 0px;
+  z-index: 20;
+  color: white;
+  width: 100%;
+}
+
+/* line 495, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+label {
+  display: inline-block;
+  width: 100px;
+  font-weight: bolder;
+  color: black;
+  font-size: 12pt;
+}
+
+/* line 502, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+input, label {
+  margin-top: 20px;
+}
+
+/* line 506, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#ft {
+  margin: 0px;
+  margin-left: 0px;
+  margin-bottom: 2%;
+  height: 40px;
+  font-size: 18pt;
+  font-weight: bolder;
+  padding-top: 20px;
+  color: white;
+  width: 100%;
+}
+
+/* line 518, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+#close {
+  font-size: 18pt;
+  text-align: right;
+  display: inline-block;
+  width: 80%;
+  padding-bottom: 20%;
+  font-weight: bolder;
+}
+
+/* line 526, C:/Users/USER/Desktop/dept_work/depart/app/assets/stylesheets/departsite.scss */
+.zero {
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+.login-field{
+    width: 100%;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px grey;
+    font-size: 12pt;
+    padding: 8px 8px 8px 8px;
+    margin-top: 5px;
+}
+
+.form-header{
+    font-weight: bolder;
+    font-size: 20pt;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.login-form{
+    border-style: solid;
+    border-width: 1px;
+}
+
+.login-label{
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.login-button{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+    float: right;
+    background-color: #0099cc;
+    color: #ffffff;
+    font-weight: bolder;
+    border-style: none;
+    box-shadow: 0px 0px 9px grey;
+}
+
+.container{
+	padding: 10px;
+}
+
+.tag{
+
+}
+
+.profile-pic{
+    border-radius: 50%;
+    vertical-align: center;
+    position: relative;
+    top:50%;
+    left: 20%;
+    width: 50%;
+    height: 10%;
+}
+
+
+
+#logo{
+	display: inline-block;
+}
+
+#head{
+	display: inline-block;
+	font-weight: bolder;
+	vertical-align: top;
+	font-size: 17pt;
+	font-family: monospace;
+	padding-left: 20px;
+	padding-top: 12px;
+	color: #0099cc;
+}
+
+
+/* Course enrolement form styles */
+.sn{
+	width:50px;
+}
+
+.course-code{
+	width: 100px;
+}
+
+.course-title{
+	width: 200px;
+}
+
+.course-status{
+	width: 100px;
+}
+
+.unit{
+	width: 70px;
+}
+
+.name-of-lecturer{
+	width:200px;
+}
+
+.courses{
+	width: 100%;
+}
+
+th{
+	text-align: left;
+	vertical-align: bottom;
+	border-bottom: 1px solid rgba(0,0,0,0.13);
+	border-collapse: collapse;
+}
+
+.semester{
+	text-align: center;
+	font-weight: bolder;
+	padding: 40px 0px 10px 0px;
+	text-decoration: underline;
+}
+
+#first-semester{
+	padding-top: 10px;
+}
+
+.total{
+	font-weight: bolder;
+}
+
+table[class=courses]{
+	margin-bottom: 40px;
+}
+
+#summary{
+	padding-left: 20px;
+
+}
+
+.hea{
+	font-weight: bold;
+	margin:10px 0px 5px 5px;
+}
+
+.name-tag{
+	display: inline-block;
+	width: 180px;
+}
+
+div .sum-head{
+	font-weight: bolder;
+	margin-left: 15px;
+	text-decoration: underline;
+}
+
+td input{
+	width: 20px;
+	height: 20px;
+	background-color: none;
+	border: 1px solid black;
+}
+
+#register-button{
+	display: inline-block;
+	width: 150px;
+	height: 35px;
+	position: relative;
+	left: 50%;
+	background-color: #0099cc;
+	border:none;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bolder;
+	font-size: 13pt;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24),0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);;
+}
+
+	/* Dark blue background and white font color */
+.d-blue{
+	background-color: #0099cc;
+	color: #ffffff;
+}
+
+	/*Light blue background and white font color */
+.l-blue{
+	background-color: #33b5e5;
+	color: #ffffff;
+}
+
+	/* fainted shadow */
+.l-shadow{
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+.dashboard{
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	padding: 15px;
+}
+
+.notification{
+	background-color:rgba(200,200,200,0.2);
+	padding: 15px;
+}
+
+.notification-view-button{
+	display: block;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Table styles */
+
+.table-cell{
+	height: 35px;
+}
+
+.bold{
+	font-weight: bolder;
+}
+.nav-list {
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0px;
+    margin: 0px;   
+}
+
+#main-nav-bar{
+	background-color: #0099cc;
+	height: 40px;
+	padding-top: 13px;
+	padding-left: 20px;
+	padding-right: 30px;
+	width: 100%;
+}
+
+#main-nav-right-ul{
+	display: inline-block;
+	float: right;
+	padding:0px;
+	margin: 0px;
+}
+
+#main-nav-left-ul{
+	display: inline-block;
+	margin: 0px;
+	height: 100%;
+}
+
+.main-nav-item{
+    display: inline-block;
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    padding: 0.8% 0% 0.8% 0%;;
+    color:white;
+}
+
+
+.sub-nav-list {
+    margin-top:0.7%;
+    position:absolute;
+    text-align:left;
+    width: 220px;
+    height: 0;
+    color: white;
+    display: none;
+    margin-left:-17px;
+    background-color: #0099cc;
+    -webkit-transition: height 1.5s;
+    transition: height 1.5s;
+}
+
+.sub-nav-list > li {
+    height: 30px;
+    padding-left: 7%;
+    padding-top:3%;
+    padding-bottom:1.2%;
+    font-weight:normal;
+    z-index:6;
+    -webkit-transition: padding-left 0.5s;
+    transition: padding-left 0.5s;
+}
+
+.sub-nav-list > li:hover {
+    color: #dddddd;
+   	z-index:5;
+   	padding-left: 27px;
+   	background-color: #f2f2f2;
+   	color: #cc9933;
+}
+
+.ul-menu{
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0px;
+}
+
+.ul-menu-right{
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0px;
+}
+
+.li-menu-item{
+	padding-top: 8px;
+	width: 100%;
+	height: 33px;
+	background-color: #33b5e5;
+	color: white;
+	cursor: pointer;
+	padding-left: 10px;
+	padding-top: auto 50%;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.li-menu-item:hover{
+	background-color: #0099cc;
+}
+
+.li-menu-item-hor{
+	display: inline-block;
+	margin-right: 20px;
+	height: inherit;
+	cursor: pointer;
+	height: 100%;
+	color: #ffffff;
+}
+
+.li-menu-item-hor:hover{
+	color: #dddddd;
+}
+
+.card{
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.24);
+    border-radius: 4px;
+    background-color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.card-details{
+    padding: 5px 10px 5px 10px;
+}
+
+ul[id="post-graduate-sub-list"] {
+    margin-left:88%;
+    top:-2px;
+    width:100%;
+    z-index: 200;
+}
+
+ul[id="under-graduate-sub-list"] {
+    margin-left:88%;
+    top:47.8%;
+    width:100%;
+    z-index:100;
+}
+
+
+#resource:hover #resource-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#programmes:hover #programmes-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#about:hover #about-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#post-graduate:hover #post-graduate-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#under-graduate:hover #under-graduate-sub-list{
+	height: auto;
+	z-index:7;
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.arrow {
+    font-weight:bolder;
+    float: right;
+    padding-right: 10px;
+}
+
+#latest-news {
+    background-color:white;
+    opacity:0.7;
+}
+
+#alumni {
+
+    background-color:white;
+    opacity:0.7;
+}
+
+#history-display {
+
+    background-color:white;
+    opacity:0.7;
+}
+
+#research {
+    background-color:white;
+    opacity:0.7;
+}
+
+#why-elect-elect {
+    background-color:white;
+    opacity:0.7;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
