@@ -1,9 +1,25 @@
-<% @courses.each do|course| %>
-	<%= form_for :attendance, method:"get", url:print_attendance_path do |f| %>
-		<%= course.ccode %>
-		<%= course.ctitle %>
-		<%= f.hidden_field :course, value:"#{course.ccode}" %>
+<div class = "row" >
+	<%= render 'layouts/lecturer_layout/card' %>
+	<div class = "col-d-9 col-t-8">
+		<div class = "dashboard">
+			<h1 class = "header centered">Choose Course To Print Attendance</h1>
+                <table id="attendance">
+                <th>S/N</th><th>Course Code</th><th>Course Title</th><th>Action</th>
+                <% @courses.each do|course| %>
+                        <tr>
+                            <td><%= @counter %></td>
+                            <td><%= course.ccode %></td>
+                            <td><%= course.ctitle.titlecase %></td>
+                            <td><%= form_for :course, url: print_attendance_path do|f| %>
+                                <%= f.hidden_field :course_id, value:"#{course.id}" %>
+                                <%= f.submit "Print Attendance" %>
+                            <% end %></td>
+                        </tr>
 
-		<%= submit_tag "Print Attendance" %>
-	<% end %>
-<% end %>
+                    <% @counter +=1 %>
+                <% end %>
+                </table>
+
+		</div>
+	</div>
+</div>

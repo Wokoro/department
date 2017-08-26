@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170702081725) do
     t.integer  "status",                    null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "units"
     t.index ["course_id"], name: "index_registrations_on_course_id"
     t.index ["session"], name: "index_registrations_on_session"
     t.index ["student_id"], name: "index_registrations_on_student_id"

@@ -16,7 +16,6 @@ class RegistrationsController < ApplicationController
 
 		@first_semester_courses = Course.where(level: @level).where(semester: 1)
 		@second_semester_courses = Course.where(level: @level).where(semester: 2)
-		flash[:notice] = " REGISTRATION SUCCESSFUL"
 	end
 
 	def create
@@ -52,6 +51,7 @@ class RegistrationsController < ApplicationController
 				reg = Registration.create(student_id: current_student.id, course_id: course, session: current_session, year_of_study: level, status: :not_reg, units: course_r.units)
 
 				flash[:alert] = "REGISTRATION SUCCESSFUL"
+
 			end
 		end
 		redirect_to student_notification_path

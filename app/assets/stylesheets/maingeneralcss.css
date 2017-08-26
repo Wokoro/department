@@ -111,13 +111,6 @@ div .sum-head{
 	text-decoration: underline;
 }
 
-td input{
-	width: 20px;
-	height: 20px;
-	background-color: none;
-	border: 1px solid black;
-}
-
 #register-button{
 	display: inline-block;
 	width: 150px;

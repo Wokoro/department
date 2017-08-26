@@ -1,11 +1,11 @@
 <div class = "row" >
-	
+
 	<%= render 'layouts/lecturer_layout/card' %>
 	<div class = "col-d-9 col-t-8">
 		<div class = "dashboard">
-			<h1 class = "header centered">Enter Results</h1>
+			<h1 class = "header centered">Edit Results</h1>
             <p>Course Code: <%= @course.ccode %> Course Title:  <%= @course.ctitle %> Units:    <%= @course.units %> </p>
-             <%= form_for :scores, url: submit_results_path do|f| %>
+             <%= form_for :scores, url: edit_all_scores_path do|f| %>
              <%= f.hidden_field :course, value: @course.id %>
             <table id="scores_table">
                 <tr>
@@ -17,10 +17,10 @@
                             <td><%= @counter %></td>
                             <td><%= f.label "#{stud_info.matno}" %></td>
                             <%= fields_for :ca_score do|fe| %>
-                              <td> <%= fe.text_field "#{stud_info.matno}" %></td>
+                              <td> <%= fe.text_field "#{stud_info.matno}", value: "#{stud_info.C_A_score}" %></td>
                             <% end %>
                             <%= fields_for :exam_score do|fe| %>
-                               <td><%= fe.text_field "#{stud_info.matno}" %></td>
+                               <td><%= fe.text_field "#{stud_info.matno}", value: "#{stud_info.exam_score}" %></td>
                             <% end %>
                            <% @counter = @counter+1 %>
                        </tr>

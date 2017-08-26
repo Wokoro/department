@@ -1,9 +1,9 @@
-<!Doctype html>
-<html>
-	<head>
-		<title>ATTENDANCE</title>
-	</head>
-	<body>
+	<div class = "row" >
+    	<%= render 'layouts/lecturer_layout/card' %>
+    	<div class = "col-d-9 col-t-8">
+    		<div class = "dashboard">
+    		<h1 class = "header centered">Print Attendance</h1>
+
 		<p>COURSE TITLE: <%= @course.ctitle.upcase %></p>
 		<p>DATE:---------------------------</p>
 		<p>COURSE CODE: <%= @course.ccode.upcase %></p>
@@ -27,10 +27,10 @@
 				<tr>
 					<td colspan = "9"><%= @course.level %> Level</td>
 				</tr>
-				<% @reg_students.each do|reg_student| %>
+				<% @reg.each do|reg_student| %>
 				<tr>
 					<td><%= @counter %></td>
-					<td><%= reg_student.sname.upcase %>, <%= reg_student.fname.titlecase %> <%= reg_student.student_othername.othernames %></td>
+					<td><%= reg_student.sname.upcase %>, <%= reg_student.fname.titlecase %> <%= Student.find_by(matno: reg_student.matno).student_othername ? Student.find_by(matno: reg_student.matno).student_othername : "" %></td>
 					<td><%= reg_student.matno.upcase %></td>
 					<td></td>
 					<td></td>
@@ -44,6 +44,9 @@
 			</tbody>
 		</tr>
 	</table>
-	</body>
 
-</html>
+	<button onclick="print()">Print</button>
+
+    		</div>
+    	</div>
+    </div>
