@@ -4,6 +4,7 @@ class ResultsController < ApplicationController
 	include LecturersHelper
 
 	def upload_results
+
 	end
 
 	def check_results

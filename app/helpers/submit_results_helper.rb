@@ -3,9 +3,9 @@ module SubmitResultsHelper
     def submited_before?(course)
         registration = course.registrations.where("session==? AND status > ?", current_session, 1)
         if registration.nil?
-            return true
-        else 
             return false
+        else 
+            return true
         end
     end
 end

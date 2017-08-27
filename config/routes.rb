@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+
+  #routes for attendance controller
+  get '/course_attendance', to: 'attendances#index'
+  post 'print_attendance', to: 'attendances#print'
+
+
   #routes for lectrurer results submission
+  post '/scores', to: 'submit_results#scores'
   get '/submit_results', to: 'submit_results#index'
-  post '/submit_results', to: 'submit_results#scores'
-  post '/edit_results', to: 'submit_results#edit_results'
+  post '/submit_results', to: 'submit_results#create'
+  post '/edit_scores', to: 'submit_results#edit_scores'
+  post '/edit_all_scores', to: 'submit_results#edit_all_scores'
 
   #routes for student to check results
   get '/check_results', to: 'results#check_results'
@@ -47,6 +55,9 @@ Rails.application.routes.draw do
   post '/assignment', to: 'assignments#new'
   get '/all_assign_courses', to: 'assignments#index2'
   post '/get_assignment', to: 'assignments#getassign'
+
+  #news routes
+  get '/add_news', to: 'news#new'
 
   resources :admins
   resources :lecturers

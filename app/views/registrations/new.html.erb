@@ -7,8 +7,8 @@
                 <div  class="">
                     
                     <form name="course-registration-form" method="get" action="/create">
-                        <label class="name-tag bold">Session:&nbsp</label><label>2016/2017</label><br/>
-                        <label class="name-tag bold">Year Of Study:&nbsp</label><label><%= @level<<" Level" %></label>
+                        <label class="name-tag bold">Session:&nbsp</label><label><%= current_session %></label><br/>
+                        <label class="name-tag bold">Year Of Study:&nbsp</label><label><%= @level %> Level</label>
 
                         <table class="courses">
                             <tr>
