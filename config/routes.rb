@@ -13,12 +13,15 @@ Rails.application.routes.draw do
   get '/admin_login', to: 'adminsessions#new'
   post '/admin_login', to: 'adminsessions#create'
   delete '/admin_delete', to: 'adminsessions#destroy'
+
+  #routes for admin activities
+  post '/create_course', to: 'adminsessions#course'
   
   #routes for student login
   get '/student_login', to: 'studentsessions#new'
   get '/student_notification', to: 'studentsessions#notification'
   post '/student_login', to: 'studentsessions#create'
-  get '/student_logout', to: 'studentsessions#destroy'
+  post '/student_logout', to: 'studentsessions#destroy'
 
   #routes for lecturer login
   get '/lecturer_login', to: 'lecturersessions#new'
@@ -64,6 +67,6 @@ Rails.application.routes.draw do
 
   get '/student_login', to: 'studentsessions#new'
   get '/lecturer_login', to: 'lecturersession#new'
-  get '/admin_login', to: 'adminsession#new'
+
   
 end

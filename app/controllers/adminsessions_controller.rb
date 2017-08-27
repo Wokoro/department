@@ -1,4 +1,17 @@
 class AdminsessionsController < ApplicationController
+	def index
+		
+	end
+
+	def course
+		ccode = params[:ccode]
+		ctitle = params[:ctitle]
+		units = params[:units]
+		level = params[:level]
+		semester = params[:semester]
+		course = Course.create(ccode: ccode, ctitle: ctitle, units: units, level: level, semester: semester);
+	end
+
 	def new
 		
 	end
@@ -7,9 +20,10 @@ class AdminsessionsController < ApplicationController
 		admin = Admin.find_by(name: params[:adminsession][:name])
 		if admin 
 			login_admin(admin)
-			render 'admin_welcome'
+			redirect_to admin_index_path
 		else
-			render plain: 'log in failed'
+			flash[:error] = "Username or Password is not incorrect"
+			redirect_to admin_login_path
 		end
 	end
 

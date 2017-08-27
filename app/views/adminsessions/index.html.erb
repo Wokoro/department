@@ -1,7 +1,114 @@
-<div class = "row">
-    <div class = "col-8 transblue-background">
-		<div class = "col-1 white-font border-right">
-			<%= render "layouts/admin_layout/card" %>
+		<% content_for :admin_header do %>
+		<div class = "div" id = "left">
+			<img id = "img" src = "ndu.jpg"/>
+			<div id = "navs">
+				<ul>
+					<li class = "adminli" id = "hom"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Dashboard</li>
+					<li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%>Lecturer</li>
+					<li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%>Student</li>
+					<li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Courses</li>
+					<li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>News</li>
+				</ul>
+			</div>
 		</div>
-     </div>
-</div>
+		<% end %>
+		
+		<div class = "div" id = "center">
+			<div id="summary" class = "page fade">
+				<div class = "tips">
+				<img class = "icon"  src = "lecturer.svg"/><br/>
+				<span>100</span><br/>
+				Staffs
+				</div>
+				<div class = "tips">
+				<img class = "icon" src = "student.svg"/><br/>
+				<span>100</span><br/>
+				Students
+				</div>
+				<div class = "tips">
+				<img class = "icon" src = "course.svg"/><br/>
+				<span>100</span><br/>
+				Courses
+				</div>
+			</div>
+			<div id = "lecturer" class = "page fade">
+			LECTURERS
+			</div>
+			
+			<!-- STUDENTS PAGE -->
+			<div id = "students" class = "page fade">
+			STUDENTS
+			</div>
+			
+			<!-- COURSES PAGE -->
+			<div id = "courses" class = "page fade">
+				<div class = "header">
+					<h2>Courses</h2>
+				</div>
+				<!--THE OPERATIONS CONCERNING COURSES -->
+				<div id = "operations">
+					<div id = "create" class = "tips">
+						<img class = "icon"  src = "lecturer.svg"/><br/>
+						<span>100</span><br/>
+						Create
+					</div>
+					<div id = "edit" class = "tips">
+						<img class = "icon" src = "student.svg"/><br/>
+						<span>100</span><br/>
+						Edit
+					</div>
+					<div id = "delete" class = "tips">
+						<img class = "icon" src = "course.svg"/><br/>
+						<span>100</span><br/>
+						Delete
+					</div>
+				</div>
+				<!--END OF OPERATIONS CONCERNING COURSES -->
+
+				<!--CREATE OPERATIONS -->
+				<div id = "create_act" class="course_acts">
+					<!-- form for course creation-->
+        			<div class = "row">
+          				<div class = "col-2"></div>
+                			<div class = "col-4 no-padding ">                        			
+                            		<p id="ft">CREATE NEW COURSE</p>
+                                	<div id="hsf">
+                                     	
+                                         	<%= label_tag :ccode, nil, id: 'ccode' %>
+                                            <%= text_field_tag :ccode,nil, id: 'ccode_field'%><br/>
+                                            <%= label_tag :ctitle, nil, id: 'ctitle' %>
+                                            <%= text_field_tag :ctitle, nil, id: 'ctitle_field' %><br/>
+                                            <%= label_tag :unit, nil, id: 'unit' %>
+                                            <%= text_field_tag :unit, nil, id: 'units_field' %><br/>
+                                            <%= label_tag :level, nil, id: 'level' %>
+                                            <%= text_field_tag :unit, nil, id: 'level_field' %><br/>
+                                            <%= label_tag :semester, nil, id: 'semester' %>
+                                            <%= text_field_tag :unit, nil, id: 'semester_field' %><br/>
+                                            <%= submit_tag :create, id: 'create_course' %>
+                                        
+                                	</div>                    
+                			</div>
+          				<div class = "col-2"></div> 
+        			</div>
+				</div>
+				<!--END OF CREATE OPERATIONS -->
+
+				<!--EDIT OPERATIONS -->
+				<div>
+
+				</div>
+				<!--END OF EDIT OPERATIONS -->
+
+				<!--DELETE OPERATIONS -->
+				<div>
+
+				</div>
+				<!--END OF DELETE OPERATIONS -->
+
+			</div>
+			<!-- END OF COURSES PAGE -->
+			
+			<div id = "news" class = "page fade">
+			NEWS
+			</div>
+		</div>
