@@ -10,7 +10,6 @@ class Createstudent < ActiveRecord::Migration[5.0]
       t.string :religion
       t.string :phone
       t.string :email
-      t.string :password, index: true, null: false
       t.binary :passport
       t.integer :sex, null: false
       t.integer :level, null: false, default: 100

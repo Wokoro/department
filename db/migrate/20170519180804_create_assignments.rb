@@ -7,7 +7,6 @@ class CreateAssignments < ActiveRecord::Migration[5.0]
     	t.datetime :submission_date
     	t.string :assignment_path
     	t.string :file
-      t.timestamps
     end
   end
 end
