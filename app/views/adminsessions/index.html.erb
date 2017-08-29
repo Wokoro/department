@@ -72,6 +72,7 @@
           				<div class = "col-2"></div>
                 			<div class = "col-4 no-padding ">                        			
                             		<p id="ft">CREATE NEW COURSE</p>
+                            		<p id="returnStatus"></p>
                                 	<div id="hsf">
                                      	
                                          	<%= label_tag :ccode, nil, id: 'ccode' %>
@@ -86,7 +87,8 @@
                                             <%= text_field_tag :unit, nil, id: 'semester_field' %><br/>
                                             <%= submit_tag :create, id: 'create_course' %>
                                         
-                                	</div>                    
+                                	</div> 
+                                	<div id="loader"></div>                   
                 			</div>
           				<div class = "col-2"></div> 
         			</div>

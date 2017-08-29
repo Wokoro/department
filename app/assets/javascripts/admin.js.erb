@@ -53,6 +53,13 @@ $(document).ready(function(){
 	 	$(this).css("border-bottom","medium solid white");
 	 	$(this).css("border-bottom-width","thin");
 	 });
+
+    $(document).ajaxStart(function () {
+        $("#loader").addClass("loader");
+    }).ajaxStop(function () {
+        $("#loader").removeClass("loader");
+    });
+
 });
 
  //cuntion to make the ajax request
@@ -62,6 +69,7 @@ function sendRequest(ccode, ctitle, units, level, semester){
   	});
     $.ajax("/create_course",{
     						type: 'POST',
+                            dataType: "json",
     						data: {
     								ccode: ccode,
     								ctitle: ctitle,
@@ -70,7 +78,8 @@ function sendRequest(ccode, ctitle, units, level, semester){
     								semester: semester
     							  },
     						success: function(data, status){ //no data returned from the server yet!!!
-   					 				alert("Data: " + data + "\nStatus: " + status);
+   					 				alert("created: " + data.ctitle + "successfully"+"\nStatus: " + status);
+                                    $("#returnStatus").text("course created successfully")
 									},
 							error: function (jqXhr, textStatus, errorMessage) {
                    				 		alert('Error' + errorMessage);

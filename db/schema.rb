@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827081804) do
+ActiveRecord::Schema.define(version: 20170826033239) do
 
   create_table "admins", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",            default: "elect_elect_admin_name"
+    t.string   "password_digest"
+    t.string   "password",        default: "elect_elect_admin_password", null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.index ["password"], name: "index_admins_on_password"
   end
 
   create_table "assignment_submissions", force: :cascade do |t|
@@ -76,8 +79,9 @@ ActiveRecord::Schema.define(version: 20170827081804) do
     t.string  "religion"
     t.string  "phone"
     t.string  "email"
+    t.string  "password",        null: false
+    t.string  "password_digest"
     t.binary  "passport"
-    t.string  "password"
     t.index ["fname"], name: "index_lecturers_on_fname"
     t.index ["password"], name: "index_lecturers_on_password"
     t.index ["sname"], name: "index_lecturers_on_sname"
@@ -99,24 +103,21 @@ ActiveRecord::Schema.define(version: 20170827081804) do
     t.string   "title"
     t.text     "content"
     t.string   "year"
+    t.string   "enc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "enc_id"
-    t.index ["enc_id"], name: "index_news_on_enc_id", unique: true
-    t.index ["id"], name: "index_news_on_id"
+    t.index ["enc_id"], name: "index_news_on_enc_id"
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.integer  "student_id"
-    t.integer  "course_id"
-    t.string   "session",                   null: false
-    t.integer  "C_A_score",     default: 0
-    t.integer  "exam_score",    default: 0
-    t.integer  "year_of_study",             null: false
-    t.integer  "status",                    null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "units"
+    t.integer "student_id"
+    t.integer "course_id"
+    t.string  "session",                   null: false
+    t.integer "units"
+    t.integer "C_A_score",     default: 0
+    t.integer "exam_score",    default: 0
+    t.integer "year_of_study",             null: false
+    t.integer "status",                    null: false
     t.index ["course_id"], name: "index_registrations_on_course_id"
     t.index ["session"], name: "index_registrations_on_session"
     t.index ["student_id"], name: "index_registrations_on_student_id"
@@ -133,16 +134,17 @@ ActiveRecord::Schema.define(version: 20170827081804) do
     t.string  "matno",                         null: false
     t.string  "sname",                         null: false
     t.string  "fname",                         null: false
-    t.integer "sex",                           null: false
     t.string  "state_of_origin",               null: false
     t.string  "lga",                           null: false
     t.string  "nationality",                   null: false
     t.string  "religion"
     t.string  "phone"
     t.string  "email"
+    t.string  "password",                      null: false
     t.binary  "passport"
-    t.string  "password"
+    t.integer "sex",                           null: false
     t.integer "level",           default: 100, null: false
+    t.string  "password_digest"
     t.index ["fname"], name: "index_students_on_fname"
     t.index ["matno"], name: "index_students_on_matno"
     t.index ["password"], name: "index_students_on_password"

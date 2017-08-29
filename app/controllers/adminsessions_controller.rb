@@ -9,7 +9,11 @@ class AdminsessionsController < ApplicationController
 		units = params[:units]
 		level = params[:level]
 		semester = params[:semester]
-		course = Course.create(ccode: ccode, ctitle: ctitle, units: units, level: level, semester: semester);
+		@course = Course.create(ccode: ccode, ctitle: ctitle, units: units, level: level, semester: semester);
+		respond_to do |format|
+			format.json { render json:  @course }
+      		format.js { render :nothing => true }
+		end
 	end
 
 	def new
