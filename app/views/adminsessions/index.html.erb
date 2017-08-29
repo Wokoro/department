@@ -97,6 +97,33 @@
 
 				<!--EDIT OPERATIONS -->
 				<div>
+					<div id = "create_act" class="course_acts">
+					<!-- form for course creation-->
+        			<div class = "row">
+          				<div class = "col-2"></div>
+                			<div class = "col-4 no-padding ">                        			
+                            		<p id="ft">CREATE NEW COURSE</p>
+                            		<p id="returnStatus"></p>
+                                	<div id="hsf">
+                                     	
+                                         	<%= label_tag :ccode, nil, id: 'ccode' %>
+                                            <%= text_field_tag :ccode,nil, id: 'ccode_field', placeholder: 'Enter course code ....'%><br/>
+                                            <%= label_tag :ctitle, nil, id: 'ctitle' %>
+                                            <%= text_field_tag :ctitle, nil, id: 'ctitle_field' %><br/>
+                                            <%= label_tag :unit, nil, id: 'unit' %>
+                                            <%= text_field_tag :unit, nil, id: 'units_field' %><br/>
+                                            <%= label_tag :level, nil, id: 'level' %>
+                                            <%= text_field_tag :unit, nil, id: 'level_field' %><br/>
+                                            <%= label_tag :semester, nil, id: 'semester' %>
+                                            <%= text_field_tag :unit, nil, id: 'semester_field' %><br/>
+                                            <%= submit_tag :create, id: 'create_course' %>
+                                        
+                                	</div> 
+                                	<div id="loader"></div>                   
+                			</div>
+          				<div class = "col-2"></div> 
+        			</div>
+				</div>
 
 				</div>
 				<!--END OF EDIT OPERATIONS -->
