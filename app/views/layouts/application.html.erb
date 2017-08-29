@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%=render('layouts/header')%>
+    <%= content_for?(:admin_header) ? yield(:admin_header) : render('layouts/header')%>
 
     <%= yield %>
     <%= render 'layouts/footer' %>
