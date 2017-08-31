@@ -17,4 +17,10 @@ class StudentsController < ApplicationController
 
 	def new
 	end
+
+	def show
+		respond_to do |f|
+			f.json{render :json}
+		end
+	end
 end

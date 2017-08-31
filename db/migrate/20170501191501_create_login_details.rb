@@ -5,7 +5,6 @@ class CreateLoginDetails < ActiveRecord::Migration[5.0]
     	t.string :password, index: true, null: false
     	t.integer :user_type, null: false
     	t.integer :activation, null: false, default: 0
-	    t.timestamps
     end
   end
 end

@@ -21,17 +21,22 @@ Rails.application.routes.draw do
   get '/admin_login', to: 'adminsessions#new'
   post '/admin_login', to: 'adminsessions#create'
   delete '/admin_delete', to: 'adminsessions#destroy'
+
+  #routes for admin activities
+  post '/create_course', to: 'adminsessions#create_course'
+  post '/edit_course', to: 'adminsessions#edit_course'
+  post '/all_courses', to: 'adminsessions#all_courses'
   
   #routes for student login
   get '/student_login', to: 'studentsessions#new'
   get '/student_notification', to: 'studentsessions#notification'
   post '/student_login', to: 'studentsessions#create'
-  get '/student_logout', to: 'studentsessions#destroy'
+  post '/student_logout', to: 'studentsessions#destroy'
 
   #routes for lecturer login
   get '/lecturer_login', to: 'lecturersessions#new'
   post '/lecturer_login', to: 'lecturersessions#create'
-  delete '/lecturer_delete', to: 'lecturersessions#destroy'
+  delete '/lecturer_logout', to: 'lecturersessions#destroy'
 
 
   get '/visit_library', to: 'lectureractivities#library'
@@ -62,6 +67,7 @@ Rails.application.routes.draw do
   resources :assignments
   resources :students
   resources :news
+  resources :courses
   resources :registrations
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -75,6 +81,6 @@ Rails.application.routes.draw do
 
   get '/student_login', to: 'studentsessions#new'
   get '/lecturer_login', to: 'lecturersession#new'
-  get '/admin_login', to: 'adminsession#new'
+
   
 end

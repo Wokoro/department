@@ -11,6 +11,7 @@ class CreateLecturers < ActiveRecord::Migration[5.0]
       t.string :religion
       t.string :phone
       t.string :email
+      t.string :password_digest
       t.binary :passport
     end
   end
