@@ -49,11 +49,17 @@
 	vertical-align: middle;
 	text-align: center;
 }
-#summary{
+#dashboard{
 	
 	height: 150px;
 }
-#create_act{
+#create_course_op{
+	display: none;
+}
+#edit_course_op{
+	display: none;
+}
+#delete_course_op{
 	display: none;
 }
 #left{
@@ -98,8 +104,19 @@
 	padding-left: 20%;
 
 }
-#operations{
-	background-color: white;
+.handle{
+	height: 400px;
+	width: 50%;
+	margin-left: 25%;
+	padding-top: 10px;
+}
+.white_bg{
+background-color: white;
+}
+#sugestions{
+	position: absolute;
+	z-index: 2;
+	display: none;
 }
 span{
 	font-size: 25px;
@@ -108,7 +125,6 @@ img{
 	padding:0px;
 }
 .div div{
-
 	font-family: 'Roboto Slab', serif;
 	text-align: center;
 }
@@ -128,10 +144,11 @@ p{
 .tips{
 	opacity: 1;
 	font-size: 40px;
+	padding-top:10px;
 	display: inline-block;
-	text-align: center;
-	width: 15%;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 10%;
 	height: 15%;
-	margin-left: 15%;
 	transition: opacity 1.5, background-color;
 }

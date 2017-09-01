@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   delete '/admin_delete', to: 'adminsessions#destroy'
 
   #routes for admin activities
-  post '/create_course', to: 'adminsessions#course'
+  post '/create_course', to: 'adminsessions#create_course'
+  post '/edit_course', to: 'adminsessions#edit_course'
+  post '/all_courses', to: 'adminsessions#all_courses'
   
   #routes for student login
   get '/student_login', to: 'studentsessions#new'
@@ -65,6 +67,7 @@ Rails.application.routes.draw do
   resources :assignments
   resources :students
   resources :news
+  resources :courses
   resources :registrations
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

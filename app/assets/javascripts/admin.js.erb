@@ -1,12 +1,17 @@
 $(document).ready(function(){
-	//end of click event
+
+    $( document ).ajaxSend(function(){
+        $("#sugestions").text("");
+   });
+
+    //funtion to handle click events
     $("body").click(function(event){
         var x = event.target.id;
         if (x){
         	switch(x){
         		case "hom":
         		$(".page").css("display","none");
-        		$("#summary").css("display","block");
+        		$("#dashboard").css("display","block");
         		break;
         		case "lect":
         		$(".page").css("display","none");
@@ -26,25 +31,50 @@ $(document).ready(function(){
         		break;
         		case "create":
         		$("#ccode_field").focus();
-        		$(".course_acts").css("display","none");
-        		$("#create_act").css("display","block");
+        		$(".create_course_op").css("display","none");
+                $(".edit_course_op").css("display","none");
+                $(".delete_course_op").css("display","none");
+        		$("#create_course_op").css("display","block");
         		break;
-        	}		
+                case "edit":
+                $("#ccode_field").focus();
+                $(".create_course_op").css("display","none");
+                $(".edit_course_op").css("display","none");
+                $(".delete_course_op").css("display","none");
+                $("#edit_course_op").css("display","block");
+                break;
+                case "delete":
+                $("#ccode_field").focus();
+                $(".create_course_op").css("display","none");
+                $(".edit_course_op").css("display","none");
+                $(".delete_course_op").css("display","none");
+                $("#delete_course_op").css("display","block");
+                break;
+        	}
         }
     });
 
-    // function that triggers the ajax request
+    // function that triggers the ajax course creation request
     $("#create_course").click(function(event){
-    	var units = $("#units_field").val();
-    	var ccode = $("#ccode_field").val();
-    	var ctitle = $("#ctitle_field").val();
-    	var level = $("#level_field").val();
-    	var semester = $("#semester_field").val();
+    	var units = $("#create_units_field").val();
+    	var ccode = $("#create_ccode_field").val();
+    	var ctitle = $("#create_ctitle_field").val();
+    	var level = $("#create_level_field").val();
+    	var semester = $("#create_semester_field").val();
 
     	sendRequest(ccode, ctitle, units, level, semester);
     	
     });
+     // function that reponsible for the ajax suggestions
+    $("#edit_ccode_field").keyup(function(event){
+        var query = $("#edit_ccode_field").val();
+        $("#sugestions").css('display', 'block');
+        
+       recSugestions(query);
+        
+    });
 
+    //function to enable hover events
 	$("#operations div").hover(function(event){
 	 	$(this).css("border-bottom","medium solid blue");
 	 	$(this).css("border-bottom-width","thin");
@@ -54,6 +84,7 @@ $(document).ready(function(){
 	 	$(this).css("border-bottom-width","thin");
 	 });
 
+    //function to enable loader for ajax start and finish events
     $(document).ajaxStart(function () {
         $("#loader").addClass("loader");
     }).ajaxStop(function () {
@@ -62,7 +93,7 @@ $(document).ready(function(){
 
 });
 
- //cuntion to make the ajax request
+ //function to make the ajax request
 function sendRequest(ccode, ctitle, units, level, semester){
 	$.ajaxSetup({
     headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
@@ -85,4 +116,25 @@ function sendRequest(ccode, ctitle, units, level, semester){
                    				 		alert('Error' + errorMessage);
                 					}
 			});
+
+}
+
+function recSugestions(query){
+    $.ajaxSetup({
+    headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
+    });
+    $.ajax("/all_courses",{
+                            type: 'POST',
+                            dataType: "json",
+                            data: {
+                                    query: query
+                                  },
+                            success: function(data, status){ //no data returned from the server yet!!!
+                                $("#sugestions").text(data);
+                         
+                                    },
+                            error: function (jqXhr, textStatus, errorMessage) {
+                                        alert('Error' + errorMessage);
+                                    }
+            });
 }
