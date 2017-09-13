@@ -1,0 +1,16 @@
+$(function(){
+    <% if @course %>
+        $("#find_course_option").fadeOut(500,function(){
+             $("#edit_cont").append("<%= j render 'edit' %>");
+                $('#old_ccode').val("<%= @course.ccode %>");
+                $('#edit_ccode_field').val("<%= @course.ccode %>");
+                $('#edit_ctitle_field').val("<%= @course.ctitle %>");
+                $('#edit_units_field').val("<%= @course.units %>");
+                $('#edit_level_field').val("<%= @course.level %>");
+                $('#edit_semester_field').val("<%= @course.semester %>");
+        });
+    <% else %>
+        $("#find_course_option").fadeOut(500,function(){
+        $("#edit_cont").append("<%= j render 'error_edit' %>");
+    <% end %>
+});

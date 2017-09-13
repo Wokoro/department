@@ -1,154 +1,21 @@
-		<% content_for :admin_header do %>
-		<div class = "div" id = "left">
-			<img id = "img" src = "ndu.jpg"/>
-			<div id = "navs">
-				<ul>
-					<li class = "adminli" id = "hom"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Dashboard</li>
-					<li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%>Lecturer</li>
-					<li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%>Student</li>
-					<li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Courses</li>
-					<li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>News</li>
-				</ul>
-			</div>
-		</div>
-		<% end %>
-		
-		<div class = "div" id = "center">
-			<div id="dashboard" class = "page fade">
-				<div class = "tips">
-				<img class = "icon"  src = "lecturer.svg"/><br/>
-				<span>100</span><br/>
-				Staffs
-				</div>
-				<div class = "tips">
-				<img class = "icon" src = "student.svg"/><br/>
-				<span>100</span><br/>
-				Students
-				</div>
-				<div class = "tips">
-				<img class = "icon" src = "course.svg"/><br/>
-				<span>100</span><br/>
-				Courses
-				</div>
-			</div>
-			<div id = "lecturer" class = "page fade">
-			LECTURERS
-			</div>
-			
-			<!-- STUDENTS PAGE -->
-			<div id = "students" class = "page fade">
-			STUDENTS
-			</div>
-			
-			<!-- COURSES PAGE -->
-			<div id = "courses" class = "page fade">
-				<!--THE OPERATIONS CONCERNING COURSES -->
-				<div id = "operations" class="white_bg">
-					<div id = "create" class = "tips">
-						<img class = "icon"  src = "lecturer.svg"/><br/>
-						<span>100</span><br/>
-						Create
-					</div>
-					<div id = "edit" class = "tips">
-						<img class = "icon" src = "student.svg"/><br/>
-						<span>100</span><br/>
-						Edit
-					</div>
-					<div id = "delete" class = "tips">
-						<img class = "icon" src = "course.svg"/><br/>
-						<span>100</span><br/>
-						Delete
-					</div>
-				</div>
-				<!--END OF OPERATIONS CONCERNING COURSES -->
+ <% content_for :admin_header do %>
+    <div class = "div col-t-3 col-d-2" id = "admin-head">
+        <%= image_tag "ndu_logo.png" %>
+        <div id = "navs">
+            <ul>
+                <li class = "adminli" id = "hom"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Dashboard</li>
+                <li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%>Lecturer</li>
+                <li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%>Student</li>
+                <li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Courses</li>
+                <li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>News</li>
+                <li class = "adminli" id = "session_act"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>Session Activities </li>
+            </ul>
+        </div>
+    </div>
+    <% end %>
 
-				<!--CREATE OPERATIONS -->
-				<div id = "create_course_op" class="create_course_op">
-					<!-- form for course creation-->
-        			<div class = "row">
-          				<div class = "col-2"></div>
-                			<div class = "col-4 no-padding ">
-                                	<div class="handle white_bg">
-                                     	<h4>CREATE NEW COURSE</h4>
-                                         	<%= label_tag :ccode, nil, id: 'create_ccode' %>
-                                            <%= text_field_tag :ccode,nil, id: 'create_ccode_field'%><br/>
-                                            <%= label_tag :ctitle, nil, id: 'create_ctitle' %>
-                                            <%= text_field_tag :ctitle, nil, id: 'create_ctitle_field' %><br/>
-                                            <%= label_tag :unit, nil, id: 'create_unit' %>
-                                            <%= text_field_tag :unit, nil, id: 'create_units_field' %><br/>
-                                            <%= label_tag :level, nil, id: 'create_level' %>
-                                            <%= text_field_tag :unit, nil, id: 'create_level_field' %><br/>
-                                            <%= label_tag :semester, nil, id: 'create_semester' %>
-                                            <%= text_field_tag :unit, nil, id: 'create_semester_field' %><br/>
-                                            <%= submit_tag :create, id: 'create_course' %>
-                                        
-                                	</div> 
-                                	<div id="loader"></div>                   
-                			</div>
-          				<div class = "col-2"></div> 
-        			</div>
-				</div>
-				<!--END OF CREATE OPERATIONS -->
-
-				<!--EDIT OPERATIONS -->
-				<div>
-					<div id = "edit_course_op" class="edit_course_op">
-					<!-- form for course editing-->
-        			<div class = "row">
-          				<div class = "col-2"></div>
-                			<div class = "col-4 no-padding ">
-                                	<div class="handle white_bg">
-                                         	<h4>EDIT COURSE</h4>
-                                         	<%= label_tag :ccode, nil, id: 'edit_ccode' %>
-                                            <%= text_field_tag :ccode,nil, id: 'edit_ccode_field'%><br/>
-                                            <div id = "sugestions"></div>
-                                            <%= label_tag :ctitle, nil, id: 'edit_ctitle' %>
-                                            <%= text_field_tag :ctitle, nil, id: 'edit_ctitle_field' %><br/>
-                                            <%= label_tag :unit, nil, id: 'edit_unit' %>
-                                            <%= text_field_tag :unit, nil, id: 'edit_units_field' %><br/>
-                                            <%= label_tag :level, nil, id: 'edit_level' %>
-                                            <%= text_field_tag :unit, nil, id: 'edit_level_field' %><br/>
-                                            <%= label_tag :semester, nil, id: 'edit_semester' %>
-                                            <%= text_field_tag :unit, nil, id: 'edit_semester_field' %><br/>
-                                            <%= submit_tag :edit, id: 'edit_course' %>
-                                	</div>
-                                	
-                                	<div id="loader"></div>                   
-                			</div>
-          				<div class = "col-2"></div> 
-        			</div>
-				</div>
-
-				</div>
-				<!--END OF EDIT OPERATIONS -->
-
-				<!--DELETE OPERATIONS -->
-				<div>
-					<div id = "delete_course_op" class="delete_course_op">
-					<!-- form for course editing-->
-        			<div class = "row">
-          				<div class = "col-2"></div>
-                			<div class = "col-4 no-padding ">
-                                	<div class="handle white_bg">
-                                         	<%= label_tag :ccode, nil, id: 'delete_ccode' %>
-                                            <%= text_field_tag :ccode,nil, id: 'delete_ccode_field', placeholder: 'Enter course code ....'%><br/>
-                                            <div id="sugestions">
-
-                                            </div>
-                                	</div> 
-                                	<div id="loader"></div>                   
-                			</div>
-          				<div class = "col-2"></div> 
-        			</div>
-				</div>
-
-				</div>
-				<!--END OF DELETE OPERATIONS -->
-
-			</div>
-			<!-- END OF COURSES PAGE -->
-			
-			<div id = "news" class = "page fade">
-			NEWS
-			</div>
-		</div>
+    <div class = "div col-t-9 col-d-10" id = "content-container">
+    </div>
+    <div id="load">
+        <div class="loader"></div>
+    </div>

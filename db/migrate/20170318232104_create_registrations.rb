@@ -4,7 +4,7 @@ class CreateRegistrations < ActiveRecord::Migration[5.0]
     	t.references :student, index:true, foreign_key: true
     	t.references :course,  index:true, foreign_key: true
     	t.string :session, null: false
-      t.integer :units
+        t.integer :units
     	t.integer :C_A_score, default: 0
     	t.integer :exam_score, default: 0
     	t.integer :year_of_study, index: true, null: false

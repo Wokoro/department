@@ -1,0 +1,8 @@
+$(function(){
+    $("#edit_course_option").fadeOut(500,function(){
+        $("#find_ccode_field").val("");
+        $("#find_course_option").fadeIn(500, function(){
+            $("#edit_course_option").remove();
+        });
+    });
+});

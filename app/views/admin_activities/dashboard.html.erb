@@ -1,0 +1,21 @@
+ <% content_for :admin_header do %>
+    <div class = "div col-t-3 col-d-2" id = "admin-head">
+        <%= image_tag "ndu_logo.png" %>
+        <div id = "navs">
+            <ul class="na">
+                <li class = "adminli" id = "dash"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Dashboard", admin_path, remote:true %></li>
+                <li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%><%= link_to "Lecturer", admin_lecturer_path, remote:true %></li>
+                <li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%><%= link_to "Student", admin_student_path, remote:true %></li>
+                <li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Courses", admin_course_path, remote:true %></li>
+                <li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "News", admin_news_path, remote:true %></li>
+                <li class = "adminli" id = "session_act"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "Session Activities", admin_session_activities_path, remote:true %> </li>
+            </ul>
+        </div>
+    </div>
+    <% end %>
+
+    <div class = "div col-t-9 col-d-10" id="container" >
+    </div>
+    <div id="load">
+        <div class="loader"></div>
+    </div>

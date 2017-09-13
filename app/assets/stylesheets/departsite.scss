@@ -1,3 +1,7 @@
+html{
+    min-height:100%;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -26,7 +30,10 @@ body{
 	background-size: cover;
 	background-attachment: fixed;
 	background-color: #f2f2f2; 
-    font-family: "Open Sans", sans-serif
+    font-family: "Open Sans", sans-serif;
+    position: fixed;
+    height: 100%;
+    width: 100%;
 }
 body[id = "index"] p{
 	padding-left: 25px;

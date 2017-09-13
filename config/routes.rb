@@ -1,5 +1,41 @@
 Rails.application.routes.draw do
 
+  get 'courses/index'
+
+  get 'courses/show'
+
+  get 'courses/edit'
+
+  get 'courses/delete'
+
+  get 'courses/update'
+
+  get 'courses/create'
+
+  get 'admin_activities/course'
+
+  get 'admin_activities/lecturer'
+
+  get 'admin_activities/student'
+
+  get 'admin_activities/session_activities'
+
+  #routes for courses
+  post '/find_course', to: 'courses#edit'
+  post '/edit_course', to: 'courses#edit'
+  post '/create_course', to: 'courses#create'
+  post '/fnd_course', to: 'courses#show_del'
+  post '/update_course', to: 'courses#update'
+  post '/delete_course', to: 'courses#delete'
+
+  #routes for admin activities
+  get '/admin', to: 'admin_activities#dashboard'
+  get '/admin_student', to: 'adimin_activities#student'
+  get '/admin_course', to: 'admin_activities#course'
+  get '/admin_lecturer', to: 'admin_activities#lecturer'
+  get '/admin_news', to: 'admin_activities#news'
+  get '/admin_session_activities', to: 'admin_activities#session_activities'
+
   #routes for attendance controller
   get '/course_attendance', to: 'attendances#index'
   post 'print_attendance', to: 'attendances#print'
@@ -17,15 +53,10 @@ Rails.application.routes.draw do
   post '/results', to: "results#view_student_results"
 
   #routes for admin login
-  get '/admin_index', to: 'adminsessions#index'
+  #get '/admin_index', to: 'adminsessions#index'
   get '/admin_login', to: 'adminsessions#new'
   post '/admin_login', to: 'adminsessions#create'
   delete '/admin_delete', to: 'adminsessions#destroy'
-
-  #routes for admin activities
-  post '/create_course', to: 'adminsessions#create_course'
-  post '/edit_course', to: 'adminsessions#edit_course'
-  post '/all_courses', to: 'adminsessions#all_courses'
   
   #routes for student login
   get '/student_login', to: 'studentsessions#new'
@@ -67,7 +98,6 @@ Rails.application.routes.draw do
   resources :assignments
   resources :students
   resources :news
-  resources :courses
   resources :registrations
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

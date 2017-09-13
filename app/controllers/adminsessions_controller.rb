@@ -1,6 +1,5 @@
 class AdminsessionsController < ApplicationController
 	def index
-		
 	end
 
 	def new
@@ -61,7 +60,7 @@ class AdminsessionsController < ApplicationController
 		admin = Admin.find_by(name: params[:adminsession][:name])
 		if admin 
 			login_admin(admin)
-			redirect_to admin_index_path
+			redirect_to admin_path
 		else
 			flash[:error] = "Username or Password is not incorrect"
 			redirect_to admin_login_path
