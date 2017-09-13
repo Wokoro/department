@@ -1,13 +1,13 @@
 		<% content_for :admin_header do %>
 		<div class = "div" id = "left">
-			<img id = "img" src = "ndu.jpg"/>
+			<%= image_tag('navs/ndu_logo.png', id: 'img')%>
 			<div id = "navs">
 				<ul>
-					<li class = "adminli" id = "hom"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Dashboard</li>
-					<li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%>Lecturer</li>
-					<li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%>Student</li>
-					<li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Courses</li>
-					<li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>News</li>
+					<li class = "adminli" data-pane = "dashboard"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Dashboard</li>
+					<li class = "adminli" data-pane = "lecturer"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%>Lecturer</li>
+					<li class = "adminli" data-pane = "students"><%= image_tag('navs/student.svg', class: 'icon icon-img')%>Student</li>
+					<li class = "adminli" data-pane = "courses"><%= image_tag('navs/course.svg', class: 'icon icon-img')%>Courses</li>
+					<li class = "adminli" data-pane = "news"><%= image_tag('navs/news.svg', class: 'icon icon-img')%>News</li>
 				</ul>
 			</div>
 		</div>
@@ -16,17 +16,17 @@
 		<div class = "div" id = "center">
 			<div id="dashboard" class = "page fade">
 				<div class = "tips">
-				<img class = "icon"  src = "lecturer.svg"/><br/>
+				<%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%><br/>
 				<span>100</span><br/>
 				Staffs
 				</div>
 				<div class = "tips">
-				<img class = "icon" src = "student.svg"/><br/>
+				<%= image_tag('navs/student.svg', class: 'icon icon-img')%><br/>
 				<span>100</span><br/>
 				Students
 				</div>
 				<div class = "tips">
-				<img class = "icon" src = "course.svg"/><br/>
+				<%= image_tag('navs/course.svg', class: 'icon icon-img')%><br/>
 				<span>100</span><br/>
 				Courses
 				</div>
@@ -44,17 +44,17 @@
 			<div id = "courses" class = "page fade">
 				<!--THE OPERATIONS CONCERNING COURSES -->
 				<div id = "operations" class="white_bg">
-					<div id = "create" class = "tips">
+					<div data-paneid = "create_course" class = "tips">
 						<img class = "icon"  src = "lecturer.svg"/><br/>
 						<span>100</span><br/>
 						Create
 					</div>
-					<div id = "edit" class = "tips">
+					<div data-paneid = "edit_course" class = "tips">
 						<img class = "icon" src = "student.svg"/><br/>
 						<span>100</span><br/>
 						Edit
 					</div>
-					<div id = "delete" class = "tips">
+					<div data-paneid = "delete_course" class = "tips">
 						<img class = "icon" src = "course.svg"/><br/>
 						<span>100</span><br/>
 						Delete
@@ -63,7 +63,7 @@
 				<!--END OF OPERATIONS CONCERNING COURSES -->
 
 				<!--CREATE OPERATIONS -->
-				<div id = "create_course_op" class="create_course_op">
+				<div id = "create_course" class="operations">
 					<!-- form for course creation-->
         			<div class = "row">
           				<div class = "col-2"></div>
@@ -80,7 +80,7 @@
                                             <%= text_field_tag :unit, nil, id: 'create_level_field' %><br/>
                                             <%= label_tag :semester, nil, id: 'create_semester' %>
                                             <%= text_field_tag :unit, nil, id: 'create_semester_field' %><br/>
-                                            <%= submit_tag :create, id: 'create_course' %>
+                                            <%= submit_tag :create, id: 'create_cos' %>
                                         
                                 	</div> 
                                 	<div id="loader"></div>                   
@@ -92,7 +92,7 @@
 
 				<!--EDIT OPERATIONS -->
 				<div>
-					<div id = "edit_course_op" class="edit_course_op">
+					<div id = "edit_course" class="operations">
 					<!-- form for course editing-->
         			<div class = "row">
           				<div class = "col-2"></div>
@@ -124,7 +124,7 @@
 
 				<!--DELETE OPERATIONS -->
 				<div>
-					<div id = "delete_course_op" class="delete_course_op">
+					<div id = "delete_course" class="operations">
 					<!-- form for course editing-->
         			<div class = "row">
           				<div class = "col-2"></div>

@@ -1,140 +1,93 @@
 $(document).ready(function(){
-
-    $( document ).ajaxSend(function(){
-        $("#sugestions").text("");
-   });
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
+    });
 
     //funtion to handle click events
-    $("body").click(function(event){
-        var x = event.target.id;
-        if (x){
-        	switch(x){
-        		case "hom":
-        		$(".page").css("display","none");
-        		$("#dashboard").css("display","block");
-        		break;
-        		case "lect":
-        		$(".page").css("display","none");
-        		$("#lecturer").css("display","block");
-        		break;
-        		case "stud":
-        		$(".page").css("display","none");
-        		$("#students").css("display","block");
-        		break;
-        		case "cos":
-        		$(".page").css("display","none");
-        		$("#courses").css("display","block");
-        		break;
-        		case "new":
-        		$(".page").css("display","none");
-        		$("#news").css("display","block");
-        		break;
-        		case "create":
-        		$("#ccode_field").focus();
-        		$(".create_course_op").css("display","none");
-                $(".edit_course_op").css("display","none");
-                $(".delete_course_op").css("display","none");
-        		$("#create_course_op").css("display","block");
-        		break;
-                case "edit":
-                $("#ccode_field").focus();
-                $(".create_course_op").css("display","none");
-                $(".edit_course_op").css("display","none");
-                $(".delete_course_op").css("display","none");
-                $("#edit_course_op").css("display","block");
-                break;
-                case "delete":
-                $("#ccode_field").focus();
-                $(".create_course_op").css("display","none");
-                $(".edit_course_op").css("display","none");
-                $(".delete_course_op").css("display","none");
-                $("#delete_course_op").css("display","block");
-                break;
-        	}
-        }
+    $(".adminli").click(function(event){
+        var $pane = $(this).attr('data-pane');
+        $(".page").css("display", "none");
+        $("#"+$pane).css("display", "block");
+    });
+
+    $('#operations div').click(function(event){
+        var $element = $(this).attr('data-paneid');
+        $(".operations").css("display","none");
+        $("#"+$element).fadeIn(200);
+        $(".ccode_field").focus();
     });
 
     // function that triggers the ajax course creation request
-    $("#create_course").click(function(event){
-    	var units = $("#create_units_field").val();
-    	var ccode = $("#create_ccode_field").val();
-    	var ctitle = $("#create_ctitle_field").val();
-    	var level = $("#create_level_field").val();
-    	var semester = $("#create_semester_field").val();
-
-    	sendRequest(ccode, ctitle, units, level, semester);
-    	
+    $("#create_cos").click(function(event){
+        var units = $("#create_units_field").val();
+        var ccode = $("#create_ccode_field").val();
+        var ctitle = $("#create_ctitle_field").val();
+        var level = $("#create_level_field").val();
+        var semester = $("#create_semester_field").val();
+        sendRequest(ccode, ctitle, units, level, semester);
     });
+
      // function that reponsible for the ajax suggestions
     $("#edit_ccode_field").keyup(function(event){
         var query = $("#edit_ccode_field").val();
         $("#sugestions").css('display', 'block');
-        
-       recSugestions(query);
-        
+        setTimeout(function(){
+            recSugestions(query);
+        },500);
     });
 
     //function to enable hover events
-	$("#operations div").hover(function(event){
-	 	$(this).css("border-bottom","medium solid blue");
-	 	$(this).css("border-bottom-width","thin");
-	 	$(this).css("cursor","pointer");
-	 }, function(){
-	 	$(this).css("border-bottom","medium solid white");
-	 	$(this).css("border-bottom-width","thin");
-	 });
-
-    //function to enable loader for ajax start and finish events
-    $(document).ajaxStart(function () {
-        $("#loader").addClass("loader");
-    }).ajaxStop(function () {
-        $("#loader").removeClass("loader");
-    });
-
+    $("#operations div").hover(function(event){
+        $(this).css("border-bottom","medium solid blue");
+        $(this).css("border-bottom-width","thin");
+        $(this).css("cursor","pointer");
+     }, function(){
+        $(this).css("border-bottom","medium solid white");
+        $(this).css("border-bottom-width","thin");
+     });
+    $(this).ajaxSend(function(){
+    $('#sugestions').html(' ');
+}).ajaxStop(function () {
+    $("#loader").removeClass("loader");
 });
 
+}).ajaxStart(function () {
+    $("#loader").addClass("loader");
+});
  //function to make the ajax request
 function sendRequest(ccode, ctitle, units, level, semester){
-	$.ajaxSetup({
-    headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
-  	});
-    $.ajax("/create_course",{
-    						type: 'POST',
+    
+   var $ajaxCall =  $.ajax({
+                            url: '/create_course',
+                            type: 'POST',
                             dataType: "json",
-    						data: {
-    								ccode: ccode,
-    								ctitle: ctitle,
-    								units: units,
-    								level: level,
-    								semester: semester
-    							  },
-    						success: function(data, status){ //no data returned from the server yet!!!
-   					 				alert("created: " + data.ctitle + "successfully"+"\nStatus: " + status);
-                                    $("#returnStatus").text("course created successfully")
-									},
-							error: function (jqXhr, textStatus, errorMessage) {
-                   				 		alert('Error' + errorMessage);
-                					}
-			});
+                            data: {ccode: ccode, ctitle: ctitle, units: units, level: level, semester: semester}
+                            });
 
+   $ajaxCall.done(function(data){alert(data.ctitle + " created")});
+   $ajaxCall.fail(function(data){alert(data)});
 }
 
 function recSugestions(query){
+    var $sugest = $('#sugestions');
     $.ajaxSetup({
     headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
     });
-    $.ajax("/all_courses",{
+    var $ajaxCall = $.ajax({
+                            url: '/suggest_course',
                             type: 'POST',
-                            dataType: "json",
-                            data: {
-                                    query: query
-                                  },
-                            success: function(data, status){ //no data returned from the server yet!!!
-                                $("#sugestions").text(data);
-                         
-                                    },
-                            error: function (jqXhr, textStatus, errorMessage) {
-                                        alert('Error' + errorMessage);
-                                    }
-            });
+                            dataType: 'json',
+                            data: {query: query}
+                            });
+
+    $ajaxCall.done(function(data, status){
+        var i = 0;
+         $.each(data,function(dat, mean){
+            $sugest.append('<span>'+mean+'</span><br/>');
+            i++;
+         });
+    });
+    $ajaxCall.fail(function(jqXhr, textStatus, errorMessage){
+        alert('Error' + errorMessage);
+    });
 }
