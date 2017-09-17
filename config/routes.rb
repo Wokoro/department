@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   post '/delete_course', to: 'courses#delete'
 
   #routes for admin activities
-  get '/admin', to: 'admin_activities#dashboard'
+  get '/admin_index', to: 'admin_activities#index'
+  get '/admin_dashboard', to: 'admin_activities#dashboard'
   get '/admin_student', to: 'adimin_activities#student'
   get '/admin_course', to: 'admin_activities#course'
   get '/admin_lecturer', to: 'admin_activities#lecturer'
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
   
   #routes for student login
   get '/student_login', to: 'studentsessions#new'
-  get '/student_notification', to: 'studentsessions#notification'
+  get '/student_notification', to: 'studentactivities#notification'
   post '/student_login', to: 'studentsessions#create'
   post '/student_logout', to: 'studentsessions#destroy'
 

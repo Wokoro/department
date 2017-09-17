@@ -2,8 +2,9 @@
     <!-- form for course creation-->
     <div class = "row">
         <div class = "col-t-2 col-d-2"></div>
-            <div class = "col-t-8 col-d-8">
-                <h4>CREATE NEW COURSE</h4>
+            <div class = "col-t-8 col-d-8 ">
+                <div class = "handle white_bg">
+                <h4>CREATE IN COURSES NEW COURSE</h4>
                     <% if flash[:success] %>
                         <div class = 'success'><%= flash[:success] %></div>
                     <% end %>
@@ -23,7 +24,7 @@
                     <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
                     <%= f.submit :create, id: 'create_course' %>
                 <% end %>
-
+            </div>
             </div>
         <div class = "col-t-2 col-d-2"></div>
     </div>

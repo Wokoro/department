@@ -1,17 +1,19 @@
 <!--CREATE OPERATIONS -->
 <div class="row">
-    <div id ="create_course_option" class="course_opion" data-class="display">
+    <div id ="create_course_option" class="course_option" data-class="display">
         <!-- form for course creation-->
         <div class = "row">
             <div class = "col-t-2 col-d-2"></div>
                 <div class = "col-t-8 col-d-8">
-                    <h4>CREATE NEW COURSE</h4>
+                    <div class="handle white_bg">
                         <% if flash[:success] %>
                             <div class = 'success'><%= flash[:success] %></div>
                         <% end %>
                         <% if flash[:error] %>
                             <div data-class="notice" class = 'error'></div>
                         <% end %>
+                        
+                            <h4>CREATE NEW COURSE</h4>
                         <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
                         <%= f.label :ccode,  id: 'create_ccode' %>
                         <%= f.text_field :ccode, id: 'create_ccode_field' %><br/>
@@ -24,8 +26,8 @@
                         <%= f.label :semester,  id: 'create_semester' %>
                         <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
                         <%= f.submit :create, id: 'create_course' %>
+                    </div>
                     <% end %>
-
                 </div>
             <div class = "col-t-2 col-d-2"></div>
         </div>

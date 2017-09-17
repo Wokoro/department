@@ -1,6 +1,13 @@
 class AdminActivitiesController < ApplicationController
+  
+  def index
+  end
 
    def dashboard
+    respond_to do|format|
+        format.html{render layout:false}
+        format.js
+    end
    end
 
   def course

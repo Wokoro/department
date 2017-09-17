@@ -2,7 +2,8 @@
     <!-- form for course creation-->
     <div class = "row">
         <div class = "col-t-2 col-d-2"></div>
-            <div class = "col-t-8 col-d-8">
+            <div class = "col-t-8 col-d-8 ">
+                <div class = "handle white_bg">
                 <h4>Edit Course</h4>
                     <% if flash[:success] %>
                         <div class = 'success'><%= flash[:success] %></div>
@@ -24,6 +25,7 @@
                     <%= f.text_field :semester,  id: 'edit_semester_field' %><br/>
                     <%= f.submit :Finish, id: 'edit_course' %>
                 <% end %>
+            </div>
             </div>
         <div class = "col-t-2 col-d-2"></div>
     </div>
