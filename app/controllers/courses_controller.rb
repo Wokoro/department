@@ -50,6 +50,8 @@ class CoursesController < ApplicationController
         format.js
     end
   end
+  def find
+  end
 
   def create
     cc = params[:create_course][:ccode]

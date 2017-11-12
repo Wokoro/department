@@ -1,0 +1,21 @@
+<div id ="edit_course_option" class="course_option" data-class="remove">
+    <div class = "row">
+        <div class = "col-t-2 col-d-2"></div>
+               <div class = "col-t-8 col-d-8">
+                <div class="handle white_bg">
+                    <% if flash[:success] %>
+                         <div class = 'success'><%= flash[:success] %></div>
+                     <% end %>
+                     <% if flash[:error] %>
+                         <div class = 'error'><%= flash[:error] %></div>
+                    <% end %>
+                    <%= form_for :find_course, url:find_course_path, remote:true do|f| %>
+                        <%= f.label :ccode,  id: 'find_ccode' %>
+                        <%= f.text_field :ccode, id:'find_ccode_field' %><br/>
+                        <%= f.submit :Find, id: 'find_course' %>
+                     <% end %>
+                </div>
+             </div>
+        <div class = "col-2"></div>
+    </div>
+</div>

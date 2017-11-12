@@ -1,7 +1,7 @@
 $(function(){
     <% if @course %>
         $("#find_course_option").fadeOut(500,function(){
-             $("#edit_cont").append("<%= j render 'edit' %>");
+             $("#edit_cont_edit").html("<%= j render 'edit' %>");
                 $('#old_ccode').val("<%= @course.ccode %>");
                 $('#edit_ccode_field').val("<%= @course.ccode %>");
                 $('#edit_ctitle_field').val("<%= @course.ctitle %>");
@@ -11,6 +11,6 @@ $(function(){
         });
     <% else %>
         $("#find_course_option").fadeOut(500,function(){
-        $("#edit_cont").append("<%= j render 'error_edit' %>");
+        $("#edit_cont_edit").append("<%= j render 'error_edit' %>");
     <% end %>
 });

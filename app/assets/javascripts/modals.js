@@ -1,21 +1,18 @@
 $(document).ready(function(){
-	$('.adminli').click(function(){
-		$("#temp").css("display","none");
-	})
-	var operations = $('li#cos.adminli');
-	operations.click(function(){
-		$("#temp").css("display","block");
-	});
 	//Get the divs holding the modals
 	var modalHolder = $('.my-modal');
 	var createModal = $('#create_modal');
 	var editModal = $('#edit_modal');
 	var deleteModal = $('#delete_modal');
 
+	
+
+
+
 	// Get the buttons that opens the modals
-	var createBtn = $("#createBtn");
-	var editBtn = $("#editBtn");
-	var deleteBtn = $("#deleteBtn");
+	var createBtn = $("#new_course_menu_item");
+	var editBtn = $("#edit_course_menu_item");
+	var deleteBtn = $("#delete_course_menu_item");
 
 	// Get the <span> element that closes the modals
 	var modalCloseBtn = $(".close");

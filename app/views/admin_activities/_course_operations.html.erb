@@ -2,24 +2,72 @@
     <div id = "create_modal" class="my-modal-content">
         <div class="my-modal-header">
           <span class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>CREATE NEW COURSE</h2>
         </div>
-        <div class="my-modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
+        <div id="edit_cont" class="my-modal-body">
+            <div id ="create_course_option" class="course_option" data-class="display">
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                        <div class="handle white_bg">
+                            <% if flash[:success] %>
+                                <div class = 'success'><%= flash[:success] %></div>
+                            <% end %>
+                            <% if flash[:error] %>
+                                <div data-class="notice" class = 'error'></div>
+                            <% end %>
+                            <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
+                            <%= f.label :ccode,  id: 'create_ccode' %>
+                            <%= f.text_field :ccode, id: 'create_ccode_field' %><br/>
+                            <%= f.label :ctitle,  id: 'create_ctitle' %>
+                            <%= f.text_field :ctitle,  id: 'create_ctitle_field' %><br/>
+                            <%= f.label :unit,  id: 'create_unit' %>
+                            <%= f.text_field :unit,  id: 'create_units_field' %><br/>
+                            <%= f.label :level,  id: 'create_level' %>
+                            <%= f.text_field :level,  id: 'create_level_field' %><br/>
+                            <%= f.label :semester,  id: 'create_semester' %>
+                            <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
+                            <%= f.submit :create, id: 'create_course' %>
+                            <% end %>
+                        </div>
+                </div>
+            <div class = "col-t-2 col-d-2"></div>
+        </div>
+    </div>
         </div>
         <div class="my-modal-footer">
           <h3>Modal Footer</h3>
         </div>
     </div>
+
+
     <div id = "edit_modal" class="my-modal-content">
         <div class="my-modal-header">
           <span class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>Find Course</h2>
         </div>
-        <div class="my-modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
+        <div id = "edit_cont_edit" class="my-modal-body">
+        <div id = "find_course_option" class="course_option" data-class="display">
+           <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+                                <% if flash[:success] %>
+                                    <div class = 'success'><%= flash[:success] %></div>
+                                <% end %>
+                                <% if flash[:error] %>
+                                    <div class = 'error'><%= flash[:error] %></div>
+                                <% end %>
+                                <%= form_for :find_course, url:find_course_path, remote:true do|f| %>
+                                    <%= f.label :ccode,  id: 'find_ccode' %>
+                                    <%= f.text_field :ccode, id:'find_ccode_field' %><br/>
+                                    <%= f.submit :Find, id: 'find_course' %>
+                                <% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
+            </div>
         </div>
         <div class="my-modal-footer">
           <h3>Modal Footer</h3>
@@ -28,14 +76,128 @@
     <div id = "delete_modal" class="my-modal-content">
         <div class="my-modal-header">
           <span class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>COURSE DELETE</h2>
         </div>
         <div class="my-modal-body">
-          <p>Some text in the Modal Body</p>
-          <p>Some other text...</p>
+          <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+                                <h4>Find Course</h4>
+                                <% if flash[:success] %>
+                                    <div class = 'success'><%= flash[:success] %></div>
+                                <% end %>
+                                <% if flash[:error] %>
+                                    <div class = 'error'><%= flash[:error] %></div>
+                                <% end %>
+                                <%= form_for :fnd_course, url:fnd_course_path, remote:true do|f| %>
+                                <%= f.label :ccode,  id: 'fnd_ccode' %>
+                                <%= f.text_field :ccode, id: 'fnd_ccode_field', placeholder: 'Enter course code ....'%><br/>
+                                <%= f.submit :find %>
+                                <% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
         </div>
         <div class="my-modal-footer">
           <h3>Modal Footer</h3>
         </div>
       </div>
+</div>
+
+
+
+<!--CREATE OPERATIONS -->
+<div class="row">
+    <div id ="create_course_option" class="course_option" data-class="display">
+        <!-- form for course creation-->
+        <div class = "row">
+            <div class = "col-t-2 col-d-2"></div>
+                <div class = "col-t-8 col-d-8">
+                    <div class="handle white_bg">
+                        <% if flash[:success] %>
+                            <div class = 'success'><%= flash[:success] %></div>
+                        <% end %>
+                        <% if flash[:error] %>
+                            <div data-class="notice" class = 'error'></div>
+                        <% end %>
+                        
+                            <h4>CREATE NEW COURSE</h4>
+                        <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
+                        <%= f.label :ccode,  id: 'create_ccode' %>
+                        <%= f.text_field :ccode, id: 'create_ccode_field' %><br/>
+                        <%= f.label :ctitle,  id: 'create_ctitle' %>
+                        <%= f.text_field :ctitle,  id: 'create_ctitle_field' %><br/>
+                        <%= f.label :unit,  id: 'create_unit' %>
+                        <%= f.text_field :unit,  id: 'create_units_field' %><br/>
+                        <%= f.label :level,  id: 'create_level' %>
+                        <%= f.text_field :level,  id: 'create_level_field' %><br/>
+                        <%= f.label :semester,  id: 'create_semester' %>
+                        <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
+                        <%= f.submit :create, id: 'create_course' %>
+                        <% end %>
+                    </div>
+                    
+                </div>
+            <div class = "col-t-2 col-d-2"></div>
+        </div>
+    </div>
+    <!--END OF CREATE OPERATIONS -->
+
+    <!--EDIT OPERATIONS -->
+    <div id="edit_cont">
+        <div id = "find_course_option" class="course_option" data-class="display">
+            <!-- form for course editing-->
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+                                <h4>Find Course</h4>
+                                <% if flash[:success] %>
+                                    <div class = 'success'><%= flash[:success] %></div>
+                                <% end %>
+                                <% if flash[:error] %>
+                                    <div class = 'error'><%= flash[:error] %></div>
+                                <% end %>
+                                <%= form_for :find_course, url:find_course_path, remote:true do|f| %>
+                                    <%= f.label :ccode,  id: 'find_ccode' %>
+                                    <%= f.text_field :ccode, id:'find_ccode_field' %><br/>
+                                    <%= f.submit :Find, id: 'find_course' %>
+                                <% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
+        </div>
+    </div>
+    <!--END OF EDIT OPERATIONS -->
+
+    <!--DELETE OPERATIONS -->
+    <div>
+        <div id = "fnd_course_option" class="course_option" data-class="display">
+            <!-- form for course editing-->
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+                                <h4>Find Course</h4>
+                                <% if flash[:success] %>
+                                    <div class = 'success'><%= flash[:success] %></div>
+                                <% end %>
+                                <% if flash[:error] %>
+                                    <div class = 'error'><%= flash[:error] %></div>
+                                <% end %>
+                                <%= form_for :fnd_course, url:fnd_course_path, remote:true do|f| %>
+                                <%= f.label :ccode,  id: 'fnd_ccode' %>
+                                <%= f.text_field :ccode, id: 'fnd_ccode_field', placeholder: 'Enter course code ....'%><br/>
+                                <%= f.submit :find %>
+                                <% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
+        </div>
+    </div>
+    <!--END OF DELETE OPERATIONS -->
 </div>

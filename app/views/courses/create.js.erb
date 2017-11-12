@@ -1,7 +1,7 @@
 $(function(){
      $("#create_course_option").fadeOut(500, function(){
          $(".course_option1").remove();
-         $("#edit_cont").append("<%= j render 'create' %>");
+         $("#edit_cont").html("<%= j render 'create' %>");
      });
 
 });
