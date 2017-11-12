@@ -86,6 +86,11 @@
 	background-color: #000099;
 	height: 100%;
 }
+.admin-nav{
+  box-shadow: 0 0 10px #757575;
+  -moz-box-shadow: 0 0 10px #757575;
+  -webkit-box-shadow: 0 0 10px #757575;
+}
 #container{
 	background-color: #cccccc;
 	min-height: 100%;
@@ -100,6 +105,9 @@
 }
 .icon{
 	width: 25%;
+}
+img{
+  display: inline;
 }
 #img{
 	padding: 10px 10px 20px 10px;
@@ -117,7 +125,7 @@ img{
 	padding:0px;
 }
 .adminli, .adminli a{
-	color: white;
+	color: #000000;
 	text-align: left;
 	width: 100%;
 
@@ -131,7 +139,7 @@ img{
 
 .course_menu_item{
 }
-@keyframes fade {
+@keyframes fadeAnim {
   from {opacity: 0.4}
   to {opacity: 1}
 }
@@ -141,8 +149,8 @@ img{
   left: 50%;
   display: none;
 }
-.fade{
-  animation-name: fade;
+.myfade{
+  animation-name: fadeAnim;
   animation-duration: 1s;
 }
 .page{
@@ -179,15 +187,22 @@ span{
   font-family: 'Roboto Slab', serif;
   text-align: center;
 }
+#session_act{
+  padding-bottom : 50px;
+}
 .adminli{
   color: white;
-  margin-top: 30px;
+  margin-top: 50px;
   list-style-type: none;
   text-align: left;
-  width: 60%;
+  width: 80%;
 }
 .adminli:hover{
   cursor: pointer;
+  color: #cccccc;
+}
+a:hover{
+  color: #cccccc;
 }
 p{
   font-size: 20px;

@@ -1,17 +1,68 @@
- <div id="dashboard" class = "page fade">
-                <div class = "tips">
-                <%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%><br/>
-                <span>100</span><br/>
-                Staffs
+<div class="row">
+            <div class="col-d-3 col-t-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>No. of Visits</h4>
+                        <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">820</span>
+                        </div>
+                    </div>
                 </div>
-                <div class = "tips">
-                <%= image_tag('navs/student.svg', class: 'icon icon-img')%><br/>
-                <span>100</span><br/>
-                Students
+            </div>
+            <div class="col-d-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>Lecturers</h4>
+                        <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">400</span></div>
+                    </div>
                 </div>
-                <div class = "tips">
-                <%= image_tag('navs/course.svg', class: 'icon icon-img')%><br/>
-                <span>100</span><br/>
-                Courses
+            </div>
+            <div class="col-d-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>Students</h4>
+                        <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">840</span></div>
+                    </div>
                 </div>
-        </div>
+            </div>
+            <div class="col-d-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>Courses</h4>
+                        <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">460</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-d-12">
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-d-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Tasks Panel
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">7 minutes ago</span>
+                                        <i class="fa fa-fw fa-comment"></i> Lecturer signed in
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">16 minutes ago</span>
+                                        <i class="fa fa-fw fa-truck"></i> New Lecturer created
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">36 minutes ago</span>
+                                        <i class="fa fa-fw fa-globe"></i> New Student created
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
