@@ -1,5 +1,5 @@
         <!-- The main content starts here-->
-        <div class = "row">
+        <div class = "myrow">
           <div class = "col-2"></div>
                 <div class = "col-4 no-padding ">
                     <!-- The login form -->
@@ -10,9 +10,29 @@
                                         <%= form_for :lecturer, url: lecturers_path do |f| %>
                                             <%= f.label :staff_id, id: 'staff_id' %>
                                             <%= f.text_field :staff_id %><br/>
-                                            <%= f.label :password %>
-                                            <%= f.password_field :password %><br/>
-                                            <%= submit_tag :CREATE %>
+                                            <%= f.label :sname, id: 'sname' %>
+                                            <%= f.text_field :sname %><br/>
+                                            <%= f.label :fname, id: 'fname' %>
+                                            <%= f.text_field :fname %><br/>
+                                            <%= f.label :state_of_origin, id: 'state_of_origin' %>
+                                            <%= f.text_field :state_of_origin %><br/>
+                                            <%= f.label :lga, id: 'lga' %>
+                                            <%= f.text_field :lga %><br/>
+                                             <%= f.label :phone_num, id: 'phone_num' %>
+                                            <%= f.text_field :phone_num %><br/>
+                                            <%= f.label :nationality, id: 'nationality' %>
+                                            <%= f.text_field :nationality %><br/>
+                                            <%= f.label :religion, id: 'religion' %>
+                                            <%= f.text_field :religion %><br/>
+                                            <%= f.label :email, id: 'email' %>
+                                            <%= f.text_field :email %><br/>
+                                            <%= f.label :sex, id: 'sex' %>
+                                            <%= f.text_field :sex %><br/>
+                                            <%= f.label :level, id: 'level' %>
+                                            <%= f.text_field :level %><br/>
+                                            <%= f.label :passport, id: 'passport' %>
+                                            <%= f.file_field :passport, accept: 'image/png,image/gif,image/jpeg'%><br/>
+                                            <%= submit_tag :create %>
                                         <% end %>
                                 </div>
                         </div>

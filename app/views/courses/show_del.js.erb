@@ -2,8 +2,8 @@ $(function(){
 
      //If the course exist fade in the edit form else render the find form and tell the user that the course does not exist
     <% if @course %>
-        $("#fnd_course_option").fadeOut(500,function(){
-            $("#edit_cont").append("<%= j render 'delete' %>");
+        $("#delete_course_option").fadeOut(500,function(){
+            $("#delete_modal_body").html("<%= j render 'delete' %>");
             $("#delete_ccode_field").val("<%= @course.ccode %>");
             $('#course_code').append("<%= @course.ccode %>");
             $('#course_title').append("<%= @course.ctitle %>");
@@ -12,8 +12,8 @@ $(function(){
             $('#course_semester').append("<%= @course.semester %>");
         });
     <% else %>
-        $("#fnd_course_option").fadeOut(500,function(){
-                    $("#edit_cont").append("<%= j render 'show_del' %>");
-    <% end %>
-
+        $("#delete_course_option").fadeOut(500,function(){
+            $("#delete_modal_body").html("<%= j render 'show_del' %>");
+            });
+    <% end %>   
 });

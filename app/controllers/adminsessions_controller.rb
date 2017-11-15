@@ -19,6 +19,6 @@ class AdminsessionsController < ApplicationController
 
 	def destroy
 		logout_admin
-		redirect_to root_url
+		redirect_to user_login_path
 	end
 end

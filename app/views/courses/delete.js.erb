@@ -1,8 +1,5 @@
 $(function(){
     $("#delete_course_option").fadeOut(500,function(){
-        $("#fnd_ccode_field").val("");
-        $("#fnd_course_option").fadeIn(500, function(){
-            $("#delete_course_option").remove();
-        });
+    	$("#delete_modal_body").html("<%= j render 'show_del' %>");
     });
 });

@@ -17,7 +17,7 @@ class LecturersessionsController < ApplicationController
 
 	def destroy
 		logout_lect
-		redirect_to root_url
+		redirect_to user_login_path
 	end
 
 end

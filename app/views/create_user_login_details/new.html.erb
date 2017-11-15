@@ -1,0 +1,26 @@
+        <!-- The main content starts here-->
+        <div class = "myrow">
+          <div class = "col-2"></div>
+                <div class = "col-4 no-padding ">
+                    <!-- The login form -->
+                    <div id="ccl">
+                        <div id="hf">
+                            <p id="ft">Student Login</p>
+                                <div id="hsf">
+                                        <%= form_for :login_details, url: login_details_path do |f| %>
+                                            <%= f.label :userid, id: 'user_id' %>
+                                            <%= f.text_field :user_id %><br/>
+                                            <%= f.label :userpassword, id: 'user_password' %>
+                                            <%= f.text_field :user_password %><br/>
+                                            <%= f.label :useractivationstatus, id: 'user_activated' %>
+                                            <%= f.text_field :user_status %><br/>
+                                            <%= f.label :usertype, id: 'user_type' %>
+                                            <%= f.text_field :user_status %><br/>
+                                            <%= submit_tag :create %>
+                                        <% end %>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+          <div class = "col-2"></div> 
+        </div>

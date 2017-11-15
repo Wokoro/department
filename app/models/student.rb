@@ -1,5 +1,4 @@
 class Student < ApplicationRecord
-	has_secure_password
 	
 	has_one :student_othername, dependent: :destroy
 	

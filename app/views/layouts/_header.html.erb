@@ -69,14 +69,18 @@
                     </li>
                     <li class="li-menu-item-hor">Donation</li>
                 </ul>
-                <% if stud_logged_in? %>
+                <% if (stud_logged_in? || lect_logged_in?) %>
                 <ul class="ul-menu-right" id="main-nav-right-ul">
                     <li class="li-menu-item-hor">My Profile</li>
-                    <li class="li-menu-item-hor"><%= link_to 'Log Out', student_logout_path, class:'smenu' %></li>
+                    <%if lect_logged_in? %>
+                        <li class="li-menu-item-hor"><%= link_to 'Log Out', lecturer_logout_path, method: :delete, class:'smenu' %></li>
+                    <% elsif stud_logged_in? %>
+                        <li class="li-menu-item-hor"><%= link_to 'Log Out', student_logout_path, method: :delete, class:'smenu' %></li>
+                    <% end %>
                 </ul>
                 <% else %>
                  <ul class="ul-menu-right" id="main-nav-right-ul">
-                    <li class="li-menu-item-hor"><%= link_to 'Log In', student_login_path, class:'smenu' %></li>
+                    <li class="li-menu-item-hor"><%= link_to 'Log In', user_login_path, class:'smenu' %></li>
                  </ul>
                 <% end %>
             </nav>

@@ -11,6 +11,8 @@ class AdminActivitiesController < ApplicationController
    end
 
   def course
+    @count = 0;
+    @course = Course.all
     respond_to do|format|
         format.html{render layout:false}
         format.js

@@ -19,7 +19,7 @@ class StudentsessionsController < ApplicationController
 	def destroy
 		logout_stud
 		flash[:message] = "You are logged out"
-		redirect_to student_login_path
+		redirect_to user_login_path
 	end
 
 	def notification

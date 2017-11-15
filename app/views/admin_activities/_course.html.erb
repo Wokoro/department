@@ -4,8 +4,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4>ELECTRICAL ELECTRONICS LECTURERS</h4>
-                                sort by :<br/>
-                                search
+                                search : 
                                 <input type="search"></input>
                             </div> 
                             <div class="panel-body">
@@ -13,55 +12,27 @@
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>S No.</th>
+                                                <th style="text-align: center">S No.</th>
                                                 <th>Title</th>
                                                 <th>Code</th>
                                                 <th>Lecturer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% temp=0 %>
+                                        <% @course.each do |d| %>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Electronic System Design</td>
-                                                <td>EEE 555</td>
-                                                <td>Gabriel Moses</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Mobile and Wireless Communication</td>
-                                                <td>EEE 563</td>
-                                                <td>David</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Modern Communication Systems</td>
-                                                <td>EEE 561</td>
-                                                <td>Prof. Indinechi</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Electronic System Design</td>
-                                                <td>EEE 555</td>
-                                                <td>Gabriel Moses</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Mobile and Wireless Communication</td>
-                                                <td>EEE 563</td>
-                                                <td>David</td>
-                                            </tr>
-                                            <tr>
+                                                <td style="text-align: center"><%= temp=temp+1 %></td>
+                                                <td><%= d.ctitle %></td>
+                                                <td><%= d.ccode %></td>
                                                 <td></td>
-                                                <td>Modern Communication Systems</td>
-                                                <td>EEE 561</td>
-                                                <td>Prof. Indinechi</td>
                                             </tr>
+                                        <% end %>
                                         </tbody>
                                     </table>
                                 </div>                               
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /. ROW  -->

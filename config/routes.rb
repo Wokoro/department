@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   #routes for attendance controller
   get '/course_attendance', to: 'attendances#index'
-  post 'print_attendance', to: 'attendances#print'
+  post '/print_attendance', to: 'attendances#print'
 
 
   #routes for lectrurer results submission
@@ -53,17 +53,24 @@ Rails.application.routes.draw do
   get '/check_results', to: 'results#check_results'
   post '/results', to: "results#view_student_results"
 
+  #routes for creating user details
+  get '/login_details', to: 'create_user_login_details#new'
+  post '/login_details', to: 'create_user_login_details#create'
+  #routes for users login
+  get '/user_login', to: 'login_sessions#new'
+  post '/user_login', to: 'login_sessions#create'
+
   #routes for admin login
   #get '/admin_index', to: 'adminsessions#index'
-  get '/admin_login', to: 'adminsessions#new'
-  post '/admin_login', to: 'adminsessions#create'
+ # get '/admin_login', to: 'adminsessions#new'
+ # post '/admin_login', to: 'adminsessions#create'
   delete '/admin_delete', to: 'adminsessions#destroy'
   
   #routes for student login
-  get '/student_login', to: 'studentsessions#new'
+  #get '/student_login', to: 'studentsessions#new'
   get '/student_notification', to: 'studentactivities#notification'
-  post '/student_login', to: 'studentsessions#create'
-  post '/student_logout', to: 'studentsessions#destroy'
+  #post '/student_login', to: 'studentsessions#create'
+  delete '/student_logout', to: 'studentsessions#destroy'
 
   #routes for lecturer login
   get '/lecturer_login', to: 'lecturersessions#new'

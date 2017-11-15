@@ -13,8 +13,7 @@
 ActiveRecord::Schema.define(version: 20170826033239) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "name",            default: "elect_elect_admin_name"
-    t.string "password_digest", default: "elect_elect_admin_password"
+    t.string "name", default: "elect_elect_admin_name"
   end
 
   create_table "assignment_submissions", force: :cascade do |t|
@@ -69,7 +68,6 @@ ActiveRecord::Schema.define(version: 20170826033239) do
     t.string  "religion"
     t.string  "phone"
     t.string  "email"
-    t.string  "password_digest"
     t.binary  "passport"
     t.index ["fname"], name: "index_lecturers_on_fname"
     t.index ["sname"], name: "index_lecturers_on_sname"
@@ -77,12 +75,13 @@ ActiveRecord::Schema.define(version: 20170826033239) do
   end
 
   create_table "login_details", force: :cascade do |t|
-    t.integer "user_id",                null: false
-    t.string  "password",               null: false
-    t.integer "user_type",              null: false
-    t.integer "activation", default: 0, null: false
-    t.index ["password"], name: "index_login_details_on_password"
+    t.string  "user_name"
+    t.integer "user_id",                     null: false
+    t.integer "user_type",                   null: false
+    t.integer "activation",      default: 0, null: false
+    t.string  "password_digest"
     t.index ["user_id"], name: "index_login_details_on_user_id"
+    t.index ["user_name"], name: "index_login_details_on_user_name"
   end
 
   create_table "news", force: :cascade do |t|
@@ -124,10 +123,9 @@ ActiveRecord::Schema.define(version: 20170826033239) do
     t.string  "religion"
     t.string  "phone"
     t.string  "email"
-    t.binary  "passport"
     t.integer "sex",                           null: false
     t.integer "level",           default: 100, null: false
-    t.string  "password_digest"
+    t.binary  "passport"
     t.index ["fname"], name: "index_students_on_fname"
     t.index ["matno"], name: "index_students_on_matno"
     t.index ["sname"], name: "index_students_on_sname"

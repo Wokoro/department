@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
     @val = nil
     if @course
         @val = @course.destroy!
+        flash.now[:success] = "Course Deleted"
     end
     respond_to do|format|
         format.js
@@ -49,8 +50,6 @@ class CoursesController < ApplicationController
     respond_to do|format|
         format.js
     end
-  end
-  def find
   end
 
   def create
