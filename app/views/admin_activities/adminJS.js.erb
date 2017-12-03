@@ -1,0 +1,4 @@
+	function generatestudentsTable(){
+		<% @students = Student.all %>
+		return '<table id="lectrers"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	}

@@ -5,16 +5,15 @@ class LoginSessionsController < ApplicationController
 	end
 
 	def create
-		user_id = params[:loginsession][:name]
+		user_name = params[:loginsession][:name]
 
 		user_password = params[:loginsession][:password]
 
-		user = LoginDetail.find_by(user_name: user_id)
+		user = LoginDetail.find_by(user_name: user_name)
 
-		if user && user.authenticate(user_password)
+		if user && user.password == user_password.lstrip.rstrip
 			user_type = user.user_type
 			user_table_id = user.user_id
-
 			case user_type
 			when 0
 				stud_user = Student.find_by(id: user_table_id)
@@ -51,6 +50,8 @@ class LoginSessionsController < ApplicationController
 	end
 
 	def destroy
-		
+	end
+	
+	def authenticate_user user
 	end
 end

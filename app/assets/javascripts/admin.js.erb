@@ -31,6 +31,32 @@ $(document).ready(function(){
 
 */
 
+	$("body").click(function(event){
+         var x = event.target.id;
+         var data = $("#"+x).attr("data-class");
+         if (data && data == "cancel_ref"){
+			var ref = $("#"+x).attr("data-ref");
+            $("#"+ref).css("display", "none");
+			
+			$("#delete_lecturer_form_fields").css("display", "inline");
+			$("#cancel_edit_lect_form").text("Ok");
+			$("#edit_lecturer_form_fields").css("display", "inline");
+			$('input[id*="elete_"]').css("display", "inline-block");
+			$("#edit_lect_field").css("display", "inline-block");
+         }
+     });
+	 
+	 $("li[class='tab-title']").click(function(event){
+		var elementId = event.target.id;
+		/* $("li[class='tab-title']").each(function(){
+			$(this).css("display", "none");
+		}); */
+		
+		alert(elementId);
+	 });
+	 	
+});
+
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////   User defined functions  //////////////////////////////////////////

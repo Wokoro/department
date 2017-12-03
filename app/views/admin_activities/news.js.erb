@@ -1,0 +1,68 @@
+$("#page-inner").html("<%= j render "news_menu" %>");
+$("#page-inner").append("<%= j render "news_operations" %>");
+$("#table_for_news").html(generateNewsTable());
+trig_news_edit();
+
+
+
+$("#edit_news_form_fields").click(function(){
+	$(this).css("display", "none");
+	$("#edit_news_button").css("display","inline-block");
+	$(":text").removeAttr("disabled");
+	$("#cancel_edit_lect_form").text("Cancel");
+	$("#delete_news_form_fields").css("display","none");
+	
+});
+
+
+
+$("#search_news").keyup(function(){
+	if($(this).val() != ""){
+		$("#search_news_submit").click();
+	}
+	else{
+		$("#table_for_news").html(generateNewsTable());
+	}
+});
+
+	$("#edit_news_button").click(function(event){
+		$(this).parent().attr("action", "/update_news.js");
+		$("#edit_lec").css("display", "none");
+	});
+
+	$("#delete_news_form_fields").click(function(event){
+		$(this).parent().attr("action", "/delete_news");
+	});
+
+
+
+//USER DEFINED FUNCTIONS
+
+//this function is duplicated, on in create and one in delete
+
+function generateNewsTable(){
+		alert("hello woeld");
+		return '<table class="table table-striped table-bordered table-hover" id="lectrers"><tr><th>S/N</th><th>News Heading</th><th>Body</th><th>Date</th></tr><% @counter = 1 %><% @news.each do|news| %><tr class="lecturer_details" id="<%= news.id %>"><td><%= @counter %></td><td><%= news.title %></td><td><%= j news.content.split("\n").first.chop<<" ........" %></td><td><%= news.created_at %></td></tr><% @counter +=1 %><% end %></table>';
+		
+}
+
+//display news details when a row is clicked
+function trig_news_edit(){
+	//this is a duplicated function, a copy is in create.js.erb
+	$("tr").click(function(){
+		var lec = {};
+		<% @news.each do|news| %>
+			if (this.id == "<%= news.id %>"){
+				$("#edit_id_field").val("<%= news.id %>");
+				$("#edit_news_heading_field").val("<%= news.title %>");
+				$("#edit_news_content_field").val("<%= j news.content.split('\n').first %>");
+				$("#edit_fname_field").val("<%= news.title %>");
+				$(":text").attr("disabled","true");
+				$("#edit_news_form_fields").css("display","inline-block");
+				$("#edit_news_button").css("display","none");
+				$("#edit_password_field").css("display","none");
+				$("#edit_cont1").css("display", "block");
+			}
+		<% end %>
+	});
+}

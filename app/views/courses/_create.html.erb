@@ -1,30 +1,30 @@
+<div id ="create_course_option" class="course_option course_option1" data-class="remove">
     <!-- form for course creation-->
- <div id ="create_course_option" class="course_option" data-class="display">
-            <div class = "row">
-                <div class = "col-t-2 col-d-2"></div>
-                    <div class = "col-t-8 col-d-8">
-                        <div class="handle white_bg">
-                            <% if flash[:success] %>
+    <div class = "row">
+        <div class = "col-t-2 col-d-2"></div>
+            <div class = "col-t-8 col-d-8">
+                <h4>CREATE NEW COURSE</h4>
+                    <% if flash[:success] %>
                         <div class = 'success'><%= flash[:success] %></div>
                     <% end %>
                     <% if flash[:error] %>
                         <div class = 'error'><%= flash[:error] %></div>
                     <% end %>
-                            <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
-                            <%= f.label :ccode,  id: 'create_ccode' %>
-                            <%= f.text_field :ccode, id: 'create_ccode_field' %><br/>
-                            <%= f.label :ctitle,  id: 'create_ctitle' %>
-                            <%= f.text_field :ctitle,  id: 'create_ctitle_field' %><br/>
-                            <%= f.label :unit,  id: 'create_unit' %>
-                            <%= f.text_field :unit,  id: 'create_units_field' %><br/>
-                            <%= f.label :level,  id: 'create_level' %>
-                            <%= f.text_field :level,  id: 'create_level_field' %><br/>
-                            <%= f.label :semester,  id: 'create_semester' %>
-                            <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
-                            <%= f.submit :create, id: 'create_course' %>
-                            <% end %>
-                        </div>
-                </div>
-            <div class = "col-t-2 col-d-2"></div>
-        </div>
+                    <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
+                    <%= f.label "Course Code",  id: 'create_ccode' %>
+                    <%= f.text_field :ccode, id: 'create_ccode_field' %><br/>
+                    <%= f.label "Course Title",  id: 'create_ctitle' %>
+                    <%= f.text_field :ctitle,  id: 'create_ctitle_field' %><br/>
+                    <%= f.label :unit,  id: 'create_unit' %>
+                    <%= f.text_field :unit,  id: 'create_units_field' %><br/>
+                    <%= f.label :level,  id: 'create_level' %>
+                    <%= f.text_field :level,  id: 'create_level_field' %><br/>
+                    <%= f.label :semester,  id: 'create_semester' %>
+                    <%= f.text_field :semester,  id: 'create_semester_field' %><br/>
+                    <%= f.submit :create, id: 'create_course' %>
+                <% end %>
+
+            </div>
+        <div class = "col-t-2 col-d-2"></div>
     </div>
+</div>

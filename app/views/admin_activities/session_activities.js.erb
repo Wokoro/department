@@ -1,0 +1,146 @@
+var json_data;
+	var ajaxR = get_time_table();
+	 ajaxR.done(function(data){
+	 	json_data = data;
+	 });
+
+$("#page-inner").html("<%= j render 'session_activities'%>");
+$(".table_input").each(function(index){
+	$(this).attr("maxlength","14");
+});
+focusImplementation();
+
+ //THIS IS THE END OF THE "focusout" function
+
+$(".week_days > div").click(function(){
+	var append_elem = document.getElementsByTagName("tr");
+	var div = $(this);
+
+	var str_append = genTableData(div);
+	
+	for(var i=append_elem.length-2; i>=1; i--){
+		append_elem.item(i).nextElementSibling.remove();
+	}
+
+	var append_elem = $("#courses_body").append(str_append);
+	$(".table_input").each(function(index){$(this).attr("maxlength","14");});
+	focusImplementation();
+});
+
+function genTableData(div){
+	var json_data;
+	var ajaxR = get_time_table();
+	 ajaxR.done(function(data){
+	 	json_data = data;
+	 });
+	var div_name = div.attr("id");
+	var query_name=div_name.substr(0,3);
+	var return_string = "";
+	var row_count = -1;
+	for(var tr=0; tr<5; tr++){
+		return_string += "<tr>";
+		row_count+=1;
+		var temp;
+		if(tr==0){
+			return_string += "<th rowspan=\"5\">"+div_name+"</th>";
+			for(var td=1; td<=5; td++){
+				var temp = json_data[query_name][td][tr];
+				
+				return_string += "<td><input class=\"table_input\" id="+"\""+ div_name +"_"+td+"_"+row_count+"\""+" value=\" "+temp+"\" type=\"text\" /></td>";
+			}
+		}else{
+			for(var td=1; td<=5; td++){
+				var temp = json_data[query_name][td][tr].toString();
+				
+				return_string += "<td><input class=\"table_input\" id="+"\""+ div_name +"_"+td+"_"+row_count+"\""+" value=\" "+temp+"\" type=\"text\" /></td>";
+			}
+		}
+		return_string += "</tr>";
+	}
+	return return_string;
+}
+
+
+function focusImplementation(){
+	//var time_table_json = returnJSONData();
+	$(".table_input").focusout(function() {
+
+	var value = $(this).val();
+	var query = $.trim(value);
+	var element = $(this);
+	var elem_id = element.attr("id");
+	var day = elem_id.substr(0,3);
+	var array = elem_id.split('_');
+
+	var period = array[1];
+	var row = array[2];
+
+	
+		var query = query.substr(0,6);
+		checkcode(query, value, element, day, period, row);
+	
+		//set_time_table(day, period, row);
+	 //THIS IS THE END OF THE "if" STATEMENT
+
+  });
+	
+$(".table_input").focusin(function() {
+	var $elem = $(this);
+	$elem.css("border","0px")
+	var $elem_val = $elem.val();
+});	
+}
+
+function set_time_table(value, day, period, row){
+	
+	$.ajax({
+			headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+			url: '/settimetable',
+			type: 'POST',
+			data: {"value": value, "day": day, "period": period, "row":row},
+			error: function(data, status, xhr){
+				alert("An error occured");
+				alert(data);
+			},
+			success: function (data, status, xhr) {}// success callback function
+	});
+}
+
+function get_time_table(){
+	return $.ajax({
+			headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+			url: '/gettimetable.json',
+			async:false,
+			type: 'GET'
+	});
+}
+
+function checkcode(query, value, element, day, period, row){
+	if(query==""){
+		set_time_table(value, day, period, row);
+		element.css("border","0px");
+	}else{
+		$.ajax(
+				{	
+					headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+					url: '/query_code.json',
+					type: 'POST',
+					data: {"query" : query},
+					error: function (data, status, xhr){
+						
+					},
+		            success: function (data, status, xhr) {// success callback function
+		            	
+		            	if(data){
+		                  	element.css("border","0px");
+		                  	set_time_table(value, day, period, row);
+		                  	element.css("border","0px");
+		                  }else{
+		                  	element.css("border","1px solid red");	                  	
+		                  }
+		            }
+	    		}
+	    	);
+	}
+	
+}//THIS IS THE END OF THE ".ajax()" function

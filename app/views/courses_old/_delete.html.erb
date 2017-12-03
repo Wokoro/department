@@ -1,0 +1,38 @@
+<div id ="delete_course_option" class="course_option" data-class="remove">
+    <!-- form for course creation-->
+    <div class = "row">
+        <div class = "col-t-2 col-d-2"></div>
+            <div class = "col-t-8 col-d-8 ">
+                <div class = "handle white_bg">
+                <h4>Course Details</h4>
+                <table>
+                    <tr>
+                        <td>Course Code</td><td id="course_code"></td>
+                    </tr>
+                    <tr>
+                        <td>Course Title</td><td id="course_title"></td>
+                    </tr>
+                    <tr>
+                        <td>Course Level</td><td id="course_level"></td>
+                    </tr>
+                    <tr>
+                        <td>Course Units</td><td id="course_unit"></td>
+                    </tr>
+                    <tr>
+                        <td>Semester</td><td id="course_semester"></td>
+                    </tr>
+                </table>
+
+                <%= form_for :delete_course, url:delete_course_path, remote:true do|f| %>
+                    <%= f.hidden_field :ccode, id:'delete_ccode_field' %>
+                    <%= f.submit :Delete, confirm:"Are you sure?" %>
+                <% end %>
+                <%= form_for :delete_course, url:delete_course_path, remote:true do|f| %>
+                    <%= f.hidden_field :ccode, id:'cancel_ccode_field' %>
+                    <%= f.submit :Cancel %>
+                <% end %>
+            </div>
+            </div>
+        <div class = "col-t-2 col-d-2"></div>
+    </div>
+</div>

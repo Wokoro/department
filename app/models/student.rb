@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-	
+
 	has_one :student_othername, dependent: :destroy
 	
 	has_many :registrations, dependent: :destroy
@@ -21,4 +21,7 @@ class Student < ApplicationRecord
 	validates :state_of_origin, presence: true, format: {with: VALID_STRING_ONLY}
 	validates :nationality, presence: true, format: {with: VALID_STRING_ONLY}
 	validates :religion, presence: true, format: {with: VALID_STRING_ONLY}
+	def user_type
+		return 0
+	end
 end

@@ -1,14 +1,15 @@
-$("#page-inner").html("<%= j render 'course' %>");
 
-$("#page-inner").append("<%= j render 'course_menu' %>");
-$("#page-inner").append("<%= j render 'course_operations' %>");
+$("#page-inner").html("<%= j render "course_menu" %>");
+$("#page-inner").append("<%= j render "course_operations" %>");
+$("#page-inner").append("<%= j render "course_operations_old" %>");
+$("#page-inner").append("<%= j render 'course_menu_old' %>");
+$("#table_for_courses").html(generateCoursesTable());
+trig_course_edit();
+
 var modalHolder = $('.my-modal');
-	var createModal = $('#create_modal');
+	var createModal = $('#create_course');
 	var editModal = $('#edit_modal');
 	var deleteModal = $('#delete_modal');
-
-
-
 
 
 	// Get the buttons that opens the modals
@@ -19,30 +20,105 @@ var modalHolder = $('.my-modal');
 	// Get the <span> element that closes the modals
 	var modalCloseBtn = $(".close");
 
+
+	
+	$("#search_course").keyup(function(){
+		if($(this).val() != ""){
+			$("#search_submit").click();
+		}
+		else{
+			$("#table_for_courses").html(generateCoursesTable());
+		}
+	});
+
+	
+$("#edit_course_form_fields").click(function(){
+	$(this).css("display", "none");
+	$("#course_lecturer0").css("display", "none");
+	$("#edit_course_button").css("display","inline-block");
+	$(":text").removeAttr("disabled");
+	$("#cancel_edit_course_form").text("Cancel");
+	$("#delete_course_form_fields").css("display","none");
+	$("#edit_course_course_lecturer").css("display", "inline-block");
+	$("#edit_lect_field").css("display", "none");
+	
+});
+
+
+$("#edit_course_button").click(function(event){
+	$(this).parent().attr("action", "/update_course");
+	
+	$("#edit_lec").css("display", "none");
+});
+
+$("#delete_course_form_fields").click(function(event){
+	$(this).parent().attr("action", "/delete_course");
+});
+
+
+
+//USER DEFINED FUNCTIONS
+
+//this function is duplicated, on in create and one in delete
+function generateCoursesTable(){
+		<% @courses = Course.all %>
+		return '<table class="table table-striped table-bordered table-hover" id="courses"><tr><th>S/N</th><th>Course Code</th><th>Course Title</th><th>Units</th><th>Level</th><th>Semester</th><th>Allocated Lecturer</th></tr><% @counter = 1 %><% @courses.each do|course| %><tr class="course_details" id="<%= course.id %>"><td><%= @counter %></td><td><%= course.ccode %></td><td><%= course.ctitle %></td><td> <%=course.units %></td><td><%= course.level %></td><td><%= course.semester %></td><td><%= !course.lecturers.empty? ? "#{course.lecturers.first.sname} #{course.lecturers.first.fname}" : "No Lecturer" %></td></tr><% @counter +=1 %><% end %></table>';
+}
+
+$("#edit_course_course_lecturer > option").each(function(){
+	if($(this).val() == 1){
+		//$(this).arrt("selected", "true");
+	}
+});
+
+
+
+
+
+
+
+//display course details when a row is clicked
+function trig_course_edit(){
+	//this is a duplicated function, a copy is in create.js.erb
+	$("tr").click(function(){
+		<% @courses.each do|course| %>
+			if (this.id == "<%= course.id %>"){
+				$("#edit_id_field").val("<%= course.id %>");
+				$("#edit_ccode_field").val("<%= course.ccode %>");
+				$("#edit_ctitle_field").val("<%= course.ctitle %>");
+				$("#edit_units_field").val("<%= course.units %>");
+				$("#edit_level_field").val("<%= course.level %>");
+				$("#edit_semester_field").val("<%= course.semester %>");
+				$("#course_lecturer0").html("<%= course.lecturers.first ? "#{course.lecturers.first.sname} #{course.lecturers.first.fname}" : 'No Lecturer' %>");
+				$("#edit_lga_field").val("<%=  %>");
+				$(":text").attr("disabled","true");
+				$("#edit_course_course_lecturer").css("display", "none");
+				$("#edit_course_form_fields").css("display","inline-block");
+				$("#edit_course_button").css("display","none");
+				$("#edit_password_field").css("display","none");
+				$("#edit_cont1").css("display", "block");
+				$("#edit_course_course_lecturer").prepend("<option value=''>No Lecturer</option>");
+			}
+
+		<% end %>
+	});
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////// 		Samuel course scripts		/////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////	
+
 	createBtn.click(function(){
-		modalHolder.css("display", "block");
+		//modalHolder.css("display", "block");
 		createModal.css("display", "block");
-		editModal.css("display", "none");
-		deleteModal.css("display", "none");
+		//editModal.css("display", "none");
+		$(":text").removeAttr("disabled");
+		$(".error").each(function(){$(this).css("display","none");});
 	});
 
-	editBtn.click(function(){
-		modalHolder.css("display", "block");
-		editModal.css("display", "block");
-		createModal.css("display", "none");
-		deleteModal.css("display", "none");
-	});
-
-	deleteBtn.click(function(){
-		modalHolder.css("display", "block");
-		deleteModal.css("display", "block");
-		editModal.css("display", "none");
-		createModal.css("display", "none");
-	});
-	// When the user clicks on <span> (x), close the modal
+	
 	modalCloseBtn.click(function(){
-		deleteModal.css("display", "none");
-		editModal.css("display", "none");
-		createModal.css("display", "none");
+		editModal.css("display", "block");
 		modalHolder.css("display", "none");
-	});
+	});    

@@ -1,8 +1,16 @@
 class AssignmentsController < ApplicationController
 # na wa
 	def index
-		lecture = current_lecturer
-		@courses = lecture.courses
+		lecturer = current_lecturer
+		if(lecturer.nil?)
+			flash[:message] = "YOU MUST BE A LOGGED IN USER"
+			redirect_to user_login_path
+		else
+		@courses = lecturer.courses
+		if(@courses.empty?)
+			flash[:notice] = "NO COURSE IS BEEN ASSIGNED TO YOU"
+		end
+	end
 	end
 
 	def index2

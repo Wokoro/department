@@ -1,0 +1,19 @@
+$(function(){
+    <% if @course %>
+    alert("Course exist");
+        $("#find_course_option").fadeOut(500,function(){
+             $("#edit_modal_body").html("<%= j render 'edit' %>");
+                $('#old_ccode').val("<%= @course.ccode %>");
+                $('#edit_ccode_field').val("<%= @course.ccode %>");
+                $('#edit_ctitle_field').val("<%= @course.ctitle %>");
+                $('#edit_units_field').val("<%= @course.units %>");
+                $('#edit_level_field').val("<%= @course.level %>");
+                $('#edit_semester_field').val("<%= @course.semester %>");
+            });
+    <% else %>
+        alert("Course do not exist");
+        $("#find_course_option").fadeOut(500,function(){
+        $("#edit_modal_body").html("<%= j render 'error_edit' %>");
+        });
+    <% end %>
+});

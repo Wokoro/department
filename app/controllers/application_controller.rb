@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   include AdminsessionsHelper
   include StudentsessionsHelper
   include LecturersessionsHelper
-
   include RegistrationsHelper
+  include ApplicationHelper
 end

@@ -1,46 +1,38 @@
-<div class="my-modal">
-    <div id = "create_modal" class="my-modal-content">
-        <div class="my-modal-header">
-          <span class="close">&times;</span>
-          <h2>CREATE NEW COURSE</h2>
-        </div>
-        <div id="create_modal_body" class="my-modal-body">
-            <div id ="create_course_option" class="course_option" data-class="display">
-            <div class = "row">
-                <div class = "col-t-2 col-d-2"></div>
-                    <div class = "col-t-8 col-d-8">
-                        <div class="handle white_bg">
-                            <% if flash[:success] %>
-                                <div class = 'success'><%= flash[:success] %></div>
-                            <% end %>
-                            <% if flash[:error] %>
-                                <div data-class="notice" class = 'error'></div>
-                            <% end %>
-                            <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
-                            <%= f.label :ccode,  id: 'create_ccode' %>
-                            <%= f.text_field :ccode, id: 'create_ccode_field', class: 'modal_inputs' %><br/>
-                            <%= f.label :ctitle,  id: 'create_ctitle' %>
-                            <%= f.text_field :ctitle,  id: 'create_ctitle_field', class: 'modal_inputs' %><br/>
-                            <%= f.label :unit,  id: 'create_unit' %>
-                            <%= f.text_field :unit,  id: 'create_units_field', class: 'modal_inputs' %><br/>
-                            <%= f.label :level,  id: 'create_level' %>
-                            <%= f.text_field :level,  id: 'create_level_field', class: 'modal_inputs' %><br/>
-                            <%= f.label :semester,  id: 'create_semester' %>
-                            <%= f.text_field :semester,  id: 'create_semester_field', class: 'modal_inputs' %><br/>
-                            <%= f.submit :create, id: 'create_course' %>
-                            <% end %>
+<div class="row">
+
+    <!-- Table for courses is placed in this div -->
+	<div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+								<%= form_for :search, remote: true, url:search_course_path, html:{id:"search_form"} do|f| %>
+                                search : 
+									<%= f.search_field :course %>
+									<%= f.submit :submit, style:"display:none", id:"search_submit" %>
+								<% end %>
+                            </div> 
+                            <div class="panel-body">
+							Click on any row to edit the course's details
+                                <div id="table_for_courses" class="table-responsive">
+                                    
+                                </div>                               
+                            </div>
                         </div>
+                    </div>
                 </div>
-            <div class = "col-t-2 col-d-2"></div>
-        </div>
-    </div>
-        </div>
-    </div>
-
-
-    <div id = "edit_modal" class="my-modal-content">
+                <!-- /. ROW  -->
+            </div>
+	
+	<!-- Course creation form -->
+	
+	
+	
+		
+	<div id="edit_cont1" class="my-modal">		
+		  <div id = "edit_modal" class="my-modal-content">
         <div class="my-modal-header">
-          <span class="close">&times;</span>
+         <span id="cancel_edit_lect" class="cancel_button" data-class="cancel_ref" data-ref = "edit_cont1">&times;</span>
           <h2>Edit Course</h2>
         </div>
         <div id = "edit_modal_body" class="my-modal-body">
@@ -49,17 +41,25 @@
                 <div class = "col-t-2 col-d-2"></div>
                     <div class = "col-t-8 col-d-8">
                             <div class="handle white_bg">
-                                <% if flash[:success] %>
-                                    <div class = 'success'><%= flash[:success] %></div>
-                                <% end %>
-                                <% if flash[:error] %>
-                                    <div class = 'error'><%= flash[:error] %></div>
-                                <% end %>
-                                <%= form_for :find_course, url:find_course_path, remote:true do|f| %>
-                                    <%= f.label :ccode,  id: 'find_ccode' %>
-                                    <%= f.text_field :ccode, id:'find_ccode_field' %><br/>
-                                    <%= f.submit :Find, id: 'find_course' %>
-                                <% end %>
+                                    <div id="edit_error" data-class="notice" class = "edit_error msg"></div>
+                            <%= form_for :edit_course, remote:true, html:{id:"edit_course_form"} do|f| %>
+							<%= f.hidden_field :id, id:"edit_id_field" %>
+                            <%= f.label "course_code",  id: 'edit_ccode' %>
+                            <%= f.text_field :ccode, id: 'edit_ccode_field', class:"edit_course_fields" %><br/>
+                            <%= f.label "Course_title",  id: 'edit_ctitle' %>
+                            <%= f.text_field :ctitle,  id: 'edit_ctitle_field', class:"edit_course_fields" %><br/>
+                            <%= f.label :"Units",  id: 'edit_units' %>
+                            <%= f.text_field :units,  id: 'edit_units_field', class:"edit_course_fields" %><br/>
+                            <%= f.label :"Level",  id: 'edit_level' %>
+                            <%= f.text_field :level,  id: 'edit_level_field', class:"edit_course_fields" %><br/>
+                            <%= f.label :semester,  id: 'semester' %>
+                            <%= f.text_field :semester,  id: 'edit_semester_field',class:"edit_course_fields" %><br/>                         
+                            <%= f.submit :finish, id: "edit_course_button" %>
+							<div id="edit_course_form_fields" class="button">Edit</div>
+							<%= f.submit :delete, id:"delete_course_form_fields", class:"button" %>
+							<div id="cancel_edit_course_form" class="button" data-class="cancel_ref" data-ref="edit_cont1">Cancel</div>
+						
+                        <% end %>
                             </div>
                     </div>
                 <div class = "col-2"></div>
@@ -67,39 +67,23 @@
             </div>
         </div>
       </div>
-
-
-
-    <div id = "delete_modal" class="my-modal-content">
-        <div class="my-modal-header">
-          <span class="close">&times;</span>
-          <h2>COURSE DELETE</h2>
-        </div>
-        <div class="my-modal-body">
-          <div class = "row">
-             <div id = "delete_modal_body" class="my-modal-body">
-        <div id = "delete_course_option" class="course_option" data-class="display">
-                <div class = "col-t-2 col-d-2"></div>
-                    <div class = "col-t-8 col-d-8">
-                            <div class="handle white_bg">
-                                <h4>Find Course</h4>
-                                <% if flash[:success] %>
-                                    <div class = 'success'><%= flash[:success] %></div>
-                                <% end %>
-                                <% if flash[:error] %>
-                                    <div class = 'error'><%= flash[:error] %></div>
-                                <% end %>
-                                <%= form_for :fnd_course, url:fnd_course_path, remote:true do|f| %>
-                                <%= f.label :ccode,  id: 'fnd_ccode' %>
-                                <%= f.text_field :ccode, id: 'fnd_ccode_field', placeholder: 'Enter course code ....'%><br/>
-                                <%= f.submit :find %>
-                                <% end %>
-                            </div>
-                    </div>
-                <div class = "col-2"></div>
-            </div>
-        </div>
     </div>
-        </div>
-      </div>
+    <!--END OF EDIT OPERATIONS -->
+	
+	<div id="alert-modal" class="my-modal">
+		<div class="alert-box">
+			<div class="alert-head">
+			 <span id="close-alerts" style="font-size: 18pt; margin-right: 8px;" class="cancel_button" data-class="cancel_ref" data-ref = "edit_cont1">&times;</span>
+			  <h4 id="alert-h-text" style="margin-top: 0px; text-align:center;">Success</h4>
+			</div>
+			<div id="alert-body" class="alert-body">
+				1 Student succefully added to the database
+			</div>
+			<div class="alert-footer">
+				<div id="close-alert">Close</div>
+			</div>
+		</div>
+	</div>
+
+ 
 </div>

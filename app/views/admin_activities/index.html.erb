@@ -1,4 +1,6 @@
  <% content_for :admin_header do %>
+ <head><%= csrf_meta_tag %><%= javascript_include_tag :defaults %></hed>
+ <!--/. NAV TOP  -->
     <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header ">
                 <a class="navbar-brand" href="">
@@ -29,24 +31,22 @@
 
     <div id="wrapper">
         
-        <!--/. NAV TOP  -->
+         <!-- /. NAV SIDE  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <div id = "navs" class="admin-nav">
-            <ul class="na">
-                <li class = "adminli" id = "dash"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Dashboard", admin_dashboard_path, remote:true %></li>
-                <li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%><%= link_to "Lecturer", admin_lecturer_path, remote:true %></li>
-                <li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%><%= link_to "Student", admin_student_path, remote:true %></li>
-                <li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Courses", admin_course_path, remote:true %></li>
-                <li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "News", admin_news_path, remote:true %></li>
-                <li class = "adminli" id = "session_act"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "Session Activities", admin_session_activities_path, remote:true %> </li>
-            </ul>
-        </div>
-
+                    <ul class="na">
+                        <li class = "adminli" id = "dash"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Dashboard", admin_dashboard_path, remote:true %></li>
+                        <li class = "adminli" id = "lect"><%= image_tag('navs/lecturer.svg', class: 'icon icon-img')%><%= link_to "Lecturer", admin_lecturer_path, remote:true %></li>
+                        <li class = "adminli" id = "stud"><%= image_tag('navs/student.svg', class: 'icon icon-img')%><%= link_to "Student", admin_student_path, remote:true %></li>
+                        <li class = "adminli" id = "cos"><%= image_tag('navs/course.svg', class: 'icon icon-img')%><%= link_to "Courses", admin_course_path, remote:true %></li>
+                        <li class = "adminli" id = "new"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "News", admin_news_path, remote:true %></li>
+                        <li class = "adminli" id = "session_act"><%= image_tag('navs/news.svg', class: 'icon icon-img')%><%= link_to "Session Activities", admin_session_activities_path, remote:true %> </li>
+                    </ul>
+                </div>
             </div>
-
         </nav>
-        <!-- /. NAV SIDE  -->
+       
       
         <div id="page-wrapper">          
             <div id="page-inner" class="myfade">
@@ -55,7 +55,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body easypiechart-panel">
                         <h4>No. of Visits</h4>
-                        <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">820</span>
+                        <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span style="font-size: 30pt;" class="percent"><%= Util.select("value").where("name = ?", "site_visits").first.value %></span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body easypiechart-panel">
                         <h4>Lecturers</h4>
-                        <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">400</span></div>
+                        <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span style="font-size: 30pt;" class="percent"><%= Lecturer.all.size %></span></div>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body easypiechart-panel">
                         <h4>Students</h4>
-                        <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">840</span></div>
+                        <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span style="font-size: 30pt;" class="percent"><%= Student.all.size %></span></div>
                     </div>
                 </div>
             </div>
@@ -80,44 +80,188 @@
                 <div class="panel panel-default">
                     <div class="panel-body easypiechart-panel">
                         <h4>Courses</h4>
-                        <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">460</span>
+                        <div class="easypiechart" id="easypiechart-red" data-percent="46"><span style="font-size: 30pt;" class="percent"><%= Course.all.size %></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div> 
-                
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 col-d-12">
-                    </div>
-                    <div class="col-md-4 col-sm-12 col-d-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Tasks Panel
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
+		
+		<div class="row">
+			<div class="col-md-4 col-sm-12 col-d-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Student Statistics
+					</div>
+					<div class="panel-body">
+						Students(%)
+						<div id="chart-container" >
+							<div class="chart" id="100-level-chart">
+								<div class="bar" id="100-level-bar">
+								100 Level
+								</div>
+							</div>
+							
+							<div class="chart" id="200-level-chart">
+								<div class="bar" id="200-level-bar">
+								200 Level
+								</div>
+							</div>
+							
+							<div class="chart" id="300-level-chart">
+								<div class="bar" id="300-level-bar">
+								300 Level
+								</div>
+							</div>
+							
+							<div class="chart" id="400-level-chart">
+								<div class="bar" id="400-level-bar">
+								400 Level
+								</div>
+							</div>
+							
+							<div class="chart" id="500-level-chart">
+								<div class="bar" id="500-level-bar">
+								500 Level
+								</div>
+							</div>
+							
+							<div class="chart" id="spillover-chart">
+								<div class="bar" id="spillover-bar">
+								Spillover
+								</div>
+							</div>
+							
+						</div>
+						<div id="chart-caption" style="text-align:center; margin-top:4px; "> Level </div>
 
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">7 minutes ago</span>
-                                        <i class="fa fa-fw fa-comment"></i> Lecturer signed in
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">16 minutes ago</span>
-                                        <i class="fa fa-fw fa-truck"></i> New Lecturer created
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">36 minutes ago</span>
-                                        <i class="fa fa-fw fa-globe"></i> New Student created
-                                    </a>
-                                </div>
-                                <div class="text-right">
-                                    <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+						<div id="chart-caption" style="text-align:center; margin-top:7px; font-style: oblique;"> Bar Chart Showing Student Statistics </div>
+						
+						<hr/>
+						<div id="stat" class="list-group">
+						
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.all.size %></span>
+								 Total Number Of Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level = ?", "100").size %></span>
+								Number Of 100 Level Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level = ?", "200").size %></span>
+								Number Of 200 Level Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level = ?", "300").size %></span>
+								Number Of 300 Level Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level = ?", "400").size %></span>
+								Number Of 400 Level Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level = ?", "500").size %></span>
+								Number Of 500 Level Students
+							</a>
+							
+							<a href="#" class="list-group-item">
+								<span class="badge"><%= Student.where("level > ?", "500").size %></span>
+								Number Of Spillover Students
+							</a>
+							
+						</div>
+						
+					</div>
+				</div>				
+			</div>
+			
+			<div class="col-md-4 col-sm-12 col-d-4">
+				<div class="row">
+					<div class="col-md-4 col-sm-12 col-d-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								Courses Information
+							</div>
+							<div class="panel-body">
+								<div class="list-group">
+
+									<a href="#" class="list-group-item">
+										<span class="badge">7</span>
+										 Unallocated Courses
+									</a>
+									<a href="#" class="list-group-item">
+										<span class="badge">16</span>
+										Unallocated Lecturers
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col-md-4 col-sm-12 col-d-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								Session Information
+							</div>
+							<div class="panel-body">
+								<div class="list-group">
+
+									<a href="#" class="list-group-item">
+										<span class="badge"><%= Util.where("name = ?", "session").first.value %> </span>
+										 Current Session
+									</a>
+									<a href="#" class="list-group-item">
+										<span class="badge"><%= Util.where("name = ?", "registration").first.value == 1 ? "Open":"Closed" %></span>
+										Course Registration Portal
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+       
+		<div class="row">
+			<div class="col-md-4 col-sm-12 col-d-12">
+			</div>
+			<div class="col-md-4 col-sm-12 col-d-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Tasks Panel
+					</div>
+					<div class="panel-body">
+						<div class="list-group">
+
+							<a href="#" class="list-group-item">
+								<span class="badge">7 minutes ago</span>
+								<i class="fa fa-fw fa-comment"></i> Lecturer signed in
+							</a>
+							<a href="#" class="list-group-item">
+								<span class="badge">16 minutes ago</span>
+								<i class="fa fa-fw fa-truck"></i> New Lecturer created
+							</a>
+							<a href="#" class="list-group-item">
+								<span class="badge">36 minutes ago</span>
+								<i class="fa fa-fw fa-globe"></i> New Student created
+							</a>
+						</div>
+						<div class="text-right">
+							<a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
                 <!-- /. ROW  -->        
                 <footer>
 
@@ -133,3 +277,4 @@
         <div>
         </div>
     <% end %>
+	

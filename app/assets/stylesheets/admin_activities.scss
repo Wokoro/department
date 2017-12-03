@@ -1,3 +1,31 @@
 // Place all the styles related to the admin_activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.week_days{
+  text-align: center;
+  margin-bottom: 2%;
+}
+.week_days > div{
+  display: inline-block;
+  border-radius: 100px;
+  margin-right : 2%;
+  border: 1px solid #eaeaea;
+  padding: 3px;
+  width: 57px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.week_days > div:hover{
+  border-color: #aaa;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.05);
+}
+#courses_body > tr > td > input{
+  padding: 0px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+#courses_body > tr > td{
+  padding:0px;
+}

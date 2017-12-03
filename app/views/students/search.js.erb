@@ -1,0 +1,68 @@
+<% if @search_student.empty? %>
+	$("#table_for_students").html("<h3>No matches for "+"<%= @param %>"+"</h3>");
+<% else %>
+	$("#table_for_students").html(generateSearchStudentTable());
+<% end %>
+
+trig_student_edit();
+
+$("#search_student").keyup(function(){
+	if($(this).val() != ""){
+		$("#search_student_submit").click();
+	}
+	else{
+		$("#table_for_students").html(function(){
+			$("#table_for_students").html(generate100LevelStudentsTable());
+			$("#table_for_students").append(generate200LevelStudentsTable());
+			$("#table_for_students").append(generate300LevelStudentsTable());
+			$("#table_for_students").append(generate400LevelStudentsTable());
+			$("#table_for_students").append(generate500LevelStudentsTable());
+			$("#table_for_students").append(generateSpilloverStudentsTable());
+		});
+		trig_student_edit();
+		$("#100-level-tab-title").click();
+	}
+});
+
+$("#close-alert, #close-alerts").click(function(){
+	$("#alert-modal").css("display", "none");
+});
+
+
+	function generateSearchStudentTable(){
+		<% @students = @search_student %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 100level" id="students-100-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th><th>Level</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td><td><%= student.level %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+
+
+//these functions are duplicated, on in create and one in delete
+	function generate100LevelStudentsTable(){
+		<% @students = Student.where("level==?", 100) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 100level" id="students-100-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+
+	function generate200LevelStudentsTable(){
+		<% @students = Student.where("level==?", 200) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 200level" id="students-200-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+	
+	function generate300LevelStudentsTable(){
+		<% @students = Student.where("level==?", 300) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 300level" id="students-300-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+
+	function generate400LevelStudentsTable(){
+		<% @students = Student.where("level==?", 400) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 400level" id="students-400-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+
+
+	function generate500LevelStudentsTable(level){
+		<% @students = Student.where("level==?", 500) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content 500level" id="students-500-level"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 
+
+	function generateSpilloverStudentsTable(level){
+		<% @students = Student.where("level>?", 500) %>
+		return '<table class="table table-striped table-bordered table-hover student-table tab-content spillover" id="students-spillover"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+	} 

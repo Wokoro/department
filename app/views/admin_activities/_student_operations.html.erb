@@ -1,0 +1,164 @@
+<div class="row">
+    <div class="col-t-4 col-d-4"><button id="activate_create_student_modal" onclick="createUser();">Create Single</button></div>
+    <div class="col-t-4 col-d-4"><button id="activate_student_multiple">Create Multiple From File</button></div>
+	<%= link_to "Print generated Passwords", print_student_password_path, target:"_blank" %>
+</div>
+
+<ul id="tabs" class="nav-list tabs">
+	<li class="tab-title" style="background-color:white" id="100-level-tab-title" onclick="activateTab(this)">100 Level</li>
+	<li class="tab-title" id="200-level-tab-title" id="200-level-tab-title" onclick="activateTab(this)">200 Level</li>
+	<li class="tab-title" id="300-level-tab-title" id="300-level-tab-title" onclick="activateTab(this)">300 Level</li>
+	<li class="tab-title" id="400-level-tab-title" id="400-level-tab-title" onclick="activateTab(this)">400 Level</li>
+	<li class="tab-title" id="500-level-tab-title" id="500-level-tab-title" onclick="activateTab(this)">500 Level</li>
+	<li class="tab-title" id="spillover-tab-title"  id="spillover-tab-title" onclick="activateTab(this)">Spillover</li>
+</ul>
+
+<!--CREATE OPERATIONS -->
+<div class="row">
+    <div id="create_cont" class="my-modal">
+        <div id ="create_student_option" class="student_option" data-class="disply">
+            <!-- form for student creation-->
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8 modal-content zoom-in">
+						<span id="cancel_create_lect" class="cancel_button" data-class="cancel_ref" data-ref = "create_cont">&times;</span>
+                        <h4>CREATE NEW student</h4>
+                            <div id="create_error" data-class="notice" class = "create_error msg"></div>
+                            <%= form_for :create_student, url:create_student_path, remote:true, html:{id:"create_student_form"} do|f| %>
+                            <%= f.label "Mat. No.",  id: 'create_mat_no' %>
+                            <%= f.text_field :matno, id: 'create_mat_no_field' %><br/>
+                            <%= f.label "Surname",  id: 'create_sname' %>
+                            <%= f.text_field :sname,  id: 'create_sname_field' %><br/>
+                            <%= f.label :"First Name",  id: 'create_fname' %>
+                            <%= f.text_field :fname,  id: 'create_fname_field' %><br/>
+                            <%= f.label :"Other Names",  id: 'create_other_names' %>
+                            <%= f.text_field :othernames,  id: 'create_other_names_field' %><br/>
+                            <%= f.label :sex,  id: 'create_sex' %>
+                            <%= f.text_field :sex,  id: 'create_sex_field' %><br/>
+                            <%= f.label :nationality,  id: 'create_nationality' %>
+                            <%= f.text_field :nationality,  id: 'create_nationality_field' %><br/>
+                            <%= f.label :"State Of Origin",  id: 'create_state_of_origin' %>
+                            <%= f.text_field :state_of_origin,  id: 'create_state_of_origin_field' %><br/>
+                            <%= f.label :"LGA",  id: 'create_lga' %>
+                            <%= f.text_field :lga,  id: 'create_lga_field' %><br/>
+                            <%= f.label :religion,  id: 'create_religion' %>
+                            <%= f.text_field :religion,  id: 'create_religion_field' %><br/>
+                            <%= f.label :email,  id: 'create_email' %>
+                            <%= f.text_field :email,  id: 'create_email_field' %><br/>
+                            <%= f.label :phone,  id: 'create_phone' %>
+                            <%= f.text_field :phone,  id: 'create_phone_field' %><br/>
+                            <%= f.label :level,  id: 'create_level' %>
+                            <%= f.text_field :level,  id: 'create_level_field' %><br/>
+                            <%= f.submit :create, id: 'create_student' %><div id="cancel_create_lect_form" class="button" data-class="cancel_ref" data-ref="create_cont">Cancel</div>
+                        <% end %>
+                    </div>
+                <div class = "col-t-2 col-d-2"></div>
+            </div>
+        </div>
+    </div>
+	
+    <!--END OF CREATE OPERATIONS -->
+
+    <!--EDIT OPERATIONS -->
+   	
+    <!-- Table for courses is placed in this div -->
+	<div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <%= form_for :search, remote: true, url: search_student_path, html:{id:"search_form"} do|f| %>
+                                search : 
+									<%= f.search_field :student %>
+									<%= f.submit :submit, style:"display:none", id:"search_submit" %>
+								<% end %>
+                            </div> 
+                            <div class="panel-body">
+							Click on any row to edit the student's details
+                                <div id="table_for_students" class="table-responsive">
+                                    
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+            </div>	
+	
+	
+	
+	<div id="edit_cont1" class="my-modal">		
+		  <div id = "edit_modal" class="my-modal-content">
+        <div class="my-modal-header">
+         <span id="cancel_edit_lect" class="cancel_button" data-class="cancel_ref" data-ref = "edit_cont1">&times;</span>
+          <h2>Student Info</h2>
+        </div>
+        <div id = "edit_modal_body" class="my-modal-body">
+        <div id = "find_course_option" class="course_option" data-class="display">
+           <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+								<div id="edit_error" data-class="notice" class = "edit_error msg">Hello error</div>
+								<%= form_for :edit_student, url:edit_student_path, remote:true, html:{id:"edit_student_form"} do|f| %>
+								<%= f.hidden_field :id, id: "edit_id_field" %>
+								<%= f.label "Mat. No.",  id: 'edit_mat_no' %>
+								<%= f.text_field :matno, id: "edit_mat_no_field" %><br/>
+								<%= f.label "Surname",  id: 'edit_sname' %>
+								<%= f.text_field :sname,  id: 'edit_sname_field' %><br/>
+								<%= f.label :"First Name",  id: 'edit_fname' %>
+								<%= f.text_field :fname,  id: 'edit_fname_field' %><br/>
+								<%= f.label :"Other Names",  id: 'edit_other_names' %>
+								<%= f.text_field :othernames,  id: 'edit_othernames_field' %><br/>
+								<%= f.label :sex,  id: 'edit_sex' %>
+								<%= f.text_field :sex,  id: 'edit_sex_field' %><br/>
+								<%= f.label :nationality,  id: 'edit_nationality' %>
+								<%= f.text_field :nationality,  id: 'edit_nationality_field' %><br/>
+								<%= f.label :"State Of Origin",  id: 'edit_state_of_origin' %>
+								<%= f.text_field :state_of_origin,  id: 'edit_state_of_origin_field' %><br/>
+								<%= f.label :"LGA",  id: 'edit_lga' %>
+								<%= f.text_field :lga,  id: 'edit_lga_field' %><br/>
+								<%= f.label :religion,  id: 'edit_religion' %>
+								<%= f.text_field :religion,  id: 'edit_religion_field' %><br/>
+								<%= f.label :email,  id: 'edit_email' %>
+								<%= f.text_field :email,  id: 'edit_email_field' %><br/>
+								<%= f.label :phone,  id: 'edit_phone' %>
+								<%= f.text_field :phone,  id: 'edit_phone_field' %><br/>
+								<%= f.label :level,  id: 'edit_level' %>
+								<%= f.text_field :level,  id: 'edit_level_field' %><br/>
+								<%= f.submit :finish, id: "edit_student_button" %>
+								<div id="edit_student_form_fields" class="button">Edit</div>
+								<%= f.submit :delete, id:"delete_student_form_fields", class:"button" %>
+								<div id="cancel_edit_lect_form" class="button" data-class="cancel_ref" data-ref="edit_cont1">Ok</div>
+							
+								<% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--END OF EDIT OPERATIONS -->	
+	
+	
+	<div id="alert-modal" class="my-modal">
+		<div class="alert-box">
+			<div class="alert-head">
+			 <span id="close-alerts" style="font-size: 18pt; margin-right: 8px;" class="cancel_button" data-class="cancel_ref" data-ref = "edit_cont1">&times;</span>
+			  <h4 id="alert-h-text" style="margin-top: 0px; text-align:center;">Success</h4>
+			</div>
+			<div id="alert-body" class="alert-body">
+				1 Student succefully added to the database
+			</div>
+			<div class="alert-footer">
+				<div id="close-alert">Close</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+</div>

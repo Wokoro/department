@@ -1,0 +1,66 @@
+
+$(document).ready(function(){
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////    Note!!!! Ajax was done with rails helpers ie, setting remote to true    //////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+	
+	$("body").click(function(event){
+         var x = event.target.id;
+         var data = $("#"+x).attr("data-class");
+         if (data && data == "cancel_ref"){
+			var ref = $("#"+x).attr("data-ref");
+            $("#"+ref).css("display", "none");
+			
+			$("#delete_lecturer_form_fields").css("display", "inline-block");
+			$("#cancel_edit_lect_form").text("Ok");
+			$("#edit_lecturer_form_fields").css("display", "inline");
+			$('input[id*="elete_"]').css("display", "inline-block");
+			$("#edit_lect_field").css("display", "inline-block");
+			$("#edit_error").html("");
+			$("#course_lecturer0").css("display", "inline-block");
+         }
+     });
+
+	 
+	$("#edit_course_button").click(function(event){
+		$(this).parent().attr("action", "/update_course");
+		$("#edit_lec").css("display", "none");
+	});
+
+	$("#delete_course_form_fields").click(function(event){
+		$(this).parent().attr("action", "/delete_course");
+	});
+	
+	
+	
+	var totalstudents = "<%= Student.all.size %>";
+	var level100students = "<%= Student.where("level = ?", "100").size %>"
+	var level200students = "<%= Student.where("level = ?", "200").size %>"
+	var level300students = "<%= Student.where("level = ?", "300").size %>"
+	var level400students = "<%= Student.where("level = ?", "400").size %>"
+	var level500students = "<%= Student.where("level = ?", "500").size %>"
+	var spilloverstudents = "<%= Student.where("level > ?", "500").size %>"
+	
+	$("#spillover-bar").css("height", ""+spilloverstudents/totalstudents*100+"%");
+ 	$("#100-level-bar").css("height", ""+level100students/totalstudents*100+"%");
+	$("#200-level-bar").css("height", ""+level200students/totalstudents*100+"%");
+	$("#300-level-bar").css("height", ""+level300students/totalstudents*100+"%");
+	$("#400-level-bar").css("height", ""+level400students/totalstudents*100+"%");
+	$("#500-level-bar").css("height", ""+level500students/totalstudents*100+"%");
+
+	 	
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////   User defined functions  //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function createUser(){
+	$("input[type=text]").each(function(){$(this).val("")});
+	$("#create_cont").css("display", "block");
+	$(":text").removeAttr("disabled");
+	$("#edit_error, #create_error").text("");
+	
+}
+

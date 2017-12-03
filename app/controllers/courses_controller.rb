@@ -1,36 +1,17 @@
 class CoursesController < ApplicationController
-  def index
-  end
 
-  def show
-  end
-
-  def edit
-    @course = Course.find_by(ccode: params[:find_course][:ccode])
-    if !@course
-        flash.now[:error] = "This course does not exit"
-    end
-    respond_to do|format|
-        format.js
-    end
-  end
-
-  def show_del
-    @course = Course.find_by(ccode: params[:fnd_course][:ccode])
-    if !@course
-        flash.now[:error] = "Course Does not exist"
-    end
-    respond_to do|format|
-        format.js
-    end
+  def search
+	@param = params[:search][:course]
+	@search_courses = Course.where("ccode LIKE ? OR ctitle LIKE ?", "%"+@param+"%", "%"+@param+"%");
+	respond_to do|format|
+		format.js
+	end
   end
 
   def delete
-    @course = Course.find_by(ccode: params[:delete_course][:ccode])
-    @val = nil
+    @course = Course.find_by(id: params[:edit_course][:id])
     if @course
         @val = @course.destroy!
-        flash.now[:success] = "Course Deleted"
     end
     respond_to do|format|
         format.js
@@ -38,51 +19,84 @@ class CoursesController < ApplicationController
   end
 
   def update
-    cc = params[:edit_course][:ccode]
-    ct = params[:edit_course][:ctitle]
-    cs = params[:edit_course][:semester]
-    cu = params[:edit_course][:unit]
-    cl = params[:edit_course][:level]
-    @course = Course.find_by(ccode: params[:edit_course][:old_ccode])
-    @params = {ccode:cc, ctitle:ct, units:cu, level:cl, semester:cs}
-    @course = @course.update! @params
-    flash.now[:success] = "Update Successful"
-    respond_to do|format|
-        format.js
-    end
+	@course = Course.find_by(id:params[:edit_course][:id])	
+	@course.update(edit_course_params)	
+	respond_to do|format|
+		format.js
+		format.html
+	end
+	@courses = Course.all
+	@lecturers = Lecturer.all
   end
 
   def create
-    cc = params[:create_course][:ccode]
-    ct = params[:create_course][:ctitle]
-    cs = params[:create_course][:semester]
-    cu = params[:create_course][:unit]
-    cl = params[:create_course][:level]
+	@course = Course.new 
+	@course_code = params[:code]
+	@course_title = params[:title]
+	@course_unit = params[:units]
+	@course_semest = params[:semester]
+	@course_level = params[:level]
+	@course_status = params[:status]
+	@courses = Hash.new
+	@course_code.each do|key, value|
+		num = (key.slice(key.length-1)).to_i
+		course = Course.new
+		course.ccode = value
+		course.ctitle = @course_title["ctitle#{num}"]
+		course.units = @course_unit["units#{num}"]
+		course.semester = @course_semest["semester#{num}"]
+		course.level = @course_level["level#{num}"]
+		course.status = @course_status["status#{num}"]
+		@courses["index#{num}"] = course
+	end
+	
+	@invalid_courses = Hash.new
+	@courses.each do|key, value|
+		if !value.valid?
+			num = (key.slice(key.length-1)).to_i
+			array = Array.new
+			if !value.errors[:ccode].empty?
+				array.push "Course Code"
+			end
+			if !value.errors[:ctitle].empty?
+				array.push "Course Title"
+			end
+			if !value.errors[:units].empty?
+				array.push "Units"
+			end
+			if !value.errors[:level].empty?
+				array.push "Level"
+			end
+			if !value.errors[:semester].empty?
+				array.push "Semester"
+			end
+			if !value.errors[:status].empty?
+				array.push "Status"
+			end
+			@invalid_courses[num] = array
+		end
+	end
+	
+	if @invalid_courses.empty?
+		@courses.each do|key, value|
+			value.save
+		end
+	end
+	
+	
+	respond_to do|format|
+		format.html
+		format.js
+	end
+	@courses = Course.all
+	@lecturers = Lecturer.all
+  end
+  
 
-    @course = Course.find_by(ccode: cc)
-    if @course
-        flash.now[:error] = "This course already exists"
-     else
-        @params = {ccode:cc, ctitle:ct, units:cu, level:cl, semester:cs}
-        test = cc.blank? || ct.blank? || cs.blank? || cu.blank? || cl.blank?
-        if test
-            flash.now[:error] = "All fields must be filled"
-        else
-            @course = Course.create! @params
-            flash.now[:error] = "creation Successful"
-        end
-     end
-    respond_to do|format|
-        format.js
-    end
+  def edit_course_params
+    params.require(:edit_course).permit(:id, :ccode, :ctitle, :units, :level, :semester)
   end
 
 end
 
-def course_create_params
-    params.require(:create_course).allow(:ccode, :ctitle, :unit, :semester, :level)
-end
 
-def delete_course course
-    return course.destroy
-end

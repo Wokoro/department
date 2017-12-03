@@ -1,0 +1,63 @@
+<div id="create_course" class="my-modal">
+    <div id = "create_modal" class="my-modal-content">
+        <div class="my-modal-header">
+          <span id="cancel_create_course" class="close cancel_button" data-class="cancel_ref" data-ref = "create_cont">&times;</span>
+          <h2>CREATE NEW COURSE</h2>
+        </div>
+        <div id="create_modal_body" class="my-modal-body">
+            <div id ="create_course_option" class="course_option" data-class="display">
+				<div class = "myrow">
+                    <div class = "col-t-12 col-d-12 no-padding">
+                        <div class="handle white_bg">
+                            <% if flash[:success] %>
+                                <div class = 'success'><%= flash[:success] %></div>
+                            <% end %>
+                            <% if flash[:error] %>
+                                <div data-class="notice" class = 'error'></div>
+                            <% end %>
+                            <%= form_for :create_course,  url:create_course_path, remote:true, html: {id: "create_form"} do|f| %>
+							<div id="course-fields0" class="fields_div">
+								<span id="new-course-error0" class ='error'></span>
+								<%= f.label "Code : ",  id: 'create_ccode', class:"modal_label" %>
+								<%= fields_for :code do|fc| %>
+									<%= fc.text_field :ccode0, id: 'create_ccode_field', class: 'modal_inputs', maxlength: '7'%>
+								<% end %>
+								
+								
+								<%= f.label "Title : ",  id: 'create_ctitle', class:"modal_label" %>
+								<%= fields_for :title do|ft| %>
+									<%= ft.text_field :ctitle0,  id: 'create_ctitle_field', class: 'modal_inputs' %>
+								<% end %>
+
+								<%= f.label "Units : ",  id: 'create_unit', class:"modal_label" %>
+								<%= fields_for :units do|fu| %>
+									<%= fu.text_field :units0,  id: 'create_units_field', class: 'modal_inputs', maxlength: '2' %>
+								<% end %>
+								
+								<%= f.label "Level : ",  id: 'create_level', class:"modal_label" %>
+								<%= fields_for :level do|fs| %>
+									<%= fs.select :level0, ["100", "200", "300", "400", "500"], class: 'modal_inputs' %>
+								<% end %>
+
+								<%= f.label"Status : ",  id: 'create_status', class:"modal_label" %>
+								<%= fields_for :status do|fs| %>
+									<%= fs.select :status0, ["borrowed", "spill over", "elective"] %>
+								<% end %>
+
+								<%= f.label "Semester : ",  id: 'create_semester', class:"modal_label" %>
+								<%= fields_for :semester do|fs| %>
+									<%= fs.radio_button :semester0, "0",  class: 'modal_inputs' %><%= f.label "first", class: "status modal_label" %>
+									<%= fs.radio_button :semester0, "1", class: 'modal_inputs' %><%= f.label "second", class: "status modal_label" %><div id="addrow" class="custom_button", data-row="new_row", onclick="add()">+</div><div id="remrow" class="custom_button", data-row="del_row">-</div><br/>
+								<% end %>
+							</div>
+							<div id ="append">
+                            </div>
+
+                            <%= f.submit :create, id: 'create_course' %>
+                            <% end %>
+                        </div>
+                </div>
+        </div>
+    </div>
+        </div>
+</div>

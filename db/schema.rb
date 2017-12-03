@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826033239) do
+ActiveRecord::Schema.define(version: 20171124071827) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", default: "elect_elect_admin_name"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 20170826033239) do
     t.string  "ctitle",   null: false
     t.integer "units"
     t.integer "level",    null: false
+    t.integer "status",   null: false
     t.integer "semester", null: false
     t.index ["ccode"], name: "index_courses_on_ccode"
+    t.index ["status"], name: "index_courses_on_status"
   end
 
   create_table "lecturer_othernames", force: :cascade do |t|
@@ -75,21 +77,29 @@ ActiveRecord::Schema.define(version: 20170826033239) do
   end
 
   create_table "login_details", force: :cascade do |t|
-    t.string  "user_name"
-    t.integer "user_id",                     null: false
-    t.integer "user_type",                   null: false
-    t.integer "activation",      default: 0, null: false
-    t.string  "password_digest"
+    t.string  "user_name",              null: false
+    t.integer "user_id",                null: false
+    t.integer "user_type",              null: false
+    t.integer "activation", default: 0, null: false
+    t.string  "password"
     t.index ["user_id"], name: "index_login_details_on_user_id"
     t.index ["user_name"], name: "index_login_details_on_user_name"
   end
 
   create_table "news", force: :cascade do |t|
-    t.string "title"
-    t.text   "content"
-    t.string "year"
-    t.string "enc_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "year"
+    t.string   "enc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["enc_id"], name: "index_news_on_enc_id"
+  end
+
+  create_table "news_images", force: :cascade do |t|
+    t.integer "news_id"
+    t.string  "path"
+    t.index ["news_id"], name: "index_news_images_on_news_id"
   end
 
   create_table "registrations", force: :cascade do |t|

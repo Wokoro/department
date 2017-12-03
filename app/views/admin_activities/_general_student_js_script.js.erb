@@ -1,0 +1,39 @@
+function generate100LevelStudentsTable(){
+		return '<table id="lectrers"><tr><th>S/N</th><th>Mat. No.</th><th>Name</th><th>Sex</th><th>Nationality</th><th>State of Origin</th><th>L.G.A</th><th>E-mail</th><th>Phone Number</th></tr><% @counter = 1 %><% @_100_level_students.each do|student| %><tr class="student_details" id="<%= student.id %>"><td><%= @counter %></td><td><%= student.matno %></td><td><%= student.sname %> <%=student.fname %> <%= student.student_othername.othernames if student.student_othername %></td><td><%= student.sex %></td><td><%= student.nationality %></td><td><%= student.state_of_origin %></td><td><%= student.lga %></td><td><%= student.email %></td><td><%= student.phone %></td></tr><% @counter +=1 %><% end %></table>';
+}
+
+
+//display student details when a row is clicked
+function trig_student_edit(){
+	//this is a duplicated function, a copy is in create.js.erb
+	$("tr").click(function(){
+		var lec = {};
+		<% @students = Student.all %>
+		<% @students.each do|student| %>
+			if (this.id == "<%= student.id %>"){
+				$("#edit_id_field").val("<%= student.id %>");
+				$("#edit_mat_no_field").val("<%= student.matno %>");
+				$("#edit_sname_field").val("<%= student.sname %>");
+				$("#edit_fname_field").val("<%= student.fname %>");
+				$("#edit_sex_field").val("<%= student.sex %>");
+				$("#edit_state_of_origin_field").val("<%= student.state_of_origin %>");
+				$("#edit_lga_field").val("<%= student.lga %>");
+				$("#edit_nationality_field").val("<%= student.nationality %>");
+				$("#edit_religion_field").val("<%= student.religion %>");
+				$("#edit_email_field").val("<%= student.email %>");
+				$("#edit_phone_field").val("<%= student.phone %>");
+				$("#edit_othernames_field").val("<%= student.student_othername.othernames if student.student_othername %>");
+				$(":text").attr("disabled","true");
+				$("#edit_student_form_fields").css("display","inline-block");
+				$("#edit_student_button").css("display","none");
+				$("#edit_password_field").css("display","none");
+				$("#edit_cont1").css("display", "block");
+			}
+
+		<% end %>
+	});
+}
+
+function fill(){
+	alert("hello world");
+}

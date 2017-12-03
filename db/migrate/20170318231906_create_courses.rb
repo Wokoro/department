@@ -5,6 +5,7 @@ class CreateCourses < ActiveRecord::Migration[5.0]
     	t.string :ctitle, unique: true, null: false
     	t.integer :units
     	t.integer :level
+        t.integer :status, index: true, null: false
     	t.integer :semester, null: false
     	t.integer :level, null: false
     end

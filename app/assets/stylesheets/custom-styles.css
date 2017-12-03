@@ -87,6 +87,11 @@ position: fixed;
   top: 65px;
   padding-right: 5px;
 }
+.stud-navbar-side {
+  z-index: 1;
+  width: 260px;
+  padding-right: 5px;
+}
 #page-wrapper {
   position: relative;
   top: 55px;

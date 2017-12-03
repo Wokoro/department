@@ -1,0 +1,200 @@
+.msg{
+    display:none;
+    width: 100%;
+    color: white;
+}
+
+/* Add Zoom Animation */
+.zoom-in {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Modal Content/Box */
+.modal-content{
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    z-index:2;
+}
+
+.cancel_button{
+	cursor:pointer;
+	z-index:3;
+	float:right;
+	display:inline-block;
+	font-size:25pt;
+	font-weight: bolder;
+	&:hover{
+		color:red;
+	}
+}
+tr[class$="details"]:nth-child(even){
+	background-color:white;
+	cursor:pointer;
+	&:hover{
+		background-color: grey;
+	}
+}
+
+tr[class$="details"]:nth-child(odd){
+	background-color:#bababa;
+	cursor:pointer;
+	&:hover{
+		background-color: grey;
+	}
+}
+
+li[class='tab-title']{
+	display: inline-block;
+	width: 15%;
+	height: 20%;
+	font-size: 12pt;
+	border-radius: 10px 10px 0px 0px;
+	text-align: center;
+	background-color: gray;
+	font-weight: bolder;
+	&:hover{
+		background-color: #cccccc;
+		cursor:pointer;
+	}
+}
+
+.tab-content{
+	display:none;
+}
+
+#students-100-level{
+	display: inline-table;
+}
+
+.error{
+	display: block;
+	color:red;
+	font-size: 9pt;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+}
+
+label[class="modal_label"]{
+	margin-top: 0px;
+}
+
+.fields_div{
+	margin-bottom: 30px;
+}
+
+.chart{
+	display: inline-block;
+	margin: 0px 10px 0px 10px;
+	width: 11%;
+	position: relative;
+    height: 100%;
+    #background-color: #f2f2f2;
+}
+
+.bar{
+	margin: 0px;
+	background-color: slategrey;
+	position: absolute;
+    width: 100%;
+    height: 0%;
+    bottom:0;
+    color:white;
+    text-align:center;
+	-webkit-transition: height 2s; /* For Safari 3.1 to 6.0 */
+    transition: height 2s;
+	-webkit-transition-timing-function: ease;
+	transition-timing-function: ease;
+}
+
+#chart-container{
+	height: 220px;
+	vertical-align: top;
+	border-bottom: 2px solid grey;
+	border-left: 2px solid grey;
+	width: 85%;
+	display: inline-block;
+	background-color: #f5f5f5;
+}
+
+#stat{
+	margin-top: 15px;
+}
+
+.chart-caption{
+	text-align: center;
+	margin-top:30px;
+	width:100%;
+}
+
+.percent{
+	font-size: 40px;
+}
+
+.news_content{
+	width: 100%;
+	height: 400px;
+}
+
+table[id~="students-"]{
+	border: none;
+}
+
+.alert-box{
+	width: 25%;
+	background-color: white;
+	position: absolute;
+	to: 100%;
+	left: 40%;
+	height: 150px;
+	box-shadow: 0px 0px 10px black;
+}
+
+.alert-head{
+	background-color: grey;
+	margin-to: 0px;
+	color: white;
+}
+
+.alert-footer{
+
+}
+
+.alert-body{
+	padding: 15px;
+	text-align: center;
+	min-height: 50%;
+}
+
+#close-alert{
+	border-radius: 4px;
+	background-color: #cccccc;
+	box-shadow: 0px 0px 5px black;
+	width: 20%;
+	padding: 5px;
+	text-align:center;
+	margin-right: 10px;
+	cursor: pointer;
+	position: relative;
+	left: 75%;
+}
+
+.console{
+	font-family: consolas;
+}
+.student_pass_name, .student_pass_uname, .student_pass_pass{
+	display: inline-block;
+	width: 120px;
+}

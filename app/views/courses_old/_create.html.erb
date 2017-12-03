@@ -1,0 +1,39 @@
+ <div id="create_modal_body" class="my-modal-body">
+            <div id ="create_course_option" class="course_option" data-class="display">
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                        <div class="handle white_bg">
+                            <% if flash[:success] %>
+                                <div class = 'success'><%= flash[:success] %></div>
+                            <% end %>
+                            <% if flash[:error] %>
+                                <div class = 'success'><%= flash[:error] %></div>
+                            <% end %>
+                            <%= form_for :create_course, url:create_course_path, remote:true do|f| %>
+                            <%= f.label :ccode,  id: 'create_ccode' %>
+                            <%= f.text_field :ccode, id: 'create_ccode_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.label :ctitle,  id: 'create_ctitle' %>
+                            <%= f.text_field :ctitle,  id: 'create_ctitle_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.label :unit,  id: 'create_unit' %>
+                            <%= f.text_field :unit,  id: 'create_units_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.label :level,  id: 'create_level' %>
+                            <%= f.text_field :level,  id: 'create_level_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.label :status,  id: 'create_status' %>
+                            <%= f.text_field :status,  id: 'create_status_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.label :semester,  id: 'create_semester' %>
+                            <%= f.text_field :semester,  id: 'create_semester_field', class: 'modal_inputs' %><br/>
+
+                            <%= f.submit :create, id: 'create_course' %>
+                            <% end %>
+                        </div>
+                </div>
+            <div class = "col-t-2 col-d-2"></div>
+        </div>
+    </div>
+        </div>

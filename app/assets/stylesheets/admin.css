@@ -97,7 +97,14 @@
 	padding-right: 10%;
 }
 .icon{
-	width: 25%;
+	width: 20%;
+}
+#addrow{
+  margin-left: 17px;
+}
+#remrow{
+  margin-left: 5px;
+  padding: 0px 8px;
 }
 img{
   display: inline;
@@ -106,18 +113,16 @@ img{
 	padding: 10px 10px 20px 10px;
 }
 #navs{
-padding-left: 20%;
+padding-left: 15%;
 }
 .handle{
 	padding-top: 30px;
-  width: 50%;
-  margin-left: 25%;
    height: 400px;
 }
 img{
 	padding:0px;
 }
-.adminli, .adminli a{
+ .adminli a{
 	color: #000000;
 	text-align: left;
 	width: 100%;
@@ -180,17 +185,28 @@ span{
   font-family: 'Roboto Slab', serif;
   text-align: center;
 }
+.dash-pane{
+  position: absolute !important;
+  top:257px !important;
+  left: 2% !important;
+  width: 80% !important;
+  height: 465px;
+}
 #session_act{
-  padding-bottom : 50px;
+  margin-bottom : 50px;
 }
 .adminli{
   color: white;
-  margin-top: 50px;
+  margin-top: 40px;
   list-style-type: none;
   text-align: left;
-  width: 80%;
+  width: 90%;
 }
-.adminli:hover{
+.adminli-modified{
+  margin-top: 30px;
+}
+
+.adminli li:hover{
   cursor: pointer;
   color: #cccccc;
 }

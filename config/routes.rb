@@ -19,19 +19,41 @@ Rails.application.routes.draw do
   get 'admin_activities/student'
 
   get 'admin_activities/session_activities'
+  
+  #routes for news
+  post '/create_news', to: 'news#create'
+  post '/search_news', to: 'news#search'
+  post '/delete_news', to: 'news#delete'
+  post '/update_news', to: 'news#update'
+  post '/preview_news', to: 'news#preview'
+  
+	
+  
+  #routes for lecturers 
+  post '/create_lecturer', to: 'lecturers#create'
+  post 'delete_lecturer', to: 'lecturers#delete'
+  post '/edit_lecturer', to: 'lecturers#update'
+  post '/search_lecturer', to: 'lecturers#search'
+  get '/print_lecturer_password', to: 'lecturers#print_passwords'
+  
+  #routes for students
+  post '/create_student', to: 'students#create'
+  post '/edit_student', to: 'students#update'
+  post '/delete_student', to: 'students#delete'
+  post '/search_student', to: 'students#search'
+  get '/print_student_password', to: 'students#print_passwords'
 
   #routes for courses
-  post '/find_course', to: 'courses#edit'
-  post '/edit_course', to: 'courses#edit'
+  post '/search_course', to: 'courses#search'
   post '/create_course', to: 'courses#create'
-  post '/fnd_course', to: 'courses#show_del'
   post '/update_course', to: 'courses#update'
   post '/delete_course', to: 'courses#delete'
 
   #routes for admin activities
+  post '/query_code', to: 'admin_activities#checkcode'
   get '/admin_index', to: 'admin_activities#index'
   get '/admin_dashboard', to: 'admin_activities#dashboard'
-  get '/admin_student', to: 'adimin_activities#student'
+  get '/admin_student', to: 'admin_activities#student'
   get '/admin_course', to: 'admin_activities#course'
   get '/admin_lecturer', to: 'admin_activities#lecturer'
   get '/admin_news', to: 'admin_activities#news'
@@ -68,7 +90,6 @@ Rails.application.routes.draw do
   
   #routes for student login
   #get '/student_login', to: 'studentsessions#new'
-  get '/student_notification', to: 'studentactivities#notification'
   #post '/student_login', to: 'studentsessions#create'
   delete '/student_logout', to: 'studentsessions#destroy'
 
@@ -97,8 +118,10 @@ Rails.application.routes.draw do
   get '/all_assign_courses', to: 'assignments#index2'
   post '/get_assignment', to: 'assignments#getassign'
 
-  #news routes
-  get '/add_news', to: 'news#new'
+  #routes for time table
+  post'/settimetable', to: 'admin_activities#set_time_table'
+  get'/gettimetable', to: 'admin_activities#get_time_table'
+
 
   resources :admins
   resources :lecturers

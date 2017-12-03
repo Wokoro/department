@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails',        '5.0.0.1'
 gem 'puma',         '3.4.0'
@@ -16,6 +16,8 @@ gem 'railroady'
 gem 'bundler', '~> 1.15', '>= 1.15.1'
 gem 'rubyzip', '>= 1.0.0'
 gem 'zip-zip'
+gem 'remotipart', '~> 1.3', '>= 1.3.1'
+gem 'traceroute'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'

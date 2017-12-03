@@ -1,66 +1,84 @@
 class LecturersController < ApplicationController
-
-	def new
-	    @lectuer = Lecturer.new()
-	end
-
-	def index
-	end
-
 	def create
-		path_to_profile_pic = "#{Rails.root}/profile_images/"
+	    @other_names = params[:create_lecturer][:othernames]
+	    @lecturer = Lecturer.new new_lecturer_params
+	    @lecturer_other_names = LecturerOthername.new othernames:@other_names
 
-		lect_phone_num = params[:lecturer][:phone_num]
-		lect_staff_id = params[:lecturer][:staff_id]
-		lect_fname = params[:lecturer][:fname]
-		lect_staff_id = params[:lecturer][:staff_id]
-		lect_sname = params[:lecturer][:sname]
-		lect_state_of_origin = params[:lecturer][:state_of_origin]
-		lect_lga = params[:lecturer][:lga]
-		lect_nationality = params[:lecturer][:nationality]
-		lect_religion = params[:lecturer][:religion]
-		lect_email = params[:lecturer][:email]
-		lect_sex = params[:lecturer][:sex].to_i
-		@lect_passport_file = params[:lecturer][:passport]
+	    if @lecturer.save
+			@password = gen_login_password @lecturer
+	        if !(@lecturer_other_names.blank?)
+				@lecturer_other_names.lecturer = @lecturer
+	            if !@lecturer_other_names.save
+					@student.destroy
+				end
+	        end
+	    end
+				
+	    respond_to do|format|
+	        format.html
+	        format.js
+	    end
+		@lecturers = Lecturer.all
+	end
+	
+	def update
+	    @other_names = params[:edit_lecturer][:othernames]
+	    @lecturer = Lecturer.find_by(id:params[:edit_lecturer][:id])
+	    @lecturer_other_names = @lecturer.lecturer_othername
 
-		if(@lect_passport_file)
-			@lect_passport_file_name = @lect_passport_file.original_filename
-			@file_extn = File.extname @lect_passport_file_name
-			@new_file_name = path_to_profile_pic+lect_staff_id.gsub('/', '_')+@file_extn
-		end
-		
-
-		@lecturer = Lecturer.new(staff_id: lect_staff_id, phone: lect_phone_num, fname: lect_fname, sname: lect_sname, state_of_origin: lect_state_of_origin, lga: lect_lga, nationality: lect_nationality, religion: lect_religion, email: lect_email, sex: lect_sex, passport: @new_file_name)
-		if @lecturer.save
-
-			@secure_login = gen_login_details(@lecturer.id, @lecturer.staff_id)
-
-			if(File.exist? @new_file_name)
-				File.delete @new_file_name
-				@file = File.new(@new_file_name,'w+b')
-				@file.write(@lect_passport_file.read)
-				@file.close
+	    if @lecturer.update(edit_lecturer_params) && !(@other_names.blank?)
+			if @lecturer_other_names.nil?
+				lecturer_othernames = LecturerOthername.new othernames:@other_names
+				lecturer_othernames.lecturer = @lecturer
+				lecturer_othernames.save
 			else
-				@file = File.new(@new_file_name,'w+b')
-				@file.write(@lect_passport_file.read)
-				@file.close
+				@lecturer_other_names.othernames = @other_names
+				@lecturer_other_names.save
 			end
-			render plain: "REGISTRATION SUCESSFULL YOUR DEFAULT PASSWORD IS : "+@secure_login
 		else
-			render plain: 'REGISTRATION FAILED'
+			if !@lecturer.lecturer_othername.nil?
+				@lecturer.lecturer_othername.destroy
+			end
+	    end
+		
+	    respond_to do|format|
+	        format.html
+	        format.js
+	    end
+		@lecturers = Lecturer.all
+	end
+	
+	
+	
+	def delete
+		@lecturer = Lecturer.find_by(id: params[:edit_lecturer][:id])
+		if @lecturer
+			@lecturer.destroy
+			respond_to do|format|
+				format.js
+			end
+		end
+		@lecturers = Lecturer.all
+	end
+	
+	def search
+		@param = params[:search][:lecturer]
+		@search_lecturers = Lecturer.where("phone LIKE ? OR email LIKE ? OR state_of_origin LIKE ? OR staff_id LIKE ? OR lga LIKE ? OR fname LIKE ? OR sname LIKE ?", "%"+@param+"%", "%"+@param+"%", "%"+@param+"%", "%"+@param+"%", "%"+@param+"%", "%"+@param+"%", "%"+@param+"%");
+		respond_to do|format|
+			format.js
 		end
 	end
-
-	def edit
+	
+	def print_passwords
+		@passwords = LoginDetail.select(:user_id, :password).where("user_type = ? AND activation = ?", 1, 0)
 	end
+end
 
-	private
-		def gen_login_details(lecturer_table_id, staff_id)
-			user_id = staff_id
-			user_type = 1
-			user_activation_status = 0
-			@user_password =  SecureRandom.hex(10)
-			login_detail = LoginDetail.create(user_id: lecturer_table_id, user_name: user_id, user_type: user_type, activation: user_activation_status, password: @user_password, password_confirmation: @user_password)
-			return @user_password
-		end
+ 
+def new_lecturer_params
+    params.require(:create_lecturer).permit(:staff_id, :sname, :fname, :sex, :state_of_origin, :lga, :nationality, :religion, :phone, :email)
+end
+
+def edit_lecturer_params
+    params.require(:edit_lecturer).permit(:id, :staff_id, :sname, :fname, :sex, :state_of_origin, :lga, :nationality, :religion, :phone, :email)
 end

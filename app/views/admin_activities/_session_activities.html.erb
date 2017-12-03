@@ -1,0 +1,80 @@
+                <div class="row">
+            <div class="col-d-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel custom-height">
+                        <div class="panel-heading">2012/2013</div>
+                        <div><input type="text"/><input type="text"/></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-d-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <div class="panel-heading">COURSE REGISTRATION STATUS</div>
+                        <div><input type="radio" name="reg_stat"/>ACTIVATE<input type="radio" name="reg_stat"/>DEACTIVATE</div>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-d-12">
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-d-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Course Allocation
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">7 minutes ago</span>
+                                        <i class="fa fa-fw fa-comment"></i> Lecturer signed in
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">16 minutes ago</span>
+                                        <i class="fa fa-fw fa-truck"></i> New Lecturer created
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">36 minutes ago</span>
+                                        <i class="fa fa-fw fa-globe"></i> New Student created
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                <div class="panel-body">
+                    <div  class="week_days">
+                        <h4>TIME TABLE</h4>
+                        <div id="monday">MON</div><div id="tuesday">TUE</div><div id="wednesday">WED</div><div id="thusday">THUS</div><div id="friday">FRI</div>
+                    </div>
+                    <div class="table_for_courses" class="table-responsive">
+                    	<table class="table table-striped table-bordered table-hover" id="courses_table">
+                    		<tbody id="courses_body">
+                    			<tr>
+                    				<th>DAYS/TIME</th>
+                    				<th>8AM - 10AM</th>
+                    				<th>10AM - 12PM</th>
+                    				<th>12PM - 2PM</th>
+                    				<th>2PM - 4PM</th>
+                    				<th>4PM - 6PM</th>
+                    			</tr>
+                                <tr id = "row_append">
+                                </tr>
+                    			
+                    			</tbody>
+                    	</table>
+                        <div class="week_days">
+                            <div di="print_time_table">print</div>
+                            <div id="view_time_table">view</div>
+                            <div id="view_time_table">update</div>
+                        </div>
+                    </div>                               
+                </div>
+            </div>

@@ -1,19 +1,28 @@
-<div class = "row" >
-	
+<div class = "myrow" >
 	<%= render 'layouts/lecturer_layout/card' %>
-	<div class = "col-d-9 col-t-8">
-		<div class = "dashboard">
-			<h1 class = "header centered">UPLOAD ASSIGNMENT</h1>
-			<% if !flash[:notice].nil?%>
-	    		<h4><%=flash[:notice]%></h4>
-	    	<% end %>
-			<% @courses.each do |c| %>
-				<%= form_for :assign, url: '/assignment' do |f| %>
-					<%= c.ctitle %>
-					<%= f.hidden_field :course_id, value: c.id %>
-					<%= f.submit :upload %>
-				<% end %>
-			<% end %>
-		</div>
-	</div>
+</div>
+
+<div id="page-wrapper" class="dash-pane">
+	<div id="page-inner" class="myfade">
+		<div class="myrow">
+            <div class="col-d-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                    	<% if !flash[:notice].nil?%>
+	    					<h4><%=flash[:notice]%></h4>
+	    				<% else %>
+	    					<h1 class = "header centered">UPLOAD ASSIGNMENT</h1>
+							<% @courses.each do |c| %>
+								<%= form_for :assign, url: '/assignment' do |f| %>
+									<%= c.ctitle %>
+									<%= f.hidden_field :course_id, value: c.id %>
+									<%= f.submit :upload %>
+								<% end %>
+							<% end %>
+						<% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

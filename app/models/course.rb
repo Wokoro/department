@@ -8,4 +8,8 @@ class Course < ApplicationRecord
 
 	#enum semester: [:first_sem, :second_sem]
 	#enum level: [:one, :two, :three, :four, :five]
+	enum status: [:borrowed, :compulsory, :elective]
+	
+	validates :ccode, presence: true
+	validates :ctitle, presence: true
 end

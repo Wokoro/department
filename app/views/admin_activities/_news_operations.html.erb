@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-t-4 col-d-4"><button id="activate_create_news_modal" onclick="createUser();">Create Single</button></div>
+    <div class="col-t-4 col-d-4"><button id="activate_news_multiple">Create Multiple From File</button></div>
+</div>
+<div id="edit_success" class = "edit_success msg"></div>
+<div id="create_success" class = "create_success msg"></div>
+
+<!--CREATE OPERATIONS -->
+<div class="row">
+    <div id="create_cont" class="my-modal">
+        <div id ="create_news_option" class="news_option" data-class="disply">
+            <!-- form for news creation-->
+            <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8 modal-content zoom-in">
+						<span id="cancel_create_lect" class="cancel_button" data-class="cancel_ref" data-ref = "create_cont">&times;</span>
+                        <h4>CREATE NEWS</h4>
+                            <div id="create_success" class = "create_success msg"></div>
+                            <div id="create_error" data-class="notice" class = "create_error msg"></div>
+								<%= form_for :create_news, url:"/create_news.js", remote: true, multipart: true, authenticity_token:true do|f| %>
+                            <%= f.label "News Heading",  id: 'create_news_heading' %>
+                            <%= f.text_field :heading, id: 'create_news_heading_field' %><br/>
+                            <%= f.label "Body",  id: 'create_content' %>
+                            <%= f.text_area :content,  id: 'create_news_content_field', class:"news_content" %><br/>
+                            <%= f.label :"News Photo",  id: 'create_news_photo' %>
+                            <%= f.file_field :image,  id: 'create_news_photo_field' %><br/>
+							<div id="select_news_image">Upload Image</div>
+                            <%= f.submit :create, id: 'create_news' %><div id="cancel_create_lect_form" class="button" data-class="cancel_ref" data-ref="create_cont">Cancel</div>
+                        <% end %>
+                    </div>
+                <div class = "col-t-2 col-d-2"></div>
+            </div>
+        </div>
+    </div>
+	
+    <!--END OF CREATE OPERATIONS -->
+
+    <!--EDIT OPERATIONS -->
+	
+    <!-- Table for courses is placed in this div -->
+	<div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <%= form_for :search, remote: true, url:search_news_path, html:{id:"search_form"} do|f| %>
+                                search : 
+									<%= f.search_field :news %>
+									<%= f.submit :submit, style:"display:none", id:"search_news_submit" %>
+								<% end %>
+                            </div> 
+                            <div class="panel-body">
+							Click on any row to edit the news's details
+                                <div id="table_for_news" class="table-responsive">
+                                    
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+            </div>
+	
+	
+	
+	<div id="edit_cont1" class="my-modal">		
+		  <div id = "edit_modal" class="my-modal-content">
+        <div class="my-modal-header">
+         <span id="cancel_edit_lect" class="cancel_button" data-class="cancel_ref" data-ref = "edit_cont1">&times;</span>
+          <h2>Edit News</h2>
+        </div>
+        <div id = "edit_modal_body" class="my-modal-body">
+        <div id = "find_course_option" class="course_option" data-class="display">
+           <div class = "row">
+                <div class = "col-t-2 col-d-2"></div>
+                    <div class = "col-t-8 col-d-8">
+                            <div class="handle white_bg">
+                                   <div id="edit_success" class = "edit_success msg"></div>
+								<div id="edit_error" data-class="notice" class = "edit_error msg">Hello error</div>
+								<%= form_for :edit_news, url:preview_news_path, remote:true, multipart: true, authenticity_token:true do|f| %>
+								<%= f.hidden_field :id, id: "edit_id_field" %>
+								<%= f.label "Heading",  id: 'edit_heading' %>
+								<%= f.text_field :heading, id: "edit_news_heading_field" %><br/>
+								<%= f.label "Content",  id: 'edit_news_content' %>
+								<%= f.text_area :content,  id: 'edit_news_content_field', class:"news_content" %><br/>
+								<%= image_tag "", id:"news_image", html:{width: "20%", height:"30%"} %>
+								<%= f.label :"News Photo",  id: 'edit_photo' %>
+								<%= f.file_field :image,  id: 'edit_news_photo_field' %>
+								<%= f.submit :finish, id: "edit_news_button" %>
+								<div id="edit_news_form_fields" class="button">Edit</div>
+								<%= f.submit :delete, id:"delete_news_form_fields", class:"button" %>
+								<div id="cancel_edit_lect_form" class="button" data-class="cancel_ref" data-ref="edit_cont1">Ok</div>
+							
+								<% end %>
+                            </div>
+                    </div>
+                <div class = "col-2"></div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--END OF EDIT OPERATIONS -->
+</div>
